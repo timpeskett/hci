@@ -1,0 +1,17 @@
+#Vim backup file
+*~
+
+#Vim swap file
+*.swp
+
+#Python compiled files
+*.pyc
+
+#Java compiled files
+*.class
+
+#Object files
+*.o
+
+#Databases
+*.sqlite3
