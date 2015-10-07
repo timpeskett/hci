@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="pane" maxHeight="446.0" maxWidth="1133.0" prefHeight="391.0" prefWidth="1078.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard_ui.CenterPanelController">
+   <children>
+      <VBox fx:id="centerVbox" prefHeight="391.0" prefWidth="1078.0">
+         <children>
+            <ImageView fx:id="splashLogo" fitHeight="72.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@splashLogo.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="splashText" strokeType="OUTSIDE" strokeWidth="0.0" text="FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.It supports the most obscure ancient formats up to the cutting edge.No matter if they were designed by some standards committee, the community or a corporation." wrappingWidth="468.40234375" />
+            <HBox fx:id="btnBounds" prefHeight="165.0" prefWidth="469.0">
+               <children>
+                  <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Back">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="nextBtn" mnemonicParsing="false" onAction="#nextBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Next">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="startBtn" mnemonicParsing="false" onAction="#startBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Start">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
