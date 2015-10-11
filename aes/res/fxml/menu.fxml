@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?language javascript?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<HBox layoutX="537.0" layoutY="-1.0" prefHeight="42.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"> 
+ <children>
+    <HBox styleClass="bordered">
+       <children>
+	  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="minimize(event);" >
+	     <fx:script>
+		function minimize(evt){
+			evt.target.getScene().getWindow().setIconified(true);
+		}
+	     </fx:script>
+	     <image>
+		<Image url="@../img/MinimiseNoBorder.png" />
+	     </image>
+	  </ImageView>
+       </children>
+    </HBox>
+    <HBox styleClass="bordered">
+       <children>
+         <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="maximize(event);">
+	     <fx:script>
+		function maximize(evt){
+			var stage = evt.target.getScene().getWindow();
+			var max = !stage.isMaximized();
+			stage.setMaximized(max);
+		}
+	     </fx:script>
+	     <image>
+		<Image url="@../img/MaximiseNoBorder.png" />
+	     </image>
+	  </ImageView>
+       </children>
+    </HBox>
+    <HBox styleClass="bordered">
+       <children>
+	       <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="close(event);">
+	     <fx:script>
+		function close(evt){
+			var stage = evt.target.getScene().getWindow();
+			stage.close();
+		}
+	     </fx:script>
+	     <image>
+		<Image url="@../img/ExitNoBorder.png" />
+	     </image>
+	     <HBox.margin>
+		<Insets />
+	     </HBox.margin>
+	  </ImageView>
+       </children>
+    </HBox>
+ </children>
+</HBox>

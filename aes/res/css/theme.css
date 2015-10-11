@@ -1,0 +1,30 @@
+#main-pane
+{
+	-fx-background-color: black;
+}
+
+
+#top-bar
+{
+	-fx-background-color: linear-gradient(to right, black, green);
+}
+
+.bordered
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+	/*-fx-border-insets: 1, 1, 1, 1;*/
+}
+
+.dash-border
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+	-fx-border-style: dashed;
+}
+
+Button
+{
+	-fx-background-color: red;
+}
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+
+<HBox id="top-bar" prefHeight="100.0" prefWidth="659.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+ <children>
+    <ImageView fitHeight="120.0" fitWidth="378.0" pickOnBounds="true" preserveRatio="true">
+       <image>
+	  <Image url="@../img/FFmpeg_logo.png" />
+       </image>
+    </ImageView>
+ </children>
+</HBox>

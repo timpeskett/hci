@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Video">
+   <children>
+      <!-- Include the elements common to all scenes -->
+      <fx:include source="topbar.fxml" />
+      <fx:include source="menu.fxml" />
+
+      <HBox layoutX="109.0" layoutY="138.0" prefHeight="101.0" prefWidth="482.0" styleClass="dash-border">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="60.0" styleClass="bordered">
+               <children>
+                  <Text fill="#01b519" layoutX="-4.0" layoutY="60.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="66.7294921875">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <VBox prefHeight="101.0" prefWidth="322.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="File: " />
+                        <TextField prefHeight="26.0" prefWidth="209.0" />
+                        <Button mnemonicParsing="false" text="Browse" />
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Text fill="#00c9f2" strokeType="OUTSIDE" strokeWidth="0.0" text="Framerate: " />
+                        <ChoiceBox prefHeight="26.0" prefWidth="94.0" />
+                        <Text fill="#0ae4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="fps" />
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <MediaView fitHeight="80.0" fitWidth="100.0" preserveRatio="false" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+                           <graphic>
+                              <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" stroke="BLACK" strokeType="INSIDE">
+                                <points>
+                                  <Double fx:value="-50.0" />
+                                  <Double fx:value="40.0" />
+                                  <Double fx:value="50.0" />
+                                  <Double fx:value="40.0" />
+                                  <Double fx:value="0.0" />
+                                  <Double fx:value="-60.0" />
+                                </points>
+                              </Polygon>
+                           </graphic>
+                        </Button>
+                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="Button">
+                           <graphic>
+                              <Pane>
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+                                 </children>
+                              </Pane>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button layoutX="-1.0" layoutY="386.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="60.0" text="Button" />
+   </children>
+</AnchorPane>
