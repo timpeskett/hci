@@ -3,15 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package wizard_interface;
+package wizard_interface.controller;
 
+import java.io.File;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
+//import wizard_interface.MainController;
 import wizard_interface.controller.*;
-import wizard_interface.MainController;
+import wizard_interface.model.Project;
+import wizard_interface.model.AudioProject;
+import wizard_interface.model.VideoProject;
 
 
 public class MainController implements Initializable {
@@ -22,6 +27,8 @@ public class MainController implements Initializable {
     @FXML RightPanelController rightPanelController;
     
     @FXML AnchorPane mainAnchor;
+    
+    private Project currProject;
     
     
     @Override
@@ -36,5 +43,28 @@ public class MainController implements Initializable {
         navPanelController.setPanelState(inState);
     }
     
+    public void createAudioProject(){
+        currProject = new AudioProject();
+    }
+    
+    public void createVideoProject(){
+        currProject = new VideoProject();
+    }
+    
+    public void setInputFiles(List<File> inList){
+        currProject.setInputFiles(inList);
+    }
+    
+    public void setOutputDirectory(File inDirectory){
+        currProject.setOutputLocation(inDirectory);
+    }
+
+    public File getOutputDirectory() {
+        return currProject.getOutputDirectory();
+    }
+
+    public List<File> getInputFiles() {
+        return currProject.getInputFiles();
+    }
     
 }

@@ -5,7 +5,7 @@
  */
 package wizard_interface.controller;
 
-import wizard_interface.MainController;
+import wizard_interface.controller.MainController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;

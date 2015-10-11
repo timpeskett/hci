@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.shape.Polyline;
 import javafx.scene.text.Text;
-import wizard_interface.MainController;
+import wizard_interface.controller.MainController;
 
 /**
  *

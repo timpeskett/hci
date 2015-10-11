@@ -11,7 +11,7 @@
 
 <AnchorPane fx:id="centerPanel" maxHeight="446.0" maxWidth="1133.0" prefHeight="391.0" prefWidth="969.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard_interface.controller.CenterPanelController">
    <children>
-      <VBox fx:id="centerVbox" alignment="CENTER" prefHeight="391.0" prefWidth="969.0">
+      <VBox fx:id="content" alignment="CENTER" prefHeight="391.0" prefWidth="969.0">
          <children>
             <ImageView fx:id="splashLogo" fitHeight="119.0" fitWidth="365.0" pickOnBounds="true" preserveRatio="true">
                <image>
