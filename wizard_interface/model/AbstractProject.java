@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Chris
  */
-public abstract class Project {
+public abstract class AbstractProject {
 
     private List<File> inputFiles = null;
 
@@ -21,11 +21,11 @@ public abstract class Project {
     private String outputFileType = null;
 
     
-    public Project(){
+    public AbstractProject(){
         //
     }
     
-    public Project(List<File> inInputFiles, File inOutputLocation, String inOutputFileName, String inOutputFileType) {
+    public AbstractProject(List<File> inInputFiles, File inOutputLocation, String inOutputFileName, String inOutputFileType) {
         inputFiles = inInputFiles;
         outputDirectory = inOutputLocation;
         outputFileName = inOutputFileName;

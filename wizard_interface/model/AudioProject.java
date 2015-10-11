@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Chris
  */
-public class AudioProject extends Project {
+public class AudioProject extends AbstractProject {
 
     // output file fields
     private String codec;

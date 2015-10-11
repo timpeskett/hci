@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Chris
  */
-public class VideoProject extends Project {
+public class VideoProject extends AbstractProject {
 
     private double[] inputFilesframerate;
 

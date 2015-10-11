@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
 //import wizard_interface.MainController;
 import wizard_interface.controller.*;
-import wizard_interface.model.Project;
+import wizard_interface.model.AbstractProject;
 import wizard_interface.model.AudioProject;
 import wizard_interface.model.VideoProject;
 
@@ -28,7 +28,7 @@ public class MainController implements Initializable {
     
     @FXML AnchorPane mainAnchor;
     
-    private Project currProject;
+    private AbstractProject currProject;
     
     
     @Override
