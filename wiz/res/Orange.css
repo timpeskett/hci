@@ -15,7 +15,10 @@
     -fx-border-color: #000000;
 }
 
-
+#centerPanel{
+	-fx-background-color: rgba(0,0,0,0.5);
+	-fx-background-radius: 0 15 15 0;
+}
 
 #background{
     -fx-background-image: url("bg_orange.jpg");

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox prefHeight="400.0" prefWidth="92.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard_ui.NavigationPanelController">
+<VBox prefHeight="400.0" prefWidth="92.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard_interface.controller.RightPanelController">
    <children>
       <VBox prefHeight="133.0" prefWidth="100.0">
          <children>

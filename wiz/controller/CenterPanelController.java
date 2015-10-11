@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package wizard_ui;
+package wizard_interface.controller;
 
+import wizard_interface.MainController;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,8 +16,10 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
@@ -27,82 +30,82 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
-public class CenterPanelController implements Initializable {
+public class CenterPanelController {
 
+    private MainController main;
+    private int currState;
     @FXML
-    private AnchorPane pane;
+    Text splashText;
     @FXML
-    private Button nextBtn;
+    Button nextBtn;
     @FXML
-    private Button backBtn;
+    Button backBtn;
     @FXML
-    private Button startBtn;
+    Button startBtn;
+    @FXML
+    HBox btnBounds;
+    @FXML
+    VBox centerVbox;
+    @FXML
+    AnchorPane centerPanel;
 
     /* Splash screen */
     @FXML
-    private ImageView splashLogo;
-    @FXML
-    private Text splashText;
+    ImageView splashLogo;
 
-    @FXML
-    private VBox centerVbox;
-
-    @FXML
-    private HBox btnBounds;
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // Set the style of the center panels background, done here so children don't inherit
-        pane.setStyle("-fx-background-color: rgba(0,0,0,0.5); -fx-background-radius: 0 15 15 0;");
-        // centerVbox.setAlignment(Pos.CENTER);
-
+    public void init(MainController inMainController) {
+        main = inMainController;
+        currState = 0;
+        centerPanel.setId("centerPanel");
         splashText.textProperty().set(
-                "FFmpeg is the leading multimedia framework, able to decode, encode, \n"
-                + "transcode, mux, demux, stream, filter and play pretty much anything \n"
-                + "that humans and machines have created.\n"
-                + "\n"
-                + "It supports the most obscure ancient formats up to the cutting edge.\n"
-                + "No matter if they were designed by some standards committee, the \n"
+                "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux,"
+                + "stream, filter and play pretty much anything that humans and machines have created.\n\n"
+                + "It supports the most obscure ancient formats up to the cutting edge"
+                + "No matter if they were designed by some standards committee, the"
                 + "community or a corporation.");
+        splashText.setFont(Font.font("Verdana", 16));
 
-        assert centerVbox != null : "centerVbox is not null";
         btnBounds.getChildren().remove(0, 2); // remove start and back for now, then add back when start is pressed
         centerVbox.setAlignment(Pos.CENTER);
         centerVbox.setSpacing(30);
         btnBounds.setAlignment(Pos.CENTER);
         btnBounds.setSpacing(200);
-       // centerVbox.getChildren().addAll(splashLogo, splashText);
-        
 
-        // pane.getChildren().add(centerVbox);
         startBtn.setVisible(true);
         nextBtn.setVisible(false);
         backBtn.setVisible(false);
+        main.setProgressBarState(0);
+
     }
 
     public void startBtnPressed() {
         System.out.println("Start button pressed");
-        btnBounds.getChildren().addAll(nextBtn, backBtn);
+        btnBounds.getChildren().addAll(backBtn, nextBtn);
         btnBounds.getChildren().remove(startBtn);
         centerVbox.getChildren().removeAll(splashLogo, splashText);
         nextBtn.setVisible(true);
         backBtn.setVisible(true);
+        main.setProgressBarState(1);
+        currState++;
     }
 
     public void nextBtnPressed() {
-        System.out.println("next btn pressed");
-        nextBtn.setStyle("-fx-opacity: .8");
-        backBtn.setStyle("-fx-opacity: .8");
+        if (currState < 4) {
+            currState++;
+        }
+        main.setProgressBarState(currState);
     }
 
     public void backBtnPressed() {
-        System.out.println("back btn pressed");
-        nextBtn.setStyle("-fx-opacity: .2");
-        backBtn.setStyle("-fx-opacity: .2");
+        if (currState > 1) {
+            currState--;
+        }
+        main.setProgressBarState(currState);
     }
 
 }

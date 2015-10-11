@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package wizard_ui;
+package wizard_interface.controller;
 
+import wizard_interface.MainController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -14,14 +15,12 @@ import javafx.fxml.Initializable;
  *
  * @author Chris
  */
-public class NavigationPanelController implements Initializable {
+public class RightPanelController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-    
+    private MainController main;
+
+    public void init(MainController inMainController) {
+        main = inMainController;
+    }
+
 }

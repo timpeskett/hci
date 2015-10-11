@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard_interface.controller.NavigationPanelController">
+   <children>
+      <VBox prefHeight="136.0" prefWidth="1000.0" spacing="20.0">
+         <children>
+            <HBox fx:id="navBarHbox" prefHeight="128.0" prefWidth="900.0">
+               <children>
+                  <ImageView fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../res/logo.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="20.0" top="40.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Text fx:id="progressText" strokeType="OUTSIDE" strokeWidth="0.0" text="Progress:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Text>
+                        <HBox fx:id="type" prefHeight="94.0" prefWidth="77.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="37.734375">
+                                 <font>
+                                    <Font size="70.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+                                 <HBox.margin>
+                                    <Insets top="45.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets left="50.0" top="5.0" />
+                     </HBox.margin>
+                  </VBox>
+                  <Polyline fx:id="arrow1" fill="#ff5a09" rotate="-90.0" scaleY="0.3" scaleZ="0.5" strokeType="INSIDE">
+                    <points>
+                      <Double fx:value="-50.0" />
+                      <Double fx:value="-40.0" />
+                      <Double fx:value="50.0" />
+                      <Double fx:value="-40.0" />
+                      <Double fx:value="0.0" />
+                      <Double fx:value="60.0" />
+                      <Double fx:value="-50.0" />
+                      <Double fx:value="-40.0" />
+                    </points>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </Polyline>
+                  <HBox fx:id="files" prefHeight="126.0" prefWidth="80.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="33.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Files">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" top="80.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Polyline fx:id="arrow2" fill="#ff5a09" rotate="-90.0" scaleY="0.3" scaleZ="0.5" strokeType="INSIDE">
+                     <points>
+                        <Double fx:value="-50.0" />
+                        <Double fx:value="-40.0" />
+                        <Double fx:value="50.0" />
+                        <Double fx:value="-40.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                        <Double fx:value="-50.0" />
+                        <Double fx:value="-40.0" />
+                     </points>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </Polyline>
+                  <HBox fx:id="settings" prefHeight="126.0" prefWidth="80.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="33.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" top="80.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <Polyline fx:id="arrow3" fill="#ff5a09" rotate="-90.0" scaleY="0.3" scaleZ="0.5" strokeType="INSIDE">
+                     <points>
+                        <Double fx:value="-50.0" />
+                        <Double fx:value="-40.0" />
+                        <Double fx:value="50.0" />
+                        <Double fx:value="-40.0" />
+                        <Double fx:value="0.0" />
+                        <Double fx:value="60.0" />
+                        <Double fx:value="-50.0" />
+                        <Double fx:value="-40.0" />
+                     </points>
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </Polyline>
+                  <HBox fx:id="finalise" prefHeight="128.0" prefWidth="152.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                           <font>
+                              <Font size="70.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="33.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finalise">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="5.0" top="80.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
