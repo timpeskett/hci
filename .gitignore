@@ -9,6 +9,7 @@
 
 #Java compiled files
 *.class
+*.jar
 
 #Object files
 *.o

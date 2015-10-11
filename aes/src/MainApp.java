@@ -83,7 +83,6 @@ public class MainApp extends Application
 		{
 			/* Load the fxml from the file */
 			URL fileLocation = new File(fxmlFile).toURI().toURL();
-			System.out.println("File name: " + fileLocation);
 			loader.setLocation(fileLocation);
 			Parent root = loader.load();
 
@@ -99,6 +98,7 @@ public class MainApp extends Application
 		catch(IOException e)
 		{
 			logger.log(Level.SEVERE, "Could not load FXML file: " + fxmlFile + "\n" + e.getMessage());
+			mainStage.close();
 		}
 
 		return controller;

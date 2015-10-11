@@ -16,16 +16,26 @@ public class Intro implements SceneController
 	private MainApp ma;
 
 	@FXML
-	private HBox vidOption;
+	private HBox videoBannerHbox;
+	@FXML
+	private HBox audioBannerHbox;
 
 	@Override
 	public void initialize(URL fxmlLocation, ResourceBundle res)
 	{
-		vidOption.setOnMouseClicked(new EventHandler<MouseEvent>(){
+		videoBannerHbox.setOnMouseClicked(new EventHandler<MouseEvent>(){
 			@Override
 			public void handle(MouseEvent e)
 			{
 				ma.gotoVideo();
+			}
+		});
+
+		audioBannerHbox.setOnMouseClicked(new EventHandler<MouseEvent>(){
+			@Override
+			public void handle(MouseEvent e)
+			{
+				ma.gotoAudio();
 			}
 		});
 	}
