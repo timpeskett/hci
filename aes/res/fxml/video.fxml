@@ -9,30 +9,34 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Video">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="659.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Video">
    <children>
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
       <fx:include source="menu.fxml" />
 
-      <HBox layoutX="109.0" layoutY="138.0" prefHeight="101.0" prefWidth="482.0" styleClass="dash-border">
+      <HBox layoutX="109.0" layoutY="138.0" prefHeight="101.0" prefWidth="482.0" styleClass="params-container">
          <children>
-            <Pane prefHeight="200.0" prefWidth="60.0" styleClass="bordered">
+            <Pane prefHeight="200.0" prefWidth="60.0">
                <children>
-                  <Text fill="#01b519" layoutX="-4.0" layoutY="60.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="66.7294921875">
+                  <Text fill="#01b519" layoutX="-2.0" layoutY="59.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INPUT" wrappingWidth="60.00000500679016">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="18.0" />
                      </font>
                   </Text>
                </children>
+               <styleClass>
+                  <String fx:value="params-heading" />
+                  <String fx:value="input-params-heading" />
+               </styleClass>
             </Pane>
             <VBox prefHeight="101.0" prefWidth="322.0">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="File: " />
-                        <TextField prefHeight="26.0" prefWidth="209.0" />
-                        <Button mnemonicParsing="false" text="Browse" />
+                        <TextField prefHeight="26.0" prefWidth="209.0" styleClass="control" />
+                        <Button mnemonicParsing="false" styleClass="normal-button" text="Browse" />
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />
@@ -43,7 +47,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Text fill="#00c9f2" strokeType="OUTSIDE" strokeWidth="0.0" text="Framerate: " />
-                        <ChoiceBox prefHeight="26.0" prefWidth="94.0" />
+                        <ChoiceBox prefHeight="26.0" prefWidth="94.0" styleClass="control" />
                         <Text fill="#0ae4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="fps" />
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -59,7 +63,7 @@
                   <MediaView fitHeight="80.0" fitWidth="100.0" preserveRatio="false" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button">
                            <graphic>
                               <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" stroke="BLACK" strokeType="INSIDE">
                                 <points>
@@ -73,7 +77,7 @@
                               </Polygon>
                            </graphic>
                         </Button>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="Button">
+                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button" text="Button">
                            <graphic>
                               <Pane>
                                  <children>
@@ -89,6 +93,64 @@
             </VBox>
          </children>
       </HBox>
-      <Button layoutX="-1.0" layoutY="386.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="60.0" text="Button" />
+      <Button fx:id="backButton" layoutY="418.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="60.0" styleClass="back-button" text="Back" />
+      <HBox layoutX="109.0" layoutY="262.0" prefHeight="109.0" prefWidth="482.0" styleClass="params-container">
+         <children>
+            <Pane prefHeight="105.0" prefWidth="58.0">
+               <children>
+                  <Text fill="#01b519" layoutX="-18.0" layoutY="46.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OUTPUT" wrappingWidth="94.30713296681643">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <styleClass>
+                  <String fx:value="params-heading" />
+                  <String fx:value="output-params-heading" />
+               </styleClass>
+            </Pane>
+            <VBox prefHeight="105.0" prefWidth="420.0">
+               <children>
+                  <HBox prefHeight="31.0" prefWidth="420.0">
+                     <children>
+                        <Text fill="#00ddff" strokeType="OUTSIDE" strokeWidth="0.0" text="Output Folder:" />
+                        <TextField styleClass="control" />
+                        <Button mnemonicParsing="false" styleClass="normal-button" text="Browse" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="31.0" prefWidth="420.0">
+                     <children>
+                        <Text fill="#04b2f2" strokeType="OUTSIDE" strokeWidth="0.0" text="Framerate:" />
+                        <ChoiceBox prefWidth="150.0" styleClass="control" />
+                        <Text fill="#05d4eb" strokeType="OUTSIDE" strokeWidth="0.0" text="fps" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="41.0" prefHeight="31.0" prefWidth="420.0">
+                     <children>
+                        <Text fill="#01ddf5" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename:" />
+                        <TextField styleClass="control" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="420.0">
+                     <children>
+                        <Text fill="#06ecf8" strokeType="OUTSIDE" strokeWidth="0.0" text="File Type:" />
+                        <ChoiceBox prefWidth="150.0" styleClass="control" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button layoutX="521.0" layoutY="387.0" mnemonicParsing="false" styleClass="normal-button" text="Convert" />
+      <Pane layoutX="109.0" layoutY="386.0" prefHeight="27.0" prefWidth="127.0" styleClass="percent-counter">
+         <children>
+            <Text fill="#07effc" layoutX="20.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete" />
+         </children>
+      </Pane>
+      <Pane id="progress-bar" layoutX="109.0" layoutY="426.0" prefHeight="35.0" prefWidth="482.0" styleClass="progress-bar">
+         <children>
+            <Pane layoutY="1.0" prefHeight="35.0" prefWidth="230.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

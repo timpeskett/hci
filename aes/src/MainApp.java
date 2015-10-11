@@ -14,15 +14,11 @@ import java.net.URL;
 public class MainApp extends Application
 {
 	private Stage mainStage;
-	private FXMLLoader fxmlLoader;
 	private Logger logger;
 
 	@Override
 	public void start(Stage stage)
 	{
-		/* Create FXMLLoader object instead of using static methods */
-		fxmlLoader = new FXMLLoader();
-
 		/* Create a logger to log info/warn/error messages */
 		logger = Logger.getLogger(MainApp.class.getName());
 
@@ -70,7 +66,10 @@ public class MainApp extends Application
 	private void gotoPage(String page)
 	{
 		SceneController cont = replaceScene(page);
-		cont.setApp(this);
+		if(cont != null)
+		{
+			cont.setApp(this);
+		}
 	}
 
 
@@ -90,7 +89,6 @@ public class MainApp extends Application
 			Scene newScene = new Scene(root);
 
 			mainStage.setScene(newScene);
-			mainStage.sizeToScene();
 			mainStage.show();
 
 			controller = loader.getController();
@@ -98,7 +96,9 @@ public class MainApp extends Application
 		catch(IOException e)
 		{
 			logger.log(Level.SEVERE, "Could not load FXML file: " + fxmlFile + "\n" + e.getMessage());
+			e.printStackTrace();
 			mainStage.close();
+			System.exit(1);
 		}
 
 		return controller;

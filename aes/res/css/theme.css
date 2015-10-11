@@ -1,13 +1,147 @@
 #main-pane
 {
 	-fx-background-color: black;
+	-fx-border-color: green;
+	-fx-border-width: 2;
 }
 
 
 #top-bar
 {
 	-fx-background-color: linear-gradient(to right, black, green);
+	-fx-border-color: green;
+	-fx-border-width: 2;
 }
+
+.minmaxexit
+{
+	-fx-background-color: blue;
+	-fx-border-color: green;
+	-fx-border-width: 2;
+}
+
+
+/* A CSS selector used on most controls (text fields, choice boxes)
+ * in the interface. This control is *not* applied to buttons as they
+ * are styled separately */
+.control
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+	-fx-background-color: skyblue;
+}
+
+
+
+/* BUTTON STYLES */
+
+/* A standard button used to perform an action like the browse and 
+ * convert buttons */
+.normal-button
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+	-fx-background-color: darkgreen;
+	-fx-text-fill: lightblue;
+	-fx-text-size: 13px;
+}
+
+/* A banner button used on the introduction page to allow the user to
+ * select their operation. Not technically a button control but it acts
+ * as one */
+.banner-button
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+}
+
+/* The multimedia player buttons. Play and pause */
+.player-button
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+	-fx-background-color: black;
+}
+
+
+Button
+{
+	-fx-background-color: red;
+}
+
+
+
+/* CONTAINER STYLES */
+
+/* The container where the user enters all of the parameters for their video
+ * conversion. */
+.params-container
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+	-fx-border-style: dashed;
+}
+
+.params-container Text
+{
+	-fx-fill: lightblue;
+}
+
+
+/* MISCELLANEOUS ELEMENTS */
+
+
+/* The bar container */
+.progress-bar
+{
+	-fx-background-color: lightblue;
+}
+
+/* The actual bar */
+.progress-bar Pane
+{
+	-fx-background-color: linear-gradient(to right, green, lightgreen);
+}
+
+
+.params-heading
+{
+	-fx-border-color: green;
+	-fx-border-width: 3;
+}
+
+.params-heading Text
+{
+	-fx-fill: green;
+}
+
+.input-params-heading
+{
+	-fx-background-color: lightblue;
+}
+
+.output-params-heading
+{
+	-fx-background-color: darkblue;
+}
+
+
+.percent-counter
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+}
+
+.percent-counter Text
+{
+	-fx-fill: lightblue;
+}
+
+.back-button
+{
+	-fx-background-color: linear-gradient(to right, black, green);
+}
+
 
 .bordered
 {
@@ -15,16 +149,3 @@
 	-fx-border-width: 2;
 	/*-fx-border-insets: 1, 1, 1, 1;*/
 }
-
-.dash-border
-{
-	-fx-border-color: green;
-	-fx-border-width: 2;
-	-fx-border-style: dashed;
-}
-
-Button
-{
-	-fx-background-color: red;
-}
-

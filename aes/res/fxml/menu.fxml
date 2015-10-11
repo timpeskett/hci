@@ -9,7 +9,7 @@
 
 <HBox layoutX="537.0" layoutY="-1.0" prefHeight="42.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1"> 
  <children>
-    <HBox styleClass="bordered">
+    <HBox styleClass="minmaxexit">
        <children>
 	  <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="minimize(event);" >
 	     <fx:script>
@@ -23,7 +23,7 @@
 	  </ImageView>
        </children>
     </HBox>
-    <HBox styleClass="bordered">
+    <HBox styleClass="minmaxexit">
        <children>
          <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="maximize(event);">
 	     <fx:script>
@@ -39,7 +39,7 @@
 	  </ImageView>
        </children>
     </HBox>
-    <HBox styleClass="bordered">
+    <HBox styleClass="minmaxexit">
        <children>
 	       <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="close(event);">
 	     <fx:script>

@@ -14,7 +14,7 @@
 
       <HBox layoutX="89.0" layoutY="289.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="62.0">
          <children>
-            <HBox fx:id="audioBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="bordered">
+            <HBox fx:id="audioBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
                <children>
                   <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
                      <image>
@@ -35,7 +35,7 @@
       </HBox>
       <HBox layoutX="89.0" layoutY="146.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="62.0">
          <children>
-            <HBox fx:id="videoBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="bordered">
+            <HBox fx:id="videoBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
                <children>
                   <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
                      <image>

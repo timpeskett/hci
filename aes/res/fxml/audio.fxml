@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Audio">
+   <children>
+
+      <!-- Include the elements common to all scenes -->
+      <fx:include source="topbar.fxml" />
+      <fx:include source="menu.fxml" />
+      <HBox layoutX="-119.0" layoutY="222.0" rotate="90.0" styleClass="banner-button">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="313.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
+               <image>
+                  <Image url="@../img/IntroAudioNoBorder.png" />
+               </image>
+            </ImageView>
+         </children>
+      </HBox>
+      <Button fx:id="backButton" layoutX="1.0" layoutY="404.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="63.0" styleClass="back-button" text="Back" />
+   </children>
+</AnchorPane>
