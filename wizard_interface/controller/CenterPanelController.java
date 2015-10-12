@@ -28,6 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -43,6 +44,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
+import wizard_interface.controller.MainController.ProjectType;
 
 public class CenterPanelController {
 
@@ -77,6 +79,11 @@ public class CenterPanelController {
     }
 
     public void displaySplash() {
+        try {
+            throw new Exception();
+        } catch (Exception ex) {
+            //Logger.getLogger(CenterPanelController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         splashText.textProperty().set(
                 "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux,"
                 + "stream, filter and play pretty much anything that humans and machines have created.\n\n"
@@ -234,6 +241,47 @@ public class CenterPanelController {
     public void displaySettings() {
         content.getChildren().clear();
         content.getChildren().add(btnBounds);
+
+        ProjectType currProjectType = main.getProjectType();
+        if (currProjectType == ProjectType.AUDIO_PROJECT) {
+            // Set up page for getting audio settings from user
+            // format(container), codec, bit_rate, sample_rate, channels
+
+            /* Audio format */
+            HBox formatContainer = new HBox(40);
+            formatContainer.setAlignment(Pos.CENTER);
+            Text formatText = new Text("Format:");
+            formatText.setFont(new Font(20));
+            ComboBox formatBox = new ComboBox();
+            formatBox.getItems().addAll("AVI", "MP4", "MKV", "Ogg", "FLV");
+            formatContainer.getChildren().addAll(formatText, formatBox);
+
+            /* Audio codec */
+            HBox codecContainer = new HBox(40);
+            codecContainer.setAlignment(Pos.CENTER);
+            Text codecText = new Text("Codec:");
+            codecText.setFont(new Font(20));
+            ComboBox codecBox = new ComboBox();
+            codecBox.getItems().addAll("MPEG-2", "MPEG-4 Part 2", "H.264", "WMV");
+            codecContainer.getChildren().addAll(codecText, codecBox);
+
+            /* Audio channels */
+            HBox channelsContainer = new HBox(40);
+            channelsContainer.setAlignment(Pos.CENTER);
+            Text channelsText = new Text("Channels:");
+            channelsText.setFont(new Font(20));
+            ComboBox channelsBox = new ComboBox();
+            channelsBox.getItems().addAll("Mono", "Stereo", "2.1", "3.0", "4.0", "5.0", "5.1", "6.0", "6.1", "7.0", "7.1");
+            channelsContainer.getChildren().addAll(channelsText, channelsBox);
+
+            /* Add components to content pane */
+            content.getChildren().add(0, formatContainer);
+            content.getChildren().add(1, codecContainer);
+            content.getChildren().add(2, channelsContainer);
+        } else {
+
+        }
+
     }
 
     public void displayFinalise() {

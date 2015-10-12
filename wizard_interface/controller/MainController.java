@@ -18,44 +18,45 @@ import wizard_interface.model.AbstractProject;
 import wizard_interface.model.AudioProject;
 import wizard_interface.model.VideoProject;
 
-
 public class MainController implements Initializable {
 
+    @FXML
+    NavigationPanelController navPanelController;
+    @FXML
+    CenterPanelController centerPanelController;
+    @FXML
+    RightPanelController rightPanelController;
 
-    @FXML NavigationPanelController navPanelController;
-    @FXML CenterPanelController centerPanelController;
-    @FXML RightPanelController rightPanelController;
-    
-    @FXML AnchorPane mainAnchor;
-    
+    @FXML
+    AnchorPane mainAnchor;
+
     private AbstractProject currProject;
-    
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         navPanelController.init(this);
         centerPanelController.init(this);
         rightPanelController.init(this);
         mainAnchor.setId("background"); // make sure id matches css #
-    }    
-    
-    public void setProgressBarState(int inState){
+    }
+
+    public void setProgressBarState(int inState) {
         navPanelController.setPanelState(inState);
     }
-    
-    public void createAudioProject(){
+
+    public void createAudioProject() {
         currProject = new AudioProject();
     }
-    
-    public void createVideoProject(){
+
+    public void createVideoProject() {
         currProject = new VideoProject();
     }
-    
-    public void setInputFiles(List<File> inList){
+
+    public void setInputFiles(List<File> inList) {
         currProject.setInputFiles(inList);
     }
-    
-    public void setOutputDirectory(File inDirectory){
+
+    public void setOutputDirectory(File inDirectory) {
         currProject.setOutputLocation(inDirectory);
     }
 
@@ -66,5 +67,22 @@ public class MainController implements Initializable {
     public List<File> getInputFiles() {
         return currProject.getInputFiles();
     }
-    
+
+    public enum ProjectType {
+
+        AUDIO_PROJECT, VIDEO_PROJECT;
+    }
+
+    public ProjectType getProjectType() {
+        ProjectType type = null;
+        if (currProject instanceof AudioProject) {
+            type = ProjectType.AUDIO_PROJECT;
+        } else if (currProject instanceof VideoProject){
+            type = ProjectType.VIDEO_PROJECT;;
+        } else {
+            System.out.println("this should never go off");
+        }
+        return type;
+    }
+
 }
