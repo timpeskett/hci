@@ -17,11 +17,14 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
@@ -45,6 +48,7 @@ import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 import wizard_interface.controller.MainController.ProjectType;
+import wizard_interface.model.AudioProject;
 
 public class CenterPanelController {
 
@@ -239,47 +243,161 @@ public class CenterPanelController {
     }
 
     public void displaySettings() {
-        content.getChildren().clear();
-        content.getChildren().add(btnBounds);
 
+        // content > vbox ( profileSetting in center > Hbox1 (codec, format) > Hbox2 (Channels, bit-rate) >  sample rate))
+        // trying without initial vbox and just using content instead:
+        final int HORIZONTAL_GAP = 10;
+        HBox line1 = new HBox(HORIZONTAL_GAP);
+        HBox line2 = new HBox(HORIZONTAL_GAP);
+        line1.setAlignment(Pos.CENTER_LEFT);
+        line2.setAlignment(Pos.CENTER_LEFT);
+        line1.setPadding(new Insets(0, 0, 0, 100)); // top left bot right
+        line2.setPadding(new Insets(0, 0, 0, 100)); // top left bot right
+        content.setPadding(new Insets(20, 0, 20, 0));
+
+        content.getChildren().clear();
         ProjectType currProjectType = main.getProjectType();
+        /* Display proper project settings */
         if (currProjectType == ProjectType.AUDIO_PROJECT) {
-            // Set up page for getting audio settings from user
             // format(container), codec, bit_rate, sample_rate, channels
 
+            Text audioSettingsText = new Text("Audio Settings");
+            audioSettingsText.setFont(new Font(25));
+
+            /* Profiles for quick settings */
+            HBox profileContainer = new HBox(HORIZONTAL_GAP);
+            profileContainer.setPadding(new Insets(0, 0, 20, 0)); // top left bot right
+            profileContainer.setAlignment(Pos.CENTER);
+            Text profileText = new Text("Profile");
+            profileText.setFont(new Font(20));
+            ComboBox profileBox = new ComboBox();
+            profileBox.getItems().addAll("Low Quality", "Medium Quality", "High Quality", "Best Quality");
+            profileContainer.getChildren().addAll(profileText, profileBox);
+
             /* Audio format */
-            HBox formatContainer = new HBox(40);
-            formatContainer.setAlignment(Pos.CENTER);
-            Text formatText = new Text("Format:");
+            HBox formatContainer = new HBox(HORIZONTAL_GAP);
+            // formatContainer.setAlignment(Pos.CENTER);
+            Text formatText = new Text("Format ");
             formatText.setFont(new Font(20));
             ComboBox formatBox = new ComboBox();
-            formatBox.getItems().addAll("AVI", "MP4", "MKV", "Ogg", "FLV");
+            formatBox.getItems().addAll("AVI", "MP3", "MP4", "MKV", "Ogg", "FLV", "WAV", "FLAC", "M4A");
             formatContainer.getChildren().addAll(formatText, formatBox);
 
             /* Audio codec */
-            HBox codecContainer = new HBox(40);
-            codecContainer.setAlignment(Pos.CENTER);
-            Text codecText = new Text("Codec:");
+            HBox codecContainer = new HBox(HORIZONTAL_GAP);
+            //codecContainer.setAlignment(Pos.CENTER);
+            Text codecText = new Text("Codec     ");
             codecText.setFont(new Font(20));
             ComboBox codecBox = new ComboBox();
             codecBox.getItems().addAll("MPEG-2", "MPEG-4 Part 2", "H.264", "WMV");
             codecContainer.getChildren().addAll(codecText, codecBox);
 
             /* Audio channels */
-            HBox channelsContainer = new HBox(40);
-            channelsContainer.setAlignment(Pos.CENTER);
-            Text channelsText = new Text("Channels:");
+            HBox channelsContainer = new HBox(HORIZONTAL_GAP);
+            //  channelsContainer.setAlignment(Pos.CENTER);
+            Text channelsText = new Text("Channels");
             channelsText.setFont(new Font(20));
             ComboBox channelsBox = new ComboBox();
             channelsBox.getItems().addAll("Mono", "Stereo", "2.1", "3.0", "4.0", "5.0", "5.1", "6.0", "6.1", "7.0", "7.1");
             channelsContainer.getChildren().addAll(channelsText, channelsBox);
 
-            /* Add components to content pane */
-            content.getChildren().add(0, formatContainer);
-            content.getChildren().add(1, codecContainer);
-            content.getChildren().add(2, channelsContainer);
-        } else {
+            /* Bit-rate */
+            HBox bitrateContainer = new HBox(HORIZONTAL_GAP);
+            //  bitrateContainer.setAlignment(Pos.CENTER);
+            Text bitrateText = new Text("Bit-rate");
+            bitrateText.setFont(new Font(20));
+            ComboBox bitrateBox = new ComboBox();
+            bitrateBox.getItems().addAll("32 kb/s", "96 kb/s", "128 kb/s", "160 kb/s", "192 kb/s", "320 kb/s");
+            bitrateContainer.getChildren().addAll(bitrateText, bitrateBox);
 
+            /* Sample rate */
+            HBox sampleRateContainer = new HBox(HORIZONTAL_GAP);
+            sampleRateContainer.setAlignment(Pos.CENTER);
+            Text sampleRateText = new Text("Sample Rate");
+            sampleRateText.setFont(new Font(20));
+            ComboBox sampleRateBox = new ComboBox();
+            sampleRateBox.getItems().addAll("22050 Hz", "32000 Hz", "32000 Hz", "41000 Hz");
+            sampleRateContainer.getChildren().addAll(sampleRateText, sampleRateBox);
+
+            /* Load values user has already set or use defaults */
+            if (main.getSampleRate() == null) {
+                sampleRateBox.setValue("41000 Hz");
+            } else {
+                sampleRateBox.setValue(main.getSampleRate());
+            }
+
+            if (main.getProfile() == null) {
+                profileBox.setValue("Best Quality");
+            } else {
+                profileBox.setValue(main.getProfile());
+            }
+
+            if (main.getChannels() == null) {
+                channelsBox.setValue("Stereo");
+            } else {
+                channelsBox.setValue(main.getChannels());
+            }
+
+            if (main.getCodec() == null) {
+                codecBox.setValue("H.264");
+            } else {
+                codecBox.setValue(main.getCodec());
+            }
+
+            if (main.getBitrate() == null) {
+                bitrateBox.setValue("320 kb/s");
+            } else {
+                bitrateBox.setValue(main.getBitrate());
+            }
+
+            if (main.getBitrate() == null) {
+                formatBox.setValue("MP4");
+            } else {
+                formatBox.setValue(main.getOutputFileType());
+            }
+
+
+            /* Add lines of components to content pane */
+            line1.getChildren().addAll(codecContainer, formatContainer, sampleRateContainer);
+            line2.getChildren().addAll(channelsContainer, bitrateContainer);
+            content.getChildren().addAll(audioSettingsText, profileContainer, line1, line2, btnBounds);
+
+            /* Update project with current values */
+            String currProfile = (String) profileBox.getSelectionModel().getSelectedItem();
+            String currFormat = (String) formatBox.getSelectionModel().getSelectedItem();
+            String currCodec = (String) codecBox.getSelectionModel().getSelectedItem();
+            String currChannels = (String) channelsBox.getSelectionModel().getSelectedItem();
+            String currBitrate = (String) bitrateBox.getSelectionModel().getSelectedItem();
+            String currSampleRate = (String) sampleRateBox.getSelectionModel().getSelectedItem();
+            main.setAudioProjectSettings(currProfile, currFormat, currCodec, currChannels, currBitrate, currSampleRate);
+
+            /* Create events for when any dialog box is changed which updates model*/
+            profileBox.setOnAction(e -> {
+                main.setProfile((String) profileBox.getSelectionModel().getSelectedItem());
+            });
+
+            formatBox.setOnAction(e -> {
+                main.setOutputFileType((String) formatBox.getSelectionModel().getSelectedItem());
+            });
+
+            codecBox.setOnAction(e -> {
+                main.setCodec((String) codecBox.getSelectionModel().getSelectedItem());
+            });
+
+            channelsBox.setOnAction(e -> {
+                main.setChannels((String) channelsBox.getSelectionModel().getSelectedItem());
+            });
+
+            bitrateBox.setOnAction(e -> {
+                main.setBitrate((String) bitrateBox.getSelectionModel().getSelectedItem());
+            });
+
+            sampleRateBox.setOnAction(e -> {
+                main.setSampleRate((String) sampleRateBox.getSelectionModel().getSelectedItem());
+            });
+
+        } else {
+            // video settings here
         }
 
     }

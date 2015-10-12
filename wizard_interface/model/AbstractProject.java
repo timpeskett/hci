@@ -19,12 +19,12 @@ public abstract class AbstractProject {
     private File outputDirectory = null;
     private String outputFileName = null;
     private String outputFileType = null;
+    private String profile = null;
 
-    
-    public AbstractProject(){
+    public AbstractProject() {
         //
     }
-    
+
     public AbstractProject(List<File> inInputFiles, File inOutputLocation, String inOutputFileName, String inOutputFileType) {
         inputFiles = inInputFiles;
         outputDirectory = inOutputLocation;
@@ -65,4 +65,11 @@ public abstract class AbstractProject {
         this.outputFileType = outputFileType;
     }
 
+    public void setProfile(String inProfile) {
+        profile = inProfile;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
 }

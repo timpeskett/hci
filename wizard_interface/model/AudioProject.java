@@ -14,13 +14,14 @@ import java.util.List;
  */
 public class AudioProject extends AbstractProject {
 
-    // output file fields
+    // String currProfile, String currFormat, String currCodec, String currChannels, String currBitrate, String currSampleRate) {
     private String codec;
-    private int channels;
-    private double frequency;
-    private int bitrate;
+    private String frequency;
+    private String bitrate;
+    private String channels;
+    private String sampleRate;
 
-    public AudioProject(List<File>inInputFiles, File inOutputLocation, String inOutputFileName, String inOutputFileType) {
+    public AudioProject(List<File> inInputFiles, File inOutputLocation, String inOutputFileName, String inOutputFileType) {
         super(inInputFiles, inOutputLocation, inOutputFileName, inOutputFileType);
     }
 
@@ -37,28 +38,37 @@ public class AudioProject extends AbstractProject {
         this.codec = codec;
     }
 
-    public int getChannels() {
+    public String getChannels() {
         return channels;
     }
 
-    public void setChannels(int channels) {
+    public void setChannels(String channels) {
         this.channels = channels;
     }
 
-    public double getFrequency() {
+    public String getFrequency() {
         return frequency;
     }
 
-    public void setFrequency(double frequency) {
+    public void setFrequency(String frequency) {
         this.frequency = frequency;
     }
 
-    public int getBitrate() {
+    public String getBitrate() {
         return bitrate;
     }
 
-    public void setBitrate(int bitrate) {
+    public void setBitrate(String bitrate) {
         this.bitrate = bitrate;
+    }
+
+    public void setSampleRate(String inSampleRate) {        
+        sampleRate = inSampleRate;
+        System.out.println("official samplerate has been changed to: " + sampleRate);
+    }
+
+    public String getSampleRate() {
+        return sampleRate;
     }
 
 }
