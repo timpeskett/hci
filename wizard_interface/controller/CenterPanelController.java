@@ -244,8 +244,6 @@ public class CenterPanelController {
 
     public void displaySettings() {
 
-        // content > vbox ( profileSetting in center > Hbox1 (codec, format) > Hbox2 (Channels, bit-rate) >  sample rate))
-        // trying without initial vbox and just using content instead:
         final int HORIZONTAL_GAP = 10;
         HBox line1 = new HBox(HORIZONTAL_GAP);
         HBox line2 = new HBox(HORIZONTAL_GAP);
@@ -259,8 +257,6 @@ public class CenterPanelController {
         ProjectType currProjectType = main.getProjectType();
         /* Display proper project settings */
         if (currProjectType == ProjectType.AUDIO_PROJECT) {
-            // format(container), codec, bit_rate, sample_rate, channels
-
             Text audioSettingsText = new Text("Audio Settings");
             audioSettingsText.setFont(new Font(25));
 
@@ -271,7 +267,7 @@ public class CenterPanelController {
             Text profileText = new Text("Profile");
             profileText.setFont(new Font(20));
             ComboBox profileBox = new ComboBox();
-            profileBox.getItems().addAll("Low Quality", "Medium Quality", "High Quality", "Best Quality");
+            profileBox.getItems().addAll("Low Quality", "Medium Quality", "Best Quality");
             profileContainer.getChildren().addAll(profileText, profileBox);
 
             /* Audio format */
@@ -280,7 +276,7 @@ public class CenterPanelController {
             Text formatText = new Text("Format ");
             formatText.setFont(new Font(20));
             ComboBox formatBox = new ComboBox();
-            formatBox.getItems().addAll("AVI", "MP3", "MP4", "MKV", "Ogg", "FLV", "WAV", "FLAC", "M4A");
+            formatBox.getItems().addAll("Ogg", "MP3", "WAV", "FLAC", "WMA");
             formatContainer.getChildren().addAll(formatText, formatBox);
 
             /* Audio codec */
@@ -289,7 +285,7 @@ public class CenterPanelController {
             Text codecText = new Text("Codec     ");
             codecText.setFont(new Font(20));
             ComboBox codecBox = new ComboBox();
-            codecBox.getItems().addAll("MPEG-2", "MPEG-4 Part 2", "H.264", "WMV");
+            //codecBox.getItems().addAll("MP3", "PCM", "MPEG-4 Part 2", "H.264", "WMV", "FLAC");
             codecContainer.getChildren().addAll(codecText, codecBox);
 
             /* Audio channels */
@@ -298,7 +294,7 @@ public class CenterPanelController {
             Text channelsText = new Text("Channels");
             channelsText.setFont(new Font(20));
             ComboBox channelsBox = new ComboBox();
-            channelsBox.getItems().addAll("Mono", "Stereo", "2.1", "3.0", "4.0", "5.0", "5.1", "6.0", "6.1", "7.0", "7.1");
+            channelsBox.getItems().addAll("Mono", "Stereo");//, "2.1", "3.0", "4.0", "5.0", "5.1", "6.0", "6.1", "7.0", "7.1");
             channelsContainer.getChildren().addAll(channelsText, channelsBox);
 
             /* Bit-rate */
@@ -307,7 +303,7 @@ public class CenterPanelController {
             Text bitrateText = new Text("Bit-rate");
             bitrateText.setFont(new Font(20));
             ComboBox bitrateBox = new ComboBox();
-            bitrateBox.getItems().addAll("32 kb/s", "96 kb/s", "128 kb/s", "160 kb/s", "192 kb/s", "320 kb/s");
+            bitrateBox.getItems().addAll("64 kb/s", "80 kb/s", "96 kb/s", "128 kb/s", "160 kb/s", "192 kb/s", "320 kb/s");
             bitrateContainer.getChildren().addAll(bitrateText, bitrateBox);
 
             /* Sample rate */
@@ -316,12 +312,12 @@ public class CenterPanelController {
             Text sampleRateText = new Text("Sample Rate");
             sampleRateText.setFont(new Font(20));
             ComboBox sampleRateBox = new ComboBox();
-            sampleRateBox.getItems().addAll("22050 Hz", "32000 Hz", "32000 Hz", "41000 Hz");
+            sampleRateBox.getItems().addAll("22050 Hz", "32000 Hz", "32000 Hz", "44100 Hz", "48000 Hz");
             sampleRateContainer.getChildren().addAll(sampleRateText, sampleRateBox);
 
             /* Load values user has already set or use defaults */
             if (main.getSampleRate() == null) {
-                sampleRateBox.setValue("41000 Hz");
+                sampleRateBox.setValue("44100 Hz");
             } else {
                 sampleRateBox.setValue(main.getSampleRate());
             }
@@ -339,7 +335,8 @@ public class CenterPanelController {
             }
 
             if (main.getCodec() == null) {
-                codecBox.setValue("H.264");
+                codecBox.setValue("MP3");
+                codecBox.disableProperty().set(true);
             } else {
                 codecBox.setValue(main.getCodec());
             }
@@ -350,16 +347,26 @@ public class CenterPanelController {
                 bitrateBox.setValue(main.getBitrate());
             }
 
-            if (main.getBitrate() == null) {
-                formatBox.setValue("MP4");
+            if (main.getOutputFileType() == null) {
+                formatBox.setValue("MP3");
             } else {
-                formatBox.setValue(main.getOutputFileType());
+                String currFormat = main.getOutputFileType();
+                formatBox.setValue(currFormat);
+
+                /* if codec can not be changed, disable the box otherwise populate codec box with possible selections */
+                if (currFormat.equals("WAV")) {
+                    codecBox.getItems().addAll("MP3", "PCM");
+                } else if (currFormat.equals("WMA")) {
+                    codecBox.getItems().addAll("WMA", "PCM");
+                } else {
+                    codecBox.setDisable(true);
+                }
             }
 
 
             /* Add lines of components to content pane */
-            line1.getChildren().addAll(codecContainer, formatContainer, sampleRateContainer);
-            line2.getChildren().addAll(channelsContainer, bitrateContainer);
+            line1.getChildren().addAll(formatContainer, codecContainer);
+            line2.getChildren().addAll(channelsContainer, bitrateContainer, sampleRateContainer);
             content.getChildren().addAll(audioSettingsText, profileContainer, line1, line2, btnBounds);
 
             /* Update project with current values */
@@ -373,11 +380,74 @@ public class CenterPanelController {
 
             /* Create events for when any dialog box is changed which updates model*/
             profileBox.setOnAction(e -> {
-                main.setProfile((String) profileBox.getSelectionModel().getSelectedItem());
+                String newProfile = (String) profileBox.getSelectionModel().getSelectedItem();
+                main.setProfile(newProfile);
+                switch (newProfile) {
+                    case "Low Quality":
+                        channelsBox.setValue("Mono");
+                        bitrateBox.setValue("64 kb/s");
+                        formatBox.setValue("MP3");
+                        sampleRateBox.setValue("44100 Hz");
+                        codecBox.setValue("MP3");
+                        codecBox.disableProperty().set(true);
+                        break;
+                    case "Medium Quality":
+                        channelsBox.setValue("Stereo");
+                        bitrateBox.setValue("128 kb/s");
+                        formatBox.setValue("MP3");
+                        sampleRateBox.setValue("44100 Hz");
+                        codecBox.setValue("MP3");
+                        codecBox.disableProperty().set(true);
+                        break;
+                    case "Best Quality":
+                        channelsBox.setValue("Stereo");
+                        bitrateBox.setValue("320 kb/s");
+                        formatBox.setValue("MP3");
+                        sampleRateBox.setValue("44100 Hz");
+                        codecBox.setValue("MP3");
+                        codecBox.disableProperty().set(true);
+                        break;
+                }
             });
 
             formatBox.setOnAction(e -> {
-                main.setOutputFileType((String) formatBox.getSelectionModel().getSelectedItem());
+                /*  If format is MP3, codec must be MP3
+                 *  If format is FLAC, codec must be FLAC
+                 *  If format is OGG, codec must be Ogg Vorbis
+                 *  If format is WMA, codec can be WMA or PCM
+                 *  If format is WAV, codec can be PCM or MP3
+                 */
+                String newFormat = (String) formatBox.getSelectionModel().getSelectedItem();
+                main.setOutputFileType(newFormat);
+                switch (newFormat) {
+                    case "MP3":
+                        main.setCodec("MP3");
+                        codecBox.setValue("MP3");
+                        codecBox.disableProperty().set(true);
+                        break;
+                    case "FLAC":
+                        main.setCodec("FLAC");
+                        codecBox.setValue("FLAC");
+                        codecBox.disableProperty().set(true);
+                        break;
+                    case "Ogg":
+                        main.setCodec("Ogg Vorbis");
+                        codecBox.setValue("Ogg Vorbis");
+                        codecBox.disableProperty().set(true);
+                        break;
+                    case "WAV":
+                        codecBox.disableProperty().set(false);
+                        codecBox.getItems().clear();
+                        codecBox.getItems().addAll("PCM", "MP3");
+                        codecBox.setValue("MP3");
+                        break;
+                    case "WMA":
+                        codecBox.disableProperty().set(false);
+                        codecBox.getItems().clear();
+                        codecBox.getItems().addAll("PCM", "WMA");
+                        codecBox.setValue("WMA");
+                        break;
+                }
             });
 
             codecBox.setOnAction(e -> {
@@ -397,7 +467,67 @@ public class CenterPanelController {
             });
 
         } else {
-            // video settings here
+            Text videoSettingsText = new Text("Video Settings");
+            videoSettingsText.setFont(new Font(25));
+
+            // required components: profile, codec, bitrate, framesize?(wxh), FPS, aspect ratio
+            
+            
+            
+            /* Profiles for quick settings */
+            HBox profileContainer = new HBox(HORIZONTAL_GAP);
+            profileContainer.setPadding(new Insets(0, 0, 20, 0)); // top left bot right
+            profileContainer.setAlignment(Pos.CENTER);
+            Text profileText = new Text("Profile");
+            profileText.setFont(new Font(20));
+            ComboBox profileBox = new ComboBox();
+            profileBox.getItems().addAll("Low Quality", "Medium Quality", "Best Quality");
+            profileContainer.getChildren().addAll(profileText, profileBox);
+
+            // supported codecs and formats:
+            // AVI: almost anything
+            // MPG
+            // WMV
+            // MOV
+            // MKV: almost anything
+            // FLV: MP3, AAC
+            // MP4: MPEG-2 Part 2, MPEG-4 ASP, H.264/MPEG-4 AVC, H.263
+            
+            /*
+            FORMATS:
+            AVI
+            ASF
+            MOV
+            FLV or F4V
+            
+            
+            CODECS:
+            h.264 (or MPEG 4 part 10 & AVC)
+            MPEG 2
+            VP6
+            VC 1
+            
+            
+            */
+            
+            
+            /* Video format */
+            HBox formatContainer = new HBox(HORIZONTAL_GAP);
+            // formatContainer.setAlignment(Pos.CENTER);
+            Text formatText = new Text("Format ");
+            formatText.setFont(new Font(20));
+            ComboBox formatBox = new ComboBox();
+            formatBox.getItems().addAll("AVI", "MKV", "MP4", "FLV", "WMA");
+            formatContainer.getChildren().addAll(formatText, formatBox);
+
+            /* Audio codec */
+            HBox codecContainer = new HBox(HORIZONTAL_GAP);
+            //codecContainer.setAlignment(Pos.CENTER);
+            Text codecText = new Text("Codec     ");
+            codecText.setFont(new Font(20));
+            ComboBox codecBox = new ComboBox();
+            //codecBox.getItems().addAll("MP3", "PCM", "MPEG-4 Part 2", "H.264", "WMV", "FLAC");
+            codecContainer.getChildren().addAll(codecText, codecBox);
         }
 
     }
