@@ -1,3 +1,7 @@
+package aes;
+
+import aes.boundary.MediaWrapper;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.io.File;

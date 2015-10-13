@@ -1,3 +1,5 @@
+package aes;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
@@ -66,19 +68,19 @@ public class MainApp extends Application
 	
 	public void gotoIntro()
 	{
-		gotoPage("../res/fxml/intro.fxml");
+		gotoPage("/aes/res/fxml/intro.fxml");
 	}
 
 
 	public void gotoVideo()
 	{
-		gotoPage("../res/fxml/video.fxml");
+		gotoPage("/aes/res/fxml/video.fxml");
 	}
 
 
 	public void gotoAudio()
 	{
-		gotoPage("../res/fxml/audio.fxml");
+		gotoPage("/aes/res/fxml/audio.fxml");
 	}
 
 
@@ -100,9 +102,7 @@ public class MainApp extends Application
 		{
 			/* Load the fxml from the file */
 			FXMLLoader loader = new FXMLLoader();
-			URL fileLocation = new File(fxmlFile).toURI().toURL();
-
-			loader.setLocation(fileLocation);
+			loader.setLocation(MainApp.class.getResource(fxmlFile));
 			Parent root = loader.load();
 
 			/* Change the current display to the loaded fxml */

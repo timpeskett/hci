@@ -1,3 +1,5 @@
+package aes.boundary;
+
 import java.io.File;
 import java.lang.Integer;
 
@@ -12,7 +14,7 @@ import javafx.collections.ObservableMap;
 import javafx.util.Duration;
 
 
-class MediaWrapper
+public class MediaWrapper
 {
 	private File file;
 	private MediaPlayer player;
