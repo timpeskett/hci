@@ -2,6 +2,8 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.FileChooser;
 import javafx.fxml.FXMLLoader;
 
 import java.util.logging.Logger;
@@ -24,7 +26,9 @@ public class MainApp extends Application
 
 		/* Save reference to main stage */
 		mainStage = stage;
+		mainStage.initStyle(StageStyle.UNDECORATED);
 		mainStage.setTitle("FFmpeg Aesthetic Interface");
+	
 
 		gotoIntro();
 	}
@@ -42,6 +46,21 @@ public class MainApp extends Application
 
 	public void convertAudio(/*ConvertOptions co*/)
 	{
+	}
+
+
+	public File openFile(String title)
+	{
+		FileChooser fc = new FileChooser();
+		fc.setTitle(title);
+		return fc.showOpenDialog(mainStage);
+	}
+
+	public File saveFile(String title)
+	{
+		FileChooser fc = new FileChooser();
+		fc.setTitle(title);
+		return fc.showSaveDialog(mainStage);
 	}
 
 	
@@ -76,12 +95,13 @@ public class MainApp extends Application
 	private SceneController replaceScene(String fxmlFile)
 	{
 		SceneController controller = null;
-		FXMLLoader loader = new FXMLLoader();
 
 		try
 		{
 			/* Load the fxml from the file */
+			FXMLLoader loader = new FXMLLoader();
 			URL fileLocation = new File(fxmlFile).toURI().toURL();
+
 			loader.setLocation(fileLocation);
 			Parent root = loader.load();
 
@@ -98,7 +118,6 @@ public class MainApp extends Application
 			logger.log(Level.SEVERE, "Could not load FXML file: " + fxmlFile + "\n" + e.getMessage());
 			e.printStackTrace();
 			mainStage.close();
-			System.exit(1);
 		}
 
 		return controller;

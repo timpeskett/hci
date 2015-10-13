@@ -35,8 +35,8 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="File: " />
-                        <TextField prefHeight="26.0" prefWidth="209.0" styleClass="control" />
-                        <Button mnemonicParsing="false" styleClass="normal-button" text="Browse" />
+                        <TextField fx:id="inputFilename" prefHeight="26.0" prefWidth="209.0" styleClass="control" />
+                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" styleClass="normal-button" text="Browse" />
                         <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />
@@ -60,10 +60,10 @@
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <MediaView fitHeight="80.0" fitWidth="100.0" preserveRatio="false" />
+                  <MediaView fx:id="mediaView" fitHeight="80.0" fitWidth="100.0" preserveRatio="false" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button">
+                        <Button fx:id="playButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button">
                            <graphic>
                               <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" stroke="BLACK" strokeType="INSIDE">
                                 <points>
@@ -77,7 +77,7 @@
                               </Polygon>
                            </graphic>
                         </Button>
-                        <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button" text="Button">
+                        <Button fx:id="pauseButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button" text="Button">
                            <graphic>
                               <Pane>
                                  <children>
