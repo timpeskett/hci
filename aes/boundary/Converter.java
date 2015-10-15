@@ -48,7 +48,7 @@ public class Converter
 
 		public void setPosition(int hours, int minutes, int seconds)
 		{
-			options.put("-ss", String.format("%2d:%2d:%2d", hours, minutes, seconds));
+			options.put("-ss", String.format("%02d:%02d:%02d", hours, minutes, seconds));
 		}
 
 
