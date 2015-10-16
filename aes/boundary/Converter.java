@@ -3,6 +3,8 @@ package aes.boundary;
 import java.lang.Process;
 import java.lang.ProcessBuilder;
 import java.lang.InterruptedException;
+import java.lang.Thread;
+import java.lang.Runnable;
 
 import java.util.Map;
 import java.util.HashMap;
@@ -25,7 +27,12 @@ public class Converter
 
 	private Process ffmpeg;
 	private ProcessBuilder builder;
+	private Thread convertThread;
 
+	/* A state variable needed for thread synchronisation */
+	private boolean ffmpegRunning;
+
+	/* ffmpeg version string */
 	private String version;
 
 	/* An abstract class seems like a natural choice here, but it's
@@ -51,16 +58,19 @@ public class Converter
 			options.put("-ss", String.format("%02d:%02d:%02d", hours, minutes, seconds));
 		}
 
-
 		public void setDuration(int seconds)
 		{
 			options.put("-t", String.valueOf(seconds));
 		}
 
-
-		public void setEncoder(String encoder)
+		public void setVideoEncoder(String encoder)
 		{
-			options.put("-c", encoder);
+			options.put("-c:v", encoder);
+		}
+
+		public void setAudioEncoder(String encoder)
+		{
+			options.put("-c:a", encoder);
 		}
 
 		public void setFrameSize(int width, int height)
@@ -73,18 +83,15 @@ public class Converter
 			options.put("-r", String.valueOf(frameRate));
 		}
 
-
 		public void setBitRate(String bitRate)
 		{
 			options.put("-b", bitRate);
 		}
-			
 
 		public void setFormat(String format)
 		{
 			options.put("-f", format);
 		}
-
 
 		public List<String> synthesize()
 		{
@@ -117,11 +124,53 @@ public class Converter
 	}
 
 
-	public void convert()
+	public synchronized void convert() throws ConversionInProcessException
 	{
 		List<String> command = makeCommand();
 		String c = "";
 
+		/* Check not already converting */
+		if(ffmpeg != null)
+		{
+			throw new ConversionInProcessException("One converter cannot perform two simultaneous conversions.");
+		}
+
+		/* Build process and execute thread */
+		builder = new ProcessBuilder(command);
+		ffmpeg = builder.start();
+		ffmpegRunning = true;
+
+		/* Start thread to inform when exited */
+		new Thread(new Runnable(){
+			@Override
+			public void run(){
+				ffmpeg.waitFor();
+				ffmpegRunning = false;
+			}
+		}).start();
+
+		/* Start thread to send status updates to listeners */
+		new Thread(new Runnable(){
+			@Override
+			public void run(){
+				BufferedReader ffmpegInput = new BufferedReader(
+								new InputStreamReader(
+									ffmpeg.getInputStream()
+									));
+				
+				while(ffmpegRunning)
+				{
+
+
+					Thread.sleep(1000);
+				}
+			}
+		}).start();
+
+		convertThread = new Thread(this);
+		convertThread.start();
+
+	
 		for(String part : command)
 		{
 			c += part + " ";
@@ -129,6 +178,7 @@ public class Converter
 
 		System.out.println("Command line: " + c);
 	}
+
 
 /*
 	public void cancel()
@@ -225,28 +275,36 @@ public class Converter
 	}
 
 
-	public void setDuration(String file, int seconds) throws ConvertParamsException
-	{
-		FileParams fp = inputs.get(file);
-		if(fp == null)
-		{
-			throw new ConvertParamsException("Duration argument not applicable to any found inputs");
-		}
-
-		fp.setDuration(seconds);
-	}
-
-
-	public void setEncoder(String encoder) throws ConvertParamsException
+	public void setDuration(int seconds) throws ConvertParamsException
 	{
 		if(output == null)
 		{
-			throw new ConvertParamsException("No output to set encoder for");
+			throw new ConvertParamsException("Duration argument not applicable to any found outputs");
 		}
 
-		output.setEncoder(encoder);
+		output.setDuration(seconds);
 	}
 
+
+	public void setVideoEncoder(String encoder) throws ConvertParamsException
+	{
+		if(output == null)
+		{
+			throw new ConvertParamsException("No output to set video encoder for");
+		}
+
+		output.setVideoEncoder(encoder);
+	}
+
+	public void setAudioEncoder(String encoder) throws ConvertParamsException
+	{
+		if(output == null)
+		{
+			throw new ConvertParamsException("No output to set audio encoder for");
+		}
+
+		output.setAudioEncoder(encoder);
+	}
 
 	public void setFrameSize(int width, int height) throws ConvertParamsException
 	{
