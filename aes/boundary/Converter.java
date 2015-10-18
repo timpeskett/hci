@@ -27,10 +27,7 @@ public class Converter
 
 	private Process ffmpeg;
 	private ProcessBuilder builder;
-	private Thread convertThread;
-
-	/* A state variable needed for thread synchronisation */
-	private boolean ffmpegRunning;
+	private ConvertListener listener;
 
 	/* ffmpeg version string */
 	private String version;
@@ -124,7 +121,7 @@ public class Converter
 	}
 
 
-	public synchronized void convert() throws ConversionInProcessException
+	public synchronized void convert() throws IOException, ConversionInProcessException
 	{
 		List<String> command = makeCommand();
 		String c = "";
@@ -138,39 +135,27 @@ public class Converter
 		/* Build process and execute thread */
 		builder = new ProcessBuilder(command);
 		ffmpeg = builder.start();
-		ffmpegRunning = true;
 
 		/* Start thread to inform when exited */
 		new Thread(new Runnable(){
 			@Override
 			public void run(){
-				ffmpeg.waitFor();
-				ffmpegRunning = false;
-			}
-		}).start();
-
-		/* Start thread to send status updates to listeners */
-		new Thread(new Runnable(){
-			@Override
-			public void run(){
-				BufferedReader ffmpegInput = new BufferedReader(
-								new InputStreamReader(
-									ffmpeg.getInputStream()
-									));
-				
-				while(ffmpegRunning)
+				try
 				{
-
-
-					Thread.sleep(1000);
+					ffmpeg.waitFor();
+					if(listener != null)
+					{
+						listener.onFinish(ffmpeg.exitValue());
+					}
+				}
+				catch(Exception e)
+				{
+					/* Do nothing */
 				}
 			}
 		}).start();
 
-		convertThread = new Thread(this);
-		convertThread.start();
 
-	
 		for(String part : command)
 		{
 			c += part + " ";
@@ -192,6 +177,11 @@ public class Converter
 
 	}
 */
+
+	public void setConvertListener(ConvertListener listener)
+	{
+		this.listener = listener;
+	}
 
 	public void addInputFile(String inputFile)
 	{
