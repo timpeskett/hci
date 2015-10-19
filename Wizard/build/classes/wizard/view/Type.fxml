@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="typePane" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.TypeController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="900.0" spacing="40.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Select type of project">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <HBox fx:id="btnBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="518.0" spacing="50.0">
+               <children>
+                  <Button fx:id="audioBtn" mnemonicParsing="false" onAction="#audioBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Audio">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="videoBtn" mnemonicParsing="false" onAction="#videoBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Video">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </VBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</AnchorPane>

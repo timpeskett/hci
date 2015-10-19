@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="mainAnchor" prefHeight="299.0" prefWidth="309.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.MainController">
+    <children>
+        <BorderPane prefHeight="200.0" prefWidth="200.0">
+            <top>
+                <fx:include source="Navigation%20Panel.fxml" fx:id="navPanel" />
+            </top>
+            <center>
+                <fx:include source="Center%20Panel.fxml" fx:id="centerPanel" />
+            </center>
+            <right>
+                <fx:include source="Right%20Panel.fxml" fx:id="rightPanel" />
+            </right>
+        </BorderPane>
+    </children>
+</AnchorPane>

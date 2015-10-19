@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox prefHeight="400.0" prefWidth="92.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.RightPanelController">
+   <children>
+      <VBox prefHeight="133.0" prefWidth="100.0">
+         <children>
+            <Polygon fill="DODGERBLUE" scaleX="0.6" scaleY="0.6" stroke="BLACK" strokeType="INSIDE">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="-60.0" />
+              </points>
+            </Polygon>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Manage" textOrigin="TOP" translateX="18.0" wrappingWidth="64.6787109375">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <VBox prefHeight="96.0" prefWidth="100.0">
+         <children>
+            <Polygon fill="DODGERBLUE" scaleX="0.6" scaleY="0.6" stroke="BLACK" strokeType="INSIDE">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="-60.0" />
+              </points>
+            </Polygon>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Help" textOrigin="CENTER" translateX="30.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+</VBox>

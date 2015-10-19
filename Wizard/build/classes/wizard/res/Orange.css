@@ -1,0 +1,38 @@
+.root{
+    -fx-background-color: #383838;
+}
+.label{
+    -fx-text-fill: #e8e8e8;
+}
+.button{
+    -fx-background-color: #FF5A09;
+    -fx-text-fill: #000000;
+
+    -fx-background-radius: 15;
+
+    -fx-border-radius: 15;
+    -fx-border-width: 2;
+    -fx-border-color: #000000;
+}
+
+.combo-box{
+    -fx-pref-width: 150;
+}
+.combo-box-popup > .list-view {
+    -fx-pref-width: 150;
+}
+
+
+#centerPanel{
+    -fx-background-color: rgba(0,0,0,0.5);
+    -fx-background-radius: 0 15 15 0;
+}
+
+#background{
+    -fx-background-image: url("bg_orange.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1150 600;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+}
+

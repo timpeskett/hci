@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="finalisePane" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.FinaliseController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="-3.0" prefHeight="400.0" prefWidth="900.0" spacing="5.0">
+         <children>
+            <Text fx:id="finaliseTitle" layoutX="303.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finalise" textAlignment="CENTER">
+               <font>
+                  <Font size="40.0" />
+               </font>
+            </Text>
+            <Text fx:id="summaryTxt" layoutX="315.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary" textAlignment="CENTER">
+               <font>
+                  <Font name="System Italic" size="20.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER" prefHeight="34.0" prefWidth="900.0" spacing="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Input file(s):">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="inputFilesTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="inputFilesTxt">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="35.0" prefWidth="900.0" spacing="20.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Output file name:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="outputFilesTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="outputFilesTxt">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <GridPane fx:id="finaliseGrid" alignment="CENTER" layoutX="160.0" layoutY="157.0" maxWidth="500.0" prefHeight="90.0" prefWidth="100.0">
+               <children>
+                  <HBox fx:id="bitRateBox" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <Text fx:id="setting1Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting1">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <Text fx:id="setting1Result" strokeType="OUTSIDE" strokeWidth="0.0" text="setting1Result">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="formatBox" prefHeight="40.0" prefWidth="91.0">
+                     <children>
+                        <Text fx:id="formatTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Format            " textOrigin="CENTER">
+                           <effect>
+                              <Glow />
+                           </effect>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="formatResult" strokeType="OUTSIDE" strokeWidth="0.0" text="answer">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="channelsBox" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <Text fx:id="setting2Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting2">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <Text fx:id="setting2Result" strokeType="OUTSIDE" strokeWidth="0.0" text="channelsResult">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="sampleBox" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+                     <children>
+                        <Text fx:id="setting3Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting3">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <Text fx:id="setting3Result" strokeType="OUTSIDE" strokeWidth="0.0" text="setting3Result">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="spareBox" prefHeight="32.0" prefWidth="48.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <children>
+                        <Text fx:id="setting4Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting4">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <Text fx:id="setting4Result" strokeType="OUTSIDE" strokeWidth="0.0" text="setting4Result">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
+                  <HBox fx:id="codecBox" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <Text fx:id="codecTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Codec           ">
+                           <font>
+                              <Font size="16.0" />
+                           </font></Text>
+                        <Text fx:id="codecResult" strokeType="OUTSIDE" strokeWidth="0.0" text="result">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font></Text>
+                     </children>
+                  </HBox>
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+            </GridPane>
+            <HBox fx:id="progressBox" alignment="CENTER" spacing="50.0">
+               <children>
+                  <ProgressBar fx:id="finaliseProgressBar" layoutX="140.0" layoutY="287.0" prefHeight="18.0" prefWidth="498.0" progress="0.0" />
+                  <ProgressIndicator fx:id="progressIndicator" layoutX="489.0" layoutY="287.0" progress="0.0" />
+               </children>
+            </HBox>
+            <HBox fx:id="BtnBox" alignment="CENTER" spacing="50.0">
+               <children>
+                  <Button fx:id="backBtn" layoutX="297.0" layoutY="349.0" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Back">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="createBtn" layoutX="427.0" layoutY="349.0" mnemonicParsing="false" onAction="#createBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Create">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

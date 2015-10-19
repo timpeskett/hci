@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="centerPanel" maxHeight="446.0" maxWidth="1133.0" prefHeight="391.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.CenterPanelController">
+    <children>
+        <VBox prefHeight="391.0" prefWidth="511.0" >
+          <fx:include source="Splash.fxml" fx:id="splash"/>
+          <fx:include source="Type.fxml" fx:id="type"/>
+          <fx:include source="Files.fxml" fx:id="files"/>
+          <fx:include source="Settings.fxml" fx:id="settings"/>
+          <fx:include source="Finalise.fxml" fx:id="finalise"/>
+        </VBox>
+    </children>
+</AnchorPane>
