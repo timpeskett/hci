@@ -5,18 +5,13 @@
  */
 package wizard.controller;
 
-import java.util.ArrayList;
-import java.util.List;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.text.Text;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
@@ -49,15 +44,15 @@ public class SettingsController {
     private ComboBox profileCombo;
 
     @FXML
-    private Text setting1Txt;
+    private Label setting1Txt;
     @FXML
-    private Text setting2Txt;
+    private Label setting2Txt;
     @FXML
-    private Text setting3Txt;
+    private Label setting3Txt;
     @FXML
-    private Text setting4Txt;
+    private Label setting4Txt;
     @FXML
-    private Text profileTxt;
+    private Label profileTxt;
 
     /* Project settings */
     private StringProperty outputType;
@@ -158,7 +153,7 @@ public class SettingsController {
             }
         });
     }
-         
+
     public void setting1Change() {
         /* Add to back of EDT queue to avoid threading issues */
         Platform.runLater(new Runnable() {
@@ -240,7 +235,79 @@ public class SettingsController {
                         setting3Combo.setValue("44100 Hz");
                     }
                 } else {
-                    // video here
+                    /* 
+                     format
+                     codec
+                     setting 1: frame size: 426x240, 640x360, 854x480, 1280x720, 1920x1080, 2560x1440, 3840x2160
+                     setting 2: frame rate: 24 25 30 48 50 60
+                     setting 3: bitrate: 560 768 800 1200 1500 4200 4500 5120 8192 16384    
+                     setting 4: Audio: (codec/bitrate)
+                    
+                     formatCombo.getItems().addAll("AVI", "Ogg", "ASF", "MOV", "M4V", "WMV", "FLV", "F4V", "MPEG", "MKV", "MP4");
+                     codecCombo.getItems().addAll("H.264/AVC", "MPEG-4", "MPEG-2", "XviD/DivX");
+                     profileCombo.getItems().addAll("HD Video 1080p", "HD Video 720p", "BlackBerry 95xx", "BlackBerry 81xx", "Apple iPhone 5/5C/5S/6", "Apple iPhone 4/4S/5", "Samsung Galaxy S4/S5", "Samsung Galaxy S3/S4");
+                     setting1Combo.getItems().addAll("426x240", "640x360", "854x480", "1280x720", "1920x1080", "2560x1440", "3840x2160");
+                     setting2Combo.getItems().addAll("24 fps", "25 fps", "30 fps", "48 fps", "50 fps", "60 fps");
+                     setting3Combo.getItems().addAll("560 kb/s", "768 kb/s", "800 kb/s", "1200 kb/s", "1500 kb/s", "3200 kb/s", "2100", "4200 kb/s", "4500 kb/s", "5120 kb/s", "8192 kb/s", "16384 kb/s");
+                     setting4Combo.getItems().addAll("MP3, 92 kb/s", "MP3, 192 kb/s", "MP3, 256 kb/s", "MP3, 320 kb/s");
+                     */
+                    if (profile.get().equals("HD Video 1080p")) {
+                        formatCombo.setValue("AVI");
+                        codecCombo.setValue("XviD/DivX");
+                        setting1Combo.setValue("1920x1080");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("4200 kb/s");
+                        setting4Combo.setValue("MP3, 256 kb/s");
+                    } else if (profile.get().equals("HD Video 720p")) {
+                        formatCombo.setValue("AVI");
+                        codecCombo.setValue("XviD/DivX");
+                        setting1Combo.setValue("1280x720");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("4500 kb/s");
+                        setting4Combo.setValue("MP3, 192 kb/s");
+                    } else if (profile.get().equals("BlackBerry 95xx")) {
+                        formatCombo.setValue("AVI");
+                        codecCombo.setValue("XviD/DivX");
+                        setting1Combo.setValue("480x360");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("800 kb/s");
+                        setting4Combo.setValue("MP3, 92 kb/s");
+                    } else if (profile.get().equals("BlackBerry 81xx")) {
+                        formatCombo.setValue("AVI");
+                        codecCombo.setValue("MPEG-4");
+                        setting1Combo.setValue("320x240");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("560 kb/s");
+                        setting4Combo.setValue("MP3, 92 kb/s");
+                    } else if (profile.get().equals("Apple iPhone 5/5C/5S/6")) {
+                        formatCombo.setValue("M4V");
+                        codecCombo.setValue("H.264/AVC");
+                        setting1Combo.setValue("1920x1080");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("2100 kb/s");
+                        setting4Combo.setValue("MP3, 256 kb/s");
+                    } else if (profile.get().equals("Apple iPhone 4/4S/5")) {
+                        formatCombo.setValue("M4V");
+                        codecCombo.setValue("H.264/AVC");
+                        setting1Combo.setValue("960x640");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("1500 kb/s");
+                        setting4Combo.setValue("MP3, 192 kb/s");
+                    } else if (profile.get().equals("Samsung Galaxy S4/S5")) {
+                        formatCombo.setValue("MP4");
+                        codecCombo.setValue("H.264/AVC");
+                        setting1Combo.setValue("1920x1080");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("4500 kb/s");
+                        setting4Combo.setValue("MP3, 256 kb/s");
+                    } else if (profile.get().equals("Samsung Galaxy S3/S4")) {
+                        formatCombo.setValue("MP4");
+                        codecCombo.setValue("H.264/AVC");
+                        setting1Combo.setValue("1280x720");
+                        setting2Combo.setValue("30 fps");
+                        setting3Combo.setValue("3200 kb/s");
+                        setting4Combo.setValue("MP3, 192 kb/s");
+                    }
                 }
             }
         });
@@ -250,7 +317,6 @@ public class SettingsController {
         outputType = centerPanel.getOutputFileType();
         profile = centerPanel.getProfile();
         codec = centerPanel.getCodec();
-        System.out.println("Got " + codec.get() + " from centerPanel.");
         bitrate = centerPanel.getBitrate();
         channels = centerPanel.getChannel();
         sampleRate = centerPanel.getSamplerate();
@@ -334,7 +400,6 @@ public class SettingsController {
         audioForVideo = centerPanel.getAudioForVideo();
 
         formatCombo.getItems().clear();
-        System.out.println("clearing codecBox combo box possbilities");
         codecCombo.getItems().clear();
         profileCombo.getItems().clear();
         setting1Combo.getItems().clear();
@@ -350,7 +415,6 @@ public class SettingsController {
          setting 3: bitrate: 560 768 800 1200 1500 4200 4500 5120 8192 16384    
          setting 4: Audio: (codec/bitrate)
          */
-        
         /* Setup discriptions */
         setting1Txt.setText("Framesize      ");
         setting2Txt.setText("Framerate   ");
@@ -358,14 +422,13 @@ public class SettingsController {
         setting4Txt.setText("Audio          ");
 
         setting4Combo.setVisible(true);
-        formatCombo.getItems().addAll("AVI", "Ogg", "ASF", "MOV", "WMV", "FLV", "F4V", "MPEG", "MKV", "MP4");
-        System.out.println("Adding lots of values to codec box");
+        formatCombo.getItems().addAll("AVI", "Ogg", "ASF", "MOV", "M4V", "WMV", "FLV", "F4V", "MPEG", "MKV", "MP4");
         codecCombo.getItems().addAll("H.264/AVC", "MPEG-4", "MPEG-2", "XviD/DivX");
-        profileCombo.getItems().addAll("HD Video 1080p", "HD Video 720p", "BlackBerry 95xx", "BlackBerry 81xx", "iPhone 6", "iPhone 5", "Samsung Galaxy S6", "Samsung Galaxy S5");
+        profileCombo.getItems().addAll("HD Video 1080p", "HD Video 720p", "BlackBerry 95xx", "BlackBerry 81xx", "Apple iPhone 5/5C/5S/6", "Apple iPhone 4/4S/5", "Samsung Galaxy S4/S5", "Samsung Galaxy S3/S4");
         setting1Combo.getItems().addAll("426x240", "640x360", "854x480", "1280x720", "1920x1080", "2560x1440", "3840x2160");
         setting2Combo.getItems().addAll("24 fps", "25 fps", "30 fps", "48 fps", "50 fps", "60 fps");
-        setting3Combo.getItems().addAll("560 kb/s", "768 kb/s", "800 kb/s", "1200 kb/s", "1500 kb/s", "4200 kb/s", "4500 kb/s", "5120 kb/s", "8192 kb/s", "16384 kb/s");
-        setting4Combo.getItems().addAll("MP3, 192 kb/s", "MP3, 92 kb/s", "MP3, 256 kb/s", "MP3, 320 kb/s");
+        setting3Combo.getItems().addAll("560 kb/s", "768 kb/s", "800 kb/s", "1200 kb/s", "1500 kb/s", "2100 kb/s", "3200 kb/s", "4200 kb/s", "4500 kb/s", "5120 kb/s", "8192 kb/s", "16384 kb/s");
+        setting4Combo.getItems().addAll("MP3, 92 kb/s", "MP3, 192 kb/s", "MP3, 256 kb/s", "MP3, 320 kb/s");
 
         /* Set default values if nothing is set already */
         if (outputType.get() == null) {

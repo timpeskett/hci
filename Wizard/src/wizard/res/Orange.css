@@ -1,19 +1,163 @@
 .root{
-    -fx-background-color: #383838;
+
 }
+
+#centerPanel{
+    -fx-background-color: rgba(0,0,0,0.4);
+    -fx-background-radius: 0 15 15 0;
+}
+
+#logo{
+    -fx-image: url("black_logo.png");
+}
+
+#arrow{
+    -fx-image: url("orange_arrow.png");
+}
+
+#manage{
+    -fx-image: url("manage_orange.png");
+}
+
+#help{
+    -fx-image: url("help_orange.png");
+}
+
+#bg1{
+    -fx-background-image: url("orange_bg1.png");
+  //  -fx-background-repeat: stretch;   
+  //  -fx-background-size: 1150 600;
+   // -fx-background-position: center center;
+  //  -fx-background-color: linear-gradient(#ff5400, #be1d00);
+}
+#bg2{
+    -fx-background-image: url("orange_bg2.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: top;
+}
+#bg3{
+    -fx-background-image: url("orange_bg3.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: top;
+}
+#bg4{
+    -fx-background-image: url("orange_bg4.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: top;
+}
+
+
+
 .label{
-    -fx-text-fill: #e8e8e8;
+    -fx-text-fill: black;
 }
+
 .button{
-    -fx-background-color: #FF5A09;
+
     -fx-text-fill: #000000;
-
     -fx-background-radius: 15;
-
     -fx-border-radius: 15;
     -fx-border-width: 2;
     -fx-border-color: #000000;
+    -fx-background-color: linear-gradient(#FF5a09, #FF9900);
 }
+
+.button:hover{
+    -fx-background-color: linear-gradient(#FF9900, #FF5a09);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+#browseButtons {
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#FF5a09, #F3843E),
+        linear-gradient(#FF9900, #FF5a09),
+        linear-gradient(#FF9900, #F3843E);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+}
+#browseButtons:hover{
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#FF9900, #F3843E),
+        linear-gradient(#FF9900, #FF5a09),
+        linear-gradient(#FF5a09, #F3843E);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+    -fx-background-color: linear-gradient(#FF9900, #FF5a09);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+.progress-bar .bar {
+    -fx-background-color:
+        -fx-box-border,
+        linear-gradient(to bottom, derive(-fx-accent,95%), derive(-fx-accent,10%)),
+        orange; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;  
+}
+
+.progress-indicator {
+    -fx-progress-color: orange;
+}
+
+
+/* 
+
+
+
+.comboTextField {
+    -fx-background-color: -fx-text-box-border, -fx-control-inner-background;
+    -fx-background-insets: 0, 1 0 1 1;
+    -fx-padding: 1 3 1 3;
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+}
+
+.comboTextField:focused {
+   -fx-background-color: -fx-text-box-border, -fx-control-inner-background;
+   -fx-background-insets: 0, 1 0 1 1;
+    
+}
+
+.comboButton {
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 5 5 0, 0 4 4 0, 0 3 3 0;
+}
+
+.comboButton:focused {
+    -fx-color: -fx-focused-base;
+    -fx-background-color: -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0, 1, 2;
+    -fx-background-radius: 0 5 5 0, 0 4 4 0, 0 3 3 0;
+}
+
+.combo-down-arrow {
+    -fx-background-color: #919191;
+    -fx-padding: 0.666667em 0.416667em 0.0em 0.416667em;  // 8 5 0 5 
+    -fx-shape: "M0 0 L1 0 L.5 1 Z";
+    -fx-effect: innershadow( two-pass-box , rgba(0,0,0,0.6) , 4, 0.0 , 0 , 1 );
+}
+
+.comboFocus{
+        -fx-border-color:-fx-focus-color;       
+        -fx-border-insets: -1;
+        -fx-border-radius: 0 5 5 0
+}
+.comboFocusOut{
+        -fx-border-color:transparent;   
+        -fx-border-insets: 0;
+        -fx-border-radius: 0 5 5 0
+}
+
+
+
 
 .combo-box{
     -fx-pref-width: 150;
@@ -23,16 +167,19 @@
 }
 
 
-#centerPanel{
-    -fx-background-color: rgba(0,0,0,0.5);
-    -fx-background-radius: 0 15 15 0;
-}
 
-#background{
-    -fx-background-image: url("bg_orange.jpg");
+
+
+
+
+
+
+
+#black{
+    -fx-background-image: url("bg_black.jpg");
     -fx-background-repeat: stretch;   
     -fx-background-size: 1150 600;
     -fx-background-position: center center;
     -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
-}
+}*/
 

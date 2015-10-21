@@ -57,7 +57,11 @@ public class CenterPanelController {
         settingsController.init(state, this);
         finaliseController.init(state, this);
         centerPanel.getChildren().clear();
-        centerPanel.getChildren().add(splash);
+        if ("yes".equals(main.getShowSplashscreen())) {
+            centerPanel.getChildren().add(splash);
+        } else {
+            centerPanel.getChildren().add(type);
+        }
 
         /* Create listener to change state of wizard */
         state.addListener(new ChangeListener() {
@@ -71,12 +75,8 @@ public class CenterPanelController {
                     centerPanel.getChildren().add(files);
                 } else if (state.get() == 3) {
                     settingsController.setProjectType(main.getProjectType());
-                    System.out.println("Showing " + main.getProjectType() + " to user.");
                     centerPanel.getChildren().add(settings);
                 } else if (state.get() == 4) {
-                 //   System.out.println("saved bitrate: '" + main.getBitrate().get() + "', channels: '"
-                   //         + main.getChannels().get() + ", codec: '" + main.getCodec().get() + "', sample rate: '" + main.getSampleRate().get()
-                     //       + ", profile: '" + main.getProfile().get() + "', output format: '" + main.getOutputFileType().get() + "'");
                     finaliseController.setProjectType(main.getProjectType());
                     centerPanel.getChildren().add(finalise);
                 }
@@ -150,6 +150,14 @@ public class CenterPanelController {
 
     public StringProperty getAudioForVideo() {
         return main.getAudioForVideo();
+    }
+
+    public String getDefaultOutputLocation() {
+        return main.getDefaultOutputLocation();
+    }
+
+    public File getOutputFileLoc() {
+        return main.getOutputDirectory();
     }
 
 }

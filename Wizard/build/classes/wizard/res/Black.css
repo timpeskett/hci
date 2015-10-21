@@ -1,0 +1,161 @@
+.root{
+
+}
+
+
+
+#centerPanel{
+    -fx-background-color: rgba(255,255,255,0.5);
+    -fx-background-radius: 0 15 15 0;
+}
+
+
+.label {
+    -fx-text-fill: white;
+    -fx-font-family: "Segoe UI Semibold";
+}
+
+.progress-bar .bar {
+    -fx-background-color:
+        -fx-box-border,
+        linear-gradient(to bottom, derive(-fx-accent,95%), derive(-fx-accent,10%)),
+        black; 
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;  
+}
+
+.progress-indicator {
+    -fx-progress-color: black;
+}
+
+
+
+.button{
+    -fx-text-fill: black;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-width: 2;
+    -fx-background-color: linear-gradient(#ffffff, #cccccc);
+}
+
+.button:hover{
+    -fx-background-color:#000000;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+#browseButtons {
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#ffffff, #cccccc),
+        linear-gradient(#ffffff, #cccccc),
+        linear-gradient(#ffffff, #cccccc);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+}
+#browseButtons:hover{
+    -fx-background-color: 
+        #000000,
+        linear-gradient(#cccccc, #ffffff),
+        linear-gradient(#cccccc, #ffffff),
+        linear-gradient(#cccccc, #ffffff);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 12 30 12 30;
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+    -fx-background-color: linear-gradient(#cccccc, #ffffff);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+}
+
+
+#arrow{
+    -fx-image: url("white_arrow.png");
+}
+
+#logo{
+    -fx-image: url("white_logo.png");
+}
+
+#manage{
+    -fx-image: url("manage_white.png");
+}
+
+#help{
+    -fx-image: url("help_white.png");
+}
+
+#bg1{
+    -fx-background-image: url("black_bg1.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1150 600;
+    -fx-background-position: center center;
+    -fx-background-color: linear-gradient(#ff5400, #be1d00);
+}
+
+#bg2{
+    -fx-background-image: url("black_bg2.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: top;
+}
+
+#bg3{
+    -fx-background-image: url("black_bg3.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: top;
+}
+
+#bg4{
+    -fx-background-image: url("black_bg4.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: top;
+}
+
+/*
+
+
+.progress-bar .bar {
+    -fx-background-color:
+        -fx-box-border,
+        linear-gradient(to bottom, derive(-fx-accent,95%), derive(-fx-accent,10%)),
+        black; /* this line is the background color of the bar 
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em; /* 5 
+}
+
+.progress-indicator {
+    -fx-progress-color: #000000;
+}
+
+
+.label {
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: white;
+    -fx-opacity: 0.6;
+}
+
+.root{
+    -fx-background-image: url("bg_black.jpg");
+    -fx-font-family: "Courier New";
+    -fx-background-color: white;
+}
+
+
+#mainWindow{
+    -fx-background-image: url("bg_black.jpg");
+    -fx-background-repeat: stretch;   
+    -fx-background-size: 1150 600;
+    -fx-background-position: center center;
+    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0); 
+    
+}
+
+.combo-box{
+    -fx-pref-width: 150;
+}
+.combo-box-popup > .list-view {
+    -fx-pref-width: 150;
+}*/

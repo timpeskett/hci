@@ -5,6 +5,7 @@
  */
 package wizard.controller;
 
+import java.io.File;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

@@ -8,42 +8,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.NavigationPanelController">
+<AnchorPane prefHeight="136.0" prefWidth="972.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.NavigationPanelController">
    <children>
-      <VBox prefHeight="136.0" prefWidth="1000.0" spacing="20.0">
+      <VBox alignment="CENTER" prefHeight="136.0" prefWidth="1000.0" spacing="30.0">
          <children>
-            <HBox fx:id="navBarHbox" prefHeight="128.0" prefWidth="900.0">
+            <HBox fx:id="navBarHbox" alignment="CENTER" prefHeight="132.0" prefWidth="1000.0">
                <children>
-                  <ImageView fitHeight="125.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../res/logo.png" />
-                     </image>
-                     <HBox.margin>
-                        <Insets left="20.0" top="40.0" />
-                     </HBox.margin>
-                  </ImageView>
-                  <VBox prefHeight="200.0" prefWidth="100.0">
+                  <VBox prefHeight="160.0" prefWidth="88.0">
                      <children>
-                        <Text fx:id="progressText" strokeType="OUTSIDE" strokeWidth="0.0" text="Progress:">
+                        <Label fx:id="progressText" text="Progress:">
                            <font>
                               <Font size="20.0" />
                            </font>
-                        </Text>
-                        <HBox fx:id="type" prefHeight="94.0" prefWidth="77.0">
+                        </Label>
+                        <HBox fx:id="type" alignment="TOP_CENTER" prefHeight="103.0" prefWidth="82.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" wrappingWidth="37.734375">
+                              <Label prefHeight="85.0" prefWidth="38.0" text="1">
                                  <font>
                                     <Font size="70.0" />
                                  </font>
-                              </Text>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+                              </Label>
+                              <Label text="Type">
                                  <HBox.margin>
                                     <Insets top="45.0" />
                                  </HBox.margin>
                                  <font>
                                     <Font size="16.0" />
                                  </font>
-                              </Text>
+                              </Label>
                            </children>
                            <VBox.margin>
                               <Insets />
@@ -54,114 +46,84 @@
                         <Insets left="50.0" top="5.0" />
                      </HBox.margin>
                   </VBox>
-                  <Polyline fx:id="arrow1" fill="#ff5a09" rotate="-90.0" scaleY="0.3" scaleZ="0.5" strokeType="INSIDE">
-                    <points>
-                      <Double fx:value="-50.0" />
-                      <Double fx:value="-40.0" />
-                      <Double fx:value="50.0" />
-                      <Double fx:value="-40.0" />
-                      <Double fx:value="0.0" />
-                      <Double fx:value="60.0" />
-                      <Double fx:value="-50.0" />
-                      <Double fx:value="-40.0" />
-                    </points>
+                  <ImageView fx:id="arrow1" fitHeight="105.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets top="20.0" />
-                     </HBox.margin>
-                  </Polyline>
-                  <HBox fx:id="files" prefHeight="126.0" prefWidth="80.0">
+                     </HBox.margin></ImageView>
+                  <HBox fx:id="files" alignment="TOP_CENTER" prefHeight="180.0" prefWidth="91.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2">
+                        <Label text="2">
                            <font>
                               <Font size="70.0" />
                            </font>
                            <HBox.margin>
                               <Insets top="33.0" />
                            </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Files">
+                        </Label>
+                        <Label text="Files">
                            <font>
                               <Font size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="5.0" top="80.0" />
                            </HBox.margin>
-                        </Text>
+                        </Label>
                      </children>
                   </HBox>
-                  <Polyline fx:id="arrow2" fill="#ff5a09" rotate="-90.0" scaleY="0.3" scaleZ="0.5" strokeType="INSIDE">
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="-40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="-40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="60.0" />
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="-40.0" />
-                     </points>
+                  <ImageView fx:id="arrow2" fitHeight="160.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>
-                  </Polyline>
-                  <HBox fx:id="settings" prefHeight="126.0" prefWidth="80.0">
+                  </ImageView>
+                  <HBox fx:id="settings" alignment="TOP_CENTER" prefHeight="180.0" prefWidth="121.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                        <Label text="3">
                            <font>
                               <Font size="70.0" />
                            </font>
                            <HBox.margin>
                               <Insets top="33.0" />
                            </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Settings">
+                        </Label>
+                        <Label text="Settings">
                            <font>
                               <Font size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="5.0" top="80.0" />
                            </HBox.margin>
-                        </Text>
+                        </Label>
                      </children>
                   </HBox>
-                  <Polyline fx:id="arrow3" fill="#ff5a09" rotate="-90.0" scaleY="0.3" scaleZ="0.5" strokeType="INSIDE">
-                     <points>
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="-40.0" />
-                        <Double fx:value="50.0" />
-                        <Double fx:value="-40.0" />
-                        <Double fx:value="0.0" />
-                        <Double fx:value="60.0" />
-                        <Double fx:value="-50.0" />
-                        <Double fx:value="-40.0" />
-                     </points>
+                  <ImageView fx:id="arrow3" fitHeight="160.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <HBox.margin>
                         <Insets top="20.0" />
                      </HBox.margin>
-                  </Polyline>
-                  <HBox fx:id="finalise" prefHeight="128.0" prefWidth="152.0">
+                  </ImageView>
+                  <HBox fx:id="finalise" alignment="TOP_CENTER" prefHeight="180.0" prefWidth="119.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4">
+                        <Label text="4">
                            <font>
                               <Font size="70.0" />
                            </font>
                            <HBox.margin>
                               <Insets top="33.0" />
                            </HBox.margin>
-                        </Text>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Finalise">
+                        </Label>
+                        <Label text="Finalise">
                            <font>
                               <Font size="16.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="5.0" top="80.0" />
                            </HBox.margin>
-                        </Text>
+                        </Label>
                      </children>
                   </HBox>
                </children>
             </HBox>
          </children>
       </VBox>
+      <ImageView fx:id="ffmpegLogo" fitHeight="76.0" fitWidth="200.0" layoutX="10.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="42.0" />
    </children>
 </AnchorPane>

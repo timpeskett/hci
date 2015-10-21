@@ -6,18 +6,39 @@
 package wizard.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.util.List;
+import java.util.Properties;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.prefs.Preferences;
+import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
 import wizard.model.AbstractProject;
 import wizard.model.AudioProject;
 import wizard.model.VideoProject;
+import wizard.model.WizardConfig;
 
 public class MainController implements Initializable {
+
 
     /* Different types of projects available to the user */
     public enum ProjectType {
@@ -36,15 +57,50 @@ public class MainController implements Initializable {
     @FXML
     AnchorPane mainAnchor;
 
+    private String currTheme = null;
+    private WizardConfig config;
+
     /* The current project being manipulated by the user */
     private AbstractProject currProject;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        config = new WizardConfig();
+        loadProperties();
         navPanelController.init(this);
         centerPanelController.init(this);
         rightPanelController.init(this);
-        mainAnchor.setId("background"); // make sure id matches css #
+        //mainAnchor.setId("mainWindow");
+        setBG(config.getBackground());
+
+        /* Save user properties before closing program */
+        Platform.runLater(() -> {
+            ((Stage) (mainAnchor.getScene().getWindow())).setOnHiding((WindowEvent event) -> {
+                saveProperties();
+            });
+        });
+
+        Platform.runLater(() -> {
+            setTheme(config.getColourScheme());
+        });
+    }
+
+    public void setTheme(String inTheme) {
+        Scene scene = mainAnchor.getScene();
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(getClass().getResource("../res/" + inTheme + ".css").toExternalForm());
+    }
+    
+    public void setBG(String inBG){
+        mainAnchor.setId(inBG);
+    }
+
+    public String getDefaultOutputLocation() {
+        return config.getDefaultOutputLoc();
+    }
+
+    public String getShowSplashscreen() {
+        return config.getDisplaySplash();
     }
 
     public void setProgressBarState(int inState) {
@@ -53,10 +109,16 @@ public class MainController implements Initializable {
 
     public void createAudioProject() {
         currProject = new AudioProject();
+        if (!"".equals(config.getDefaultOutputLoc())) {
+            setOutputDirectory(new File(config.getDefaultOutputLoc()));
+        } 
     }
 
     public void createVideoProject() {
         currProject = new VideoProject();
+        if (!"".equals(config.getDefaultOutputLoc())) {
+            setOutputDirectory(new File(config.getDefaultOutputLoc()));
+        }
     }
 
     public void setInputFiles(List<File> inList) {
@@ -197,6 +259,63 @@ public class MainController implements Initializable {
 
     public void setAudioForVideo(String audioForVideo) {
         ((VideoProject) currProject).setAudioForVideo(audioForVideo);
+    }
+
+    Properties props = new Properties();
+
+    public void saveProperties() {
+        try {
+            //     String path = MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+            //  String decodedPath = URLDecoder.decode(path, "UTF-8");
+            //   System.out.println(decodedPath);
+
+            String COLOUR_SCHEME = config.getColourScheme();
+            String LANGUAGE = config.getLanguage();
+            String BACKGROUND = config.getBackground();
+            String DEFAULT_OUTPUT_LOC = config.getDefaultOutputLoc();
+            String DISPLAY_SPLASH = config.getDisplaySplash();
+
+            //create a properties file
+            props.setProperty("Colour scheme", COLOUR_SCHEME);
+            props.setProperty("Language", LANGUAGE);
+            props.setProperty("Background", BACKGROUND);
+            props.setProperty("Default output location", DEFAULT_OUTPUT_LOC);
+            props.setProperty("Display splashscreen?", DISPLAY_SPLASH);
+            //OutputStream out = new FileOutputStream(f);
+            OutputStream out = new FileOutputStream("UserConfig.data");
+            //If you wish to make some comments 
+            props.store(out, "User properties");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void loadProperties() {
+        try {
+            InputStream in = new FileInputStream("UserConfig.data");
+            props.load(in);
+            String COLOUR_SCHEME = props.getProperty("Colour scheme");
+            String LANGUAGE = props.getProperty("Language");
+            String BACKGROUND = props.getProperty("Background");
+            String DEFAULT_OUTPUT_LOC = props.getProperty("Default output location");
+            String DISPLAY_SPLASH = props.getProperty("Display splashscreen?");
+
+            config.setColourScheme(COLOUR_SCHEME);
+            config.setLanguage(LANGUAGE);
+            config.setBackground(BACKGROUND);
+            config.setDefaultOutputLoc(DEFAULT_OUTPUT_LOC);
+            config.setDisplaySplash(DISPLAY_SPLASH);
+
+            System.out.println(COLOUR_SCHEME + " " + LANGUAGE + " " + BACKGROUND + " " + DEFAULT_OUTPUT_LOC + " " + DISPLAY_SPLASH);
+        } catch (FileNotFoundException e) {
+            System.out.println("No user data exists, creating default profile.");
+        } catch (IOException e2) {
+            System.out.println("Error reading userConfig.data");
+        }
+    }
+
+    public WizardConfig getConfig() {
+        return config;
     }
 
 }

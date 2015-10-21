@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -18,15 +19,11 @@
                   <Image url="@../res/splashLogo.png" />
                </image>
             </ImageView>
-            <Text fx:id="splashText" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.It supports the most obscure ancient formats up to the cutting edge." wrappingWidth="801.40234375">
-               <font>
-                  <Font size="16.0" />
-               </font></Text>
-            <Text fx:id="splashText1" strokeType="OUTSIDE" strokeWidth="0.0" text="It supports the most obscure ancient formats up to the cutting edge.No matter if they were designed by some standards committee, the community or a corporation." wrappingWidth="801.40234375">
+            <Label prefHeight="143.0" prefWidth="679.0" text="FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.&#10;&#10;It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation." wrapText="true">
                <font>
                   <Font size="16.0" />
                </font>
-            </Text>
+            </Label>
             <HBox fx:id="btnBounds" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" prefHeight="78.0" prefWidth="802.0">
                <children>
                   <Button fx:id="startBtn" mnemonicParsing="false" onAction="#startBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Start">

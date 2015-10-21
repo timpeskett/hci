@@ -55,7 +55,7 @@ public class AudioProject extends AbstractProject {
         this.bitrate.set(bitrate);
     }
 
-    public void setSampleRate(String inSampleRate) {        
+    public void setSampleRate(String inSampleRate) {
         this.sampleRate.set(inSampleRate);
     }
 

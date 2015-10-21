@@ -15,7 +15,10 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
@@ -49,32 +52,32 @@ public class FinaliseController {
     private Button createBtn;
 
     @FXML
-    private Text inputFilesTxt;
+    private Label inputFilesTxt;
     @FXML
-    private Text outputFilesTxt;
+    private Label outputFilesTxt;
 
     @FXML
-    private Text formatResult;
+    private Label formatResult;
     @FXML
-    private Text codecResult;
+    private Label codecResult;
     @FXML
-    private Text setting1Result;
+    private Label setting1Result;
     @FXML
-    private Text setting2Result;
+    private Label setting2Result;
     @FXML
-    private Text setting3Result;
+    private Label setting3Result;
     @FXML
-    private Text setting4Result;
+    private Label setting4Result;
     @FXML
-    private Text setting1Txt;
+    private Label setting1Txt;
     @FXML
-    private Text setting2Txt;
+    private Label setting2Txt;
     @FXML
-    private Text setting3Txt;
+    private Label setting3Txt;
     @FXML
-    private Text setting4Txt;
+    private Label setting4Txt;
     @FXML
-    private Text codecTxt;
+    private Label codecTxt;
 
     /* Project settings */
     private StringProperty outputType;
@@ -103,17 +106,17 @@ public class FinaliseController {
     }
 
     public void createBtnPressed() {
-        
+
         if (!inProgress) {
-             work = new WorkSimulation();
+            work = new WorkSimulation();
             createBtn.setText("Cancel");
             work.execute();
             inProgress = true;
             backBtn.setDisable(true);
         } else {
-           // System.out.println("Trying to cancel.");
+            // System.out.println("Trying to cancel.");
             work.cancel(true);
-           // inProgress = false;
+            // inProgress = false;
         }
     }
 
@@ -251,21 +254,23 @@ public class FinaliseController {
                             /* When finished and result = successful */
                             finaliseProgressBar.setProgress(get());
                             progressIndicator.setProgress(get());
-                            
-
+                            Alert alert = new Alert(AlertType.INFORMATION);
+                            alert.setTitle("Finished converting");
+                            alert.setHeaderText("FFMpeg Alert");
+                            alert.setContentText("Conversion was successful!");
+                            alert.show();
                         } catch (InterruptedException ex) {
-                            System.out.println("A");
-                            //Logger.getLogger(tute_example.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(FinaliseController.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (ExecutionException ex) {
-                            System.out.println("B");
-                            //Logger.getLogger(tute_example.class.getName()).log(Level.SEVERE, null, ex);
+                            Logger.getLogger(FinaliseController.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (CancellationException e) {
-                            
+
                         } finally {
                             /* When finished regardless of result*/
                             createBtn.setText("Create");
                             backBtn.setDisable(false);
                             inProgress = false;
+
                         }
                     }
                 });

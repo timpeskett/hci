@@ -3,28 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Management.fxml</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/FinaliseController.java</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/res/Black.css</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/MainController.java</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/model/WizardConfig.java</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/SettingsController.java</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Center%20Panel.fxml</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Splash.fxml</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/model/AbstractProject.java</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/model/AudioProject.java</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Navigation%20Panel.fxml</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/ManagementController.java</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/model/VideoProject.java</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/CenterPanelController.java</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Right%20Panel.fxml</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/RightPanelController.java</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/FinaliseController.java</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/MainController.java</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Main.fxml</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Files.fxml</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/SettingsController.java</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Center%20Panel.fxml</file>
+            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/res/Orange.css</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/TypeController.java</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/SplashController.java</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/NavigationPanelController.java</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Splash.fxml</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Settings.fxml</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Type.fxml</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/controller/FilesController.java</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/model/AbstractProject.java</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/model/AudioProject.java</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/Wizard.java</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Navigation%20Panel.fxml</file>
             <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/view/Finalise.fxml</file>
-            <file>file:/C:/Users/Chris/Documents/NetBeansProjects/Wizard/src/wizard/model/VideoProject.java</file>
         </group>
     </open-files>
 </project-private>

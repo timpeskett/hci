@@ -12,120 +12,120 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="1.0" layoutY="-3.0" prefHeight="400.0" prefWidth="900.0" spacing="5.0">
          <children>
-            <Text fx:id="finaliseTitle" layoutX="303.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finalise" textAlignment="CENTER">
+            <Label fx:id="finaliseTitle" layoutX="303.0" layoutY="70.0" text="Finalise" textAlignment="CENTER">
                <font>
                   <Font size="40.0" />
                </font>
-            </Text>
-            <Text fx:id="summaryTxt" layoutX="315.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary" textAlignment="CENTER">
+            </Label>
+            <Label fx:id="summaryTxt" layoutX="315.0" layoutY="137.0" text="Summary" textAlignment="CENTER">
                <font>
                   <Font name="System Italic" size="20.0" />
                </font>
-            </Text>
+            </Label>
             <HBox alignment="CENTER" prefHeight="34.0" prefWidth="900.0" spacing="20.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Input file(s):">
+                  <Label text="Input file(s):">
                      <font>
                         <Font size="16.0" />
                      </font>
-                  </Text>
-                  <Text fx:id="inputFilesTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="inputFilesTxt">
+                  </Label>
+                  <Label fx:id="inputFilesTxt" text="inputFilesTxt">
                      <font>
                         <Font size="16.0" />
                      </font>
-                  </Text>
+                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="35.0" prefWidth="900.0" spacing="20.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Output file name:">
+                  <Label  text="Output file name:">
                      <font>
                         <Font size="16.0" />
                      </font>
-                  </Text>
-                  <Text fx:id="outputFilesTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="outputFilesTxt">
+                  </Label>
+                  <Label fx:id="outputFilesTxt"  text="outputFilesTxt">
                      <font>
                         <Font size="16.0" />
                      </font>
-                  </Text>
+                  </Label>
                </children>
             </HBox>
             <GridPane fx:id="finaliseGrid" alignment="CENTER" layoutX="160.0" layoutY="157.0" maxWidth="500.0" prefHeight="90.0" prefWidth="100.0">
                <children>
                   <HBox fx:id="bitRateBox" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <children>
-                        <Text fx:id="setting1Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting1">
+                        <Label fx:id="setting1Txt"  text="setting1">
                            <font>
                               <Font size="16.0" />
-                           </font></Text>
-                        <Text fx:id="setting1Result" strokeType="OUTSIDE" strokeWidth="0.0" text="setting1Result">
+                           </font></Label>
+                        <Label fx:id="setting1Result"  text="setting1Result">
                            <font>
                               <Font name="System Bold" size="16.0" />
-                           </font></Text>
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox fx:id="formatBox" prefHeight="40.0" prefWidth="91.0">
                      <children>
-                        <Text fx:id="formatTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Format            " textOrigin="CENTER">
+                        <Label fx:id="formatTxt"  text="Format            " textAlignment="CENTER">
                            <effect>
                               <Glow />
                            </effect>
                            <font>
                               <Font size="16.0" />
                            </font>
-                        </Text>
-                        <Text fx:id="formatResult" strokeType="OUTSIDE" strokeWidth="0.0" text="answer">
+                        </Label>
+                        <Label fx:id="formatResult"  text="answer">
                            <font>
                               <Font name="System Bold" size="16.0" />
-                           </font></Text>
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox fx:id="channelsBox" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <children>
-                        <Text fx:id="setting2Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting2">
+                        <Label fx:id="setting2Txt" text="setting2">
                            <font>
                               <Font size="16.0" />
-                           </font></Text>
-                        <Text fx:id="setting2Result" strokeType="OUTSIDE" strokeWidth="0.0" text="channelsResult">
+                           </font></Label>
+                        <Label fx:id="setting2Result" text="channelsResult">
                            <font>
                               <Font name="System Bold" size="16.0" />
-                           </font></Text>
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox fx:id="sampleBox" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
                      <children>
-                        <Text fx:id="setting3Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting3">
+                        <Label fx:id="setting3Txt" text="setting3">
                            <font>
                               <Font size="16.0" />
-                           </font></Text>
-                        <Text fx:id="setting3Result" strokeType="OUTSIDE" strokeWidth="0.0" text="setting3Result">
+                           </font></Label>
+                        <Label fx:id="setting3Result" text="setting3Result">
                            <font>
                               <Font name="System Bold" size="16.0" />
-                           </font></Text>
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox fx:id="spareBox" prefHeight="32.0" prefWidth="48.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <children>
-                        <Text fx:id="setting4Txt" strokeType="OUTSIDE" strokeWidth="0.0" text="setting4">
+                        <Label fx:id="setting4Txt" text="setting4">
                            <font>
                               <Font size="16.0" />
-                           </font></Text>
-                        <Text fx:id="setting4Result" strokeType="OUTSIDE" strokeWidth="0.0" text="setting4Result">
+                           </font></Label>
+                        <Label fx:id="setting4Result" text="setting4Result">
                            <font>
                               <Font name="System Bold" size="16.0" />
-                           </font></Text>
+                           </font></Label>
                      </children>
                   </HBox>
                   <HBox fx:id="codecBox" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Text fx:id="codecTxt" strokeType="OUTSIDE" strokeWidth="0.0" text="Codec           ">
+                        <Label fx:id="codecTxt" text="Codec           ">
                            <font>
                               <Font size="16.0" />
-                           </font></Text>
-                        <Text fx:id="codecResult" strokeType="OUTSIDE" strokeWidth="0.0" text="result">
+                           </font></Label>
+                        <Label fx:id="codecResult" text="result">
                            <font>
                               <Font name="System Bold" size="16.0" />
-                           </font></Text>
+                           </font></Label>
                      </children>
                   </HBox>
                </children>

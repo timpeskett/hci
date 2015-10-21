@@ -26,11 +26,9 @@ public class SplashController {
     
     void init(SimpleIntegerProperty inState) {
         state = inState;
-        System.out.println("Splash controller created.");
     }
     
     public void startBtnPressed(){
-        System.out.println("splash pressed");
         state.set(state.add(1).get());
     }
 

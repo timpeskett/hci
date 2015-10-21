@@ -6,17 +6,12 @@
 package wizard.controller;
 
 import java.io.File;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
@@ -34,6 +29,8 @@ public class FilesController {
     private SimpleIntegerProperty state;
     private CenterPanelController centerPanel;
     ProjectType projType;
+    List<File> inputFiles = null;
+    File outputDir = null;
 
     @FXML
     private AnchorPane filesAnchor;
@@ -58,6 +55,15 @@ public class FilesController {
     void init(SimpleIntegerProperty inState, CenterPanelController inCenterPanel) {
         state = inState;
         centerPanel = inCenterPanel;
+        inputFilesBrowse.getStyleClass().clear();
+        outputDirectoryBrowse.getStyleClass().clear();
+        inputFilesBrowse.setId("browseButtons");
+        outputDirectoryBrowse.setId("browseButtons");
+        if (!"".equals(centerPanel.getDefaultOutputLocation())) {
+            System.out.println("asd");
+            outputDirectoryTextArea.setText(centerPanel.getDefaultOutputLocation());
+        }
+        nextBtn.setDisable(true);
     }
 
     public void backBtnPressed() {
@@ -82,7 +88,6 @@ public class FilesController {
 
     public void inputFilesBrowsePressed() {
         projType = centerPanel.getProjectType();
-        List<File> inputFiles;
         inputFilesTextArea.setText("");
         Stage stage = (Stage) filesAnchor.getScene().getWindow();
         FileChooser fileChooser = new FileChooser();
@@ -123,6 +128,10 @@ public class FilesController {
             newFileName = inputFiles.get(0).getName().split("\\.")[0] + 1;// + "." + inputFiles.get(0).getName().split("\\.")[1];
             outputFileNameTextArea.setText(newFileName);
         }
+
+        if (centerPanel.getInputFiles() != null && centerPanel.getOutputFileLoc() != null) {
+            nextBtn.setDisable(false);
+        }
     }
 
     /* Not working yet, meant to check if there is a file already existing at the path with the same name as newFilename */
@@ -130,12 +139,11 @@ public class FilesController {
         /* System.out.println("original path: " + path);
          String newPath = path.substring(0, path.length()-1);*/
 
-
         if (new File(path).exists()) {
             //System.out.println("FILE EXISTS: " + newPath);
             return true;
         } else {
-          //  System.out.println("FILE DOES NOT EXIST: " + newPath);
+            //  System.out.println("FILE DOES NOT EXIST: " + newPath);
             return false;
         }
     }
@@ -143,11 +151,14 @@ public class FilesController {
     public void outputDirectoryBrowse() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
         Stage stage = (Stage) filesAnchor.getScene().getWindow();
-        File selectedDirectory = directoryChooser.showDialog(stage);
-        if (selectedDirectory != null) {
-            outputDirectoryTextArea.setText(selectedDirectory.getAbsolutePath());
-            centerPanel.setOutputDirectory(selectedDirectory);
-            System.out.println("Output file destination: " + selectedDirectory);
+        outputDir = directoryChooser.showDialog(stage);
+        if (outputDir != null) {
+            outputDirectoryTextArea.setText(outputDir.getAbsolutePath());
+            centerPanel.setOutputDirectory(outputDir);
+            System.out.println("Output file destination: " + outputDir);
+            if (centerPanel.getInputFiles() != null && centerPanel.getOutputFileLoc() != null) {
+                nextBtn.setDisable(false);
+            }
         }
     }
 
