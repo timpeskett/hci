@@ -130,6 +130,7 @@
                               </Pane>
                            </graphic>
                         </Button>
+                        <Slider fx:id="playSlider" disable="true" prefHeight="27.0" prefWidth="74.0" />
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />

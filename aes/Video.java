@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.MediaMarkerEvent;
@@ -49,6 +50,7 @@ public class Video implements SceneController
 	/* Preview related controls */
 	@FXML private MediaView mediaView;
 	@FXML private Button playButton, pauseButton;
+	@FXML private Slider playSlider;
 
 
 	@Override
@@ -116,7 +118,7 @@ public class Video implements SceneController
 			@Override
 			public void handle(ActionEvent e)
 			{
-				/* Do things */
+				ma.alertUser("Convert not yet implemented");
 			}
 		});
 	}
@@ -129,7 +131,10 @@ public class Video implements SceneController
 			@Override
 			public void handle(MediaMarkerEvent mme) 
 			{
-				System.out.println(mme.getMarker().getValue().toSeconds() + " seconds passed");
+				Duration length = mediaWrapper.getDuration();	
+				Duration pos = mme.getMarker().getValue();
+				double ratio = pos.toSeconds() / (double)length.toSeconds();
+				playSlider.setValue(ratio * (playSlider.getMax() - playSlider.getMin()) + playSlider.getMin());
 			}
 		});
 		mediaWrapper.setMediaView(mediaView);

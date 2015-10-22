@@ -1,12 +1,16 @@
 package aes;
 
 import javafx.application.Application;
+
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.Parent;
+
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.FileChooser;
 import javafx.stage.DirectoryChooser;
+
 import javafx.fxml.FXMLLoader;
 
 import java.util.logging.Logger;
@@ -73,6 +77,12 @@ public class MainApp extends Application
 		return fc.showSaveDialog(mainStage);
 	}
 
+	public void alertUser(String message)
+	{
+		Alert alert = new Alert(Alert.AlertType.WARNING, message);
+
+		alert.show();
+	}
 	
 	public void gotoIntro()
 	{
