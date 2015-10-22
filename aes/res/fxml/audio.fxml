@@ -1,26 +1,272 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.media.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Audio">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Audio">
    <children>
 
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
       <fx:include source="menu.fxml" />
-      <HBox layoutX="-119.0" layoutY="222.0" rotate="90.0" styleClass="banner-button">
+      <Pane layoutX="113.0" layoutY="486.0" prefHeight="27.0" prefWidth="127.0" styleClass="percent-counter">
          <children>
-            <ImageView fitHeight="59.0" fitWidth="313.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
+            <Text fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <HBox layoutX="111.0" layoutY="300.0" prefHeight="167.0" prefWidth="521.0" styleClass="params-container">
+         <children>
+            <Pane prefHeight="105.0" prefWidth="58.0">
+               <children>
+                  <Text fill="#01b519" layoutX="-18.0" layoutY="80.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OUTPUT" wrappingWidth="94.30713296681643">
+                     <font>
+                        <Font name="Lucida Sans Demibold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <styleClass>
+                  <String fx:value="params-heading" />
+                  <String fx:value="output-params-heading" />
+               </styleClass>
+            </Pane>
+            <VBox prefHeight="161.0" prefWidth="456.0" spacing="25.0">
+               <children>
+                  <HBox prefHeight="31.0" prefWidth="420.0">
+                     <children>
+                        <Text fill="#00ddff" strokeType="OUTSIDE" strokeWidth="0.0" text="Output Folder: ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField prefHeight="29.0" prefWidth="224.0" styleClass="control">
+                           <HBox.margin>
+                              <Insets top="2.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
+                           <HBox.margin>
+                              <Insets left="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="1.0" top="16.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="41.0" prefHeight="31.0" prefWidth="420.0">
+                     <children>
+                        <Text fill="#01ddf5" strokeType="OUTSIDE" strokeWidth="0.0" text="Filename:" wrappingWidth="107.7421875">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField styleClass="control" />
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="1.0" top="16.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="420.0">
+                     <children>
+                        <Text fill="#06ecf8" strokeType="OUTSIDE" strokeWidth="0.0" text="File Type:" wrappingWidth="107.6796875">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="2.0" />
+                           </HBox.margin>
+                        </Text>
+                        <ChoiceBox prefHeight="29.0" prefWidth="153.0" styleClass="control" />
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="1.0" top="16.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="2.0" top="7.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="111.0" layoutY="148.0" prefHeight="94.0" prefWidth="521.0" styleClass="params-container">
+         <children>
+            <Pane prefHeight="200.0" prefWidth="60.0">
+               <children>
+                  <Text fill="#01b519" layoutX="-2.0" layoutY="51.0" rotate="-90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INPUT" wrappingWidth="60.00000500679016">
+                     <font>
+                        <Font name="Lucida Sans Demibold" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+               <styleClass>
+                  <String fx:value="params-heading" />
+                  <String fx:value="input-params-heading" />
+               </styleClass>
+            </Pane>
+            <VBox prefHeight="136.0" prefWidth="457.0" spacing="10.0">
+               <children>
+                  <HBox prefHeight="29.0" prefWidth="335.0">
+                     <children>
+                        <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="File: ">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Text>
+                        <TextField fx:id="inputFilename" prefHeight="26.0" prefWidth="209.0" styleClass="control">
+                           <HBox.margin>
+                              <Insets top="2.0" />
+                           </HBox.margin>
+                        </TextField>
+                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
+                           <HBox.margin>
+                              <Insets left="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="1.0" top="16.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="playButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button">
+                           <graphic>
+                              <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" stroke="BLACK" strokeType="INSIDE">
+                                 <points>
+                                    <Double fx:value="-50.0" />
+                                    <Double fx:value="40.0" />
+                                    <Double fx:value="50.0" />
+                                    <Double fx:value="40.0" />
+                                    <Double fx:value="0.0" />
+                                    <Double fx:value="-60.0" />
+                                 </points>
+                              </Polygon>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="pauseButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button" text="Button">
+                           <graphic>
+                              <Pane translateX="-7.0">
+                                 <children>
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+                                 </children>
+                              </Pane>
+                           </graphic>
+                        </Button>
+                        <Slider prefHeight="25.0" prefWidth="264.0">
+                           <HBox.margin>
+                              <Insets left="5.0" />
+                           </HBox.margin>
+                        </Slider>
+                        <Group>
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e8a1c" height="25.0" stroke="BLACK" strokeType="INSIDE" styleClass="bordered" width="56.0" />
+                              <Text layoutX="8.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Group>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="9.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets left="10.0" top="5.0" />
+               </padding>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="538.0" layoutY="482.0" prefHeight="29.0" prefWidth="95.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/IntroAudioNoBorder.png" />
+                  <Image url="@../img/HintButton.png" />
                </image>
+               <HBox.margin>
+                  <Insets left="1.0" top="14.0" />
+               </HBox.margin>
             </ImageView>
          </children>
       </HBox>
-      <Button fx:id="backButton" layoutX="1.0" layoutY="404.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="63.0" styleClass="back-button" text="Back" />
+      <VBox layoutX="3.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="70.0">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true" rotate="-90.0" styleClass="bordered">
+               <image>
+                  <Image url="@../img/IntroAudioNoBorder.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="-175.0" top="175.0" />
+               </VBox.margin>
+            </ImageView>
+            <Group>
+               <children>
+                  <Button fx:id="backButton" alignment="CENTER" layoutY="522.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="70.0" styleClass="back-button" text="Back" />
+                  <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="9.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/back.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="174.0" />
+               </VBox.margin>
+            </Group>
+         </children>
+      </VBox>
+      <ProgressBar layoutX="114.0" layoutY="528.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
    </children>
 </AnchorPane>

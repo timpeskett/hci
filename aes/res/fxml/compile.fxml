@@ -16,6 +16,31 @@
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
       <fx:include source="menu.fxml" />
+      <VBox layoutX="3.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="70.0">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true" rotate="-90.0" styleClass="bordered">
+               <image>
+                  <Image url="@../img/IntroFileCompilationNoBorder.png" />
+               </image>
+               <VBox.margin>
+                  <Insets left="-175.0" top="175.0" />
+               </VBox.margin>
+            </ImageView>
+            <Group>
+               <children>
+                  <Button fx:id="backButton" alignment="CENTER" layoutY="522.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="70.0" styleClass="back-button" text="Back" />
+                  <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="9.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/back.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <VBox.margin>
+                  <Insets top="174.0" />
+               </VBox.margin>
+            </Group>
+         </children>
+      </VBox>
 
       <HBox layoutX="101.0" layoutY="138.0" prefHeight="131.0" prefWidth="521.0" styleClass="params-container">
          <children>
@@ -32,28 +57,26 @@
                   <String fx:value="input-params-heading" />
                </styleClass>
             </Pane>
-            <VBox prefHeight="105.0" prefWidth="317.0">
+            <HBox prefHeight="29.0" prefWidth="252.0">
                <children>
-                  <HBox prefHeight="29.0" prefWidth="335.0">
+                  <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Files: ">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="2.0" top="2.0" />
+                     </HBox.margin>
+                  </Text>
+                  <ListView prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <VBox prefHeight="122.0" prefWidth="217.0" spacing="10.0">
+               <children>
+                  <HBox prefHeight="21.0" prefWidth="167.0">
                      <children>
-                        <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="File: ">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
+                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="93.0" styleClass="normal-button" text="Add File...">
                            <HBox.margin>
                               <Insets left="2.0" top="2.0" />
-                           </HBox.margin></Text>
-                        <TextField fx:id="inputFilename" prefHeight="26.0" prefWidth="209.0" styleClass="control">
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin></TextField>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
-                           <HBox.margin>
-                              <Insets left="34.0" top="2.0" />
                            </HBox.margin>
                         </Button>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -66,7 +89,24 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="23.0" prefWidth="167.0">
+                     <children>
+                        <Button fx:id="inputBrowseButton1" mnemonicParsing="false" prefHeight="29.0" prefWidth="93.0" styleClass="normal-button" text="Remove File...">
+                           <HBox.margin>
+                              <Insets left="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/HintButton.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="1.0" top="16.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="7.0" prefWidth="180.0">
                      <children>
                         <Text fill="#00c9f2" strokeType="OUTSIDE" strokeWidth="0.0" text="Framerate:">
                            <font>
@@ -74,18 +114,21 @@
                            </font>
                            <HBox.margin>
                               <Insets left="2.0" />
-                           </HBox.margin></Text>
+                           </HBox.margin>
+                        </Text>
                         <ChoiceBox prefHeight="26.0" prefWidth="94.0" styleClass="control">
                            <HBox.margin>
                               <Insets left="2.0" />
-                           </HBox.margin></ChoiceBox>
+                           </HBox.margin>
+                        </ChoiceBox>
                         <Text fill="#0ae4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="fps">
                            <font>
                               <Font size="15.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="2.0" />
-                           </HBox.margin></Text>
+                           </HBox.margin>
+                        </Text>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />
@@ -100,47 +143,6 @@
                <HBox.margin>
                   <Insets top="5.0" />
                </HBox.margin>
-            </VBox>
-            <VBox prefHeight="127.0" prefWidth="140.0">
-               <children>
-                  <MediaView fx:id="mediaView" fitHeight="100.0" fitWidth="140.0" preserveRatio="false" />
-                  <HBox prefHeight="26.0" prefWidth="140.0">
-                     <children>
-                        <Button fx:id="playButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button">
-                           <graphic>
-                              <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" stroke="BLACK" strokeType="INSIDE">
-                                <points>
-                                  <Double fx:value="-50.0" />
-                                  <Double fx:value="40.0" />
-                                  <Double fx:value="50.0" />
-                                  <Double fx:value="40.0" />
-                                  <Double fx:value="0.0" />
-                                  <Double fx:value="-60.0" />
-                                </points>
-                              </Polygon>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="pauseButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button" text="Button">
-                           <graphic>
-                              <Pane translateX="-7.0">
-                                 <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
-                                 </children>
-                              </Pane>
-                           </graphic>
-                        </Button>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/HintButton.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="1.0" top="10.0" />
-                           </HBox.margin>
-                        </ImageView>
-                     </children>
-                  </HBox>
-               </children>
             </VBox>
          </children>
       </HBox>
@@ -278,7 +280,7 @@
       </Pane>
       <HBox layoutX="527.0" layoutY="476.0" prefHeight="29.0" prefWidth="95.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
+            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Compile" />
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/HintButton.png" />
@@ -289,31 +291,6 @@
             </ImageView>
          </children>
       </HBox>
-      <VBox layoutX="3.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="70.0">
-         <children>
-            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true" rotate="-90.0" styleClass="bordered">
-               <image>
-                  <Image url="@../img/IntroVideoNoBorder.png" />
-               </image>
-               <VBox.margin>
-                  <Insets left="-175.0" top="175.0" />
-               </VBox.margin>
-            </ImageView>
-            <Group>
-               <children>
-                  <Button fx:id="backButton" alignment="CENTER" layoutY="522.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="70.0" styleClass="back-button" text="Back" />
-                  <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="9.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/back.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <VBox.margin>
-                  <Insets top="174.0" />
-               </VBox.margin>
-            </Group>
-         </children>
-      </VBox>
       <ProgressBar layoutX="103.0" layoutY="524.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
    </children>
 </AnchorPane>

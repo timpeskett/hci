@@ -1,16 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="439.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Intro">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Intro">
    <children>
 
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
       <fx:include source="menu.fxml" />
+      <HBox layoutX="89.0" layoutY="146.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="62.0">
+         <children>
+            <HBox fx:id="videoBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
+               <children>
+                  <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
+                     <image>
+                        <Image url="@../img/IntroVideoNoBorder.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/HintButton.png" />
+               </image>
+               <HBox.margin>
+                  <Insets top="86.0" />
+               </HBox.margin>
+            </ImageView>
+         </children>
+      </HBox>
 
       <HBox layoutX="89.0" layoutY="289.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="62.0">
          <children>
@@ -23,31 +46,34 @@
                   </ImageView>
                </children>
             </HBox>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
-	         <Image url="@../img/HintButton.png" />
+                  <Image url="@../img/HintButton.png" />
                </image>
                <HBox.margin>
-                  <Insets />
+                  <Insets top="86.0" />
                </HBox.margin>
             </ImageView>
          </children>
       </HBox>
-      <HBox layoutX="89.0" layoutY="146.0" AnchorPane.leftAnchor="89.0" AnchorPane.rightAnchor="62.0">
+      <HBox layoutX="91.0" layoutY="430.0">
          <children>
-            <HBox fx:id="videoBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
+            <HBox fx:id="audioBannerHbox1" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
                <children>
-                  <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
+                  <ImageView fitHeight="96.0" fitWidth="482.0" pickOnBounds="true" styleClass="bordered">
                      <image>
-                        <Image url="@../img/IntroVideoNoBorder.png" />
+                        <Image url="@../img/IntroFileCompilationNoBorder.png" />
                      </image>
                   </ImageView>
                </children>
             </HBox>
-            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/HintButton.png" />
                </image>
+               <HBox.margin>
+                  <Insets top="86.0" />
+               </HBox.margin>
             </ImageView>
          </children>
       </HBox>
