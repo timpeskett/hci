@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Intro">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Intro">
    <children>
 
       <!-- Include the elements common to all scenes -->
@@ -58,7 +58,7 @@
       </HBox>
       <HBox layoutX="91.0" layoutY="430.0">
          <children>
-            <HBox fx:id="audioBannerHbox1" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
+            <HBox fx:id="compileBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
                <children>
                   <ImageView fitHeight="96.0" fitWidth="482.0" pickOnBounds="true" styleClass="bordered">
                      <image>

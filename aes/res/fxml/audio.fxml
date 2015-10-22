@@ -18,7 +18,7 @@
       <fx:include source="menu.fxml" />
       <Pane layoutX="113.0" layoutY="486.0" prefHeight="27.0" prefWidth="127.0" styleClass="percent-counter">
          <children>
-            <Text fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
+            <Text fx:id="convertPercentage" fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
                <font>
                   <Font size="16.0" />
                </font>
@@ -52,12 +52,12 @@
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField prefHeight="29.0" prefWidth="224.0" styleClass="control">
+                        <TextField fx:id="outputDirectory" prefHeight="29.0" prefWidth="224.0" styleClass="control">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
+                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
                            <HBox.margin>
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
@@ -82,7 +82,7 @@
                               <Insets left="2.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField styleClass="control" />
+                        <TextField fx:id="outputBasename" styleClass="control" />
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />
@@ -103,7 +103,7 @@
                               <Insets left="2.0" />
                            </HBox.margin>
                         </Text>
-                        <ChoiceBox prefHeight="29.0" prefWidth="153.0" styleClass="control" />
+                        <ChoiceBox fx:id="filetypeChoiceBox" prefHeight="29.0" prefWidth="153.0" styleClass="control" />
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />
@@ -194,7 +194,7 @@
                               </Pane>
                            </graphic>
                         </Button>
-                        <Slider prefHeight="25.0" prefWidth="264.0">
+                        <Slider fx:id="playSlider" disable="true" prefHeight="25.0" prefWidth="264.0">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -202,7 +202,7 @@
                         <Group>
                            <children>
                               <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e8a1c" height="25.0" stroke="BLACK" strokeType="INSIDE" styleClass="bordered" width="56.0" />
-                              <Text layoutX="8.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+                              <Text fx:id="playTime" layoutX="8.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -231,7 +231,7 @@
       </HBox>
       <HBox layoutX="538.0" layoutY="482.0" prefHeight="29.0" prefWidth="95.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
+            <Button fx:id="convertButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/HintButton.png" />
@@ -267,6 +267,6 @@
             </Group>
          </children>
       </VBox>
-      <ProgressBar layoutX="114.0" layoutY="528.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar" layoutX="114.0" layoutY="528.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
    </children>
 </AnchorPane>

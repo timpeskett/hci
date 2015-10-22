@@ -75,7 +75,7 @@
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Text>
-                        <ChoiceBox prefHeight="26.0" prefWidth="94.0" styleClass="control">
+                        <ChoiceBox fx:id="inputFramerateChoiceBox" prefHeight="26.0" prefWidth="94.0" styleClass="control">
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></ChoiceBox>
@@ -170,11 +170,11 @@
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Text>
-                        <TextField prefHeight="29.0" prefWidth="224.0" styleClass="control">
+                        <TextField fx:id="outputDirectory" prefHeight="29.0" prefWidth="224.0" styleClass="control">
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></TextField>
-                        <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
+                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Button>
@@ -197,7 +197,7 @@
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></Text>
-                        <ChoiceBox prefHeight="29.0" prefWidth="153.0" styleClass="control">
+                        <ChoiceBox fx:id="outputFramerateChoiceBox" prefHeight="29.0" prefWidth="153.0" styleClass="control">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin></ChoiceBox>
@@ -227,7 +227,7 @@
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Text>
-                        <TextField styleClass="control" />
+                        <TextField fx:id="outputBasename" styleClass="control" />
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />
@@ -247,7 +247,7 @@
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Text>
-                        <ChoiceBox prefHeight="29.0" prefWidth="153.0" styleClass="control" />
+                        <ChoiceBox fx:id="filetypeChoiceBox" prefHeight="29.0" prefWidth="153.0" styleClass="control" />
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/HintButton.png" />
@@ -270,7 +270,7 @@
       </HBox>
       <Pane layoutX="103.0" layoutY="476.0" prefHeight="27.0" prefWidth="127.0" styleClass="percent-counter">
          <children>
-            <Text fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
+            <Text fx:id="convertPercentage" fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
                <font>
                   <Font size="16.0" />
                </font></Text>
@@ -278,7 +278,7 @@
       </Pane>
       <HBox layoutX="527.0" layoutY="476.0" prefHeight="29.0" prefWidth="95.0">
          <children>
-            <Button mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
+            <Button fx:id="convertButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/HintButton.png" />
@@ -314,6 +314,6 @@
             </Group>
          </children>
       </VBox>
-      <ProgressBar layoutX="103.0" layoutY="524.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
+      <ProgressBar fx:id="progressBar" layoutX="103.0" layoutY="524.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
    </children>
 </AnchorPane>

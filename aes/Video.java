@@ -10,51 +10,92 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.text.Text;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.MediaMarkerEvent;
 
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
+import javafx.util.Duration;
+
 
 public class Video implements SceneController
 {
 	private MainApp ma;
-	private File currInputFile;
+	private File currInputFile, currOutputDirectory, currOutputBasename;
 	private MediaWrapper mediaWrapper;
 
-	@FXML
-	private Button backButton;
+	/* Navigation controls */
+	@FXML private Button backButton;
 
-	@FXML
-	private TextField inputFilename;
-	@FXML
-	private Button inputBrowseButton;
-	@FXML
-	private MediaView mediaView;
+	/* Input related controls */
+	@FXML private TextField inputFilename;
+	@FXML private Button inputBrowseButton;
+	@FXML private ChoiceBox inputFramerateChoiceBox;
 
-	@FXML
-	private Button playButton, pauseButton;
+	/* Output related controls */
+	@FXML private TextField outputDirectory, outputBasename;
+	@FXML private Button outputBrowseButton;
+	@FXML private ChoiceBox outputFramerateChoiceBox, filetypeChoiceBox;
+
+	/* Conversion related controls */
+	@FXML private Text convertPercentage;
+	@FXML private ProgressBar progressBar;
+	@FXML private Button convertButton;
+
+	/* Preview related controls */
+	@FXML private MediaView mediaView;
+	@FXML private Button playButton, pauseButton;
+
 
 	@Override
 	public void initialize(URL fxmlLocation, ResourceBundle res)
 	{
+		/* Navigate back to intro when back pressed */
 		backButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent e)
 			{
+				pauseMedia();
 				ma.gotoIntro();
 			}
 		});
+
+		/* Load input file when browse button selected */
 		inputBrowseButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent e)
 			{
-				currInputFile = ma.openFile("Open Input File...");
-				inputFilename.setText(currInputFile.getAbsolutePath());
-				loadMedia(currInputFile);
+				File inFile = ma.openFile("Open Input File...");
+
+				if(inFile != null)
+				{
+					currInputFile = inFile;
+					inputFilename.setText(currInputFile.getAbsolutePath());
+					loadMedia(currInputFile);
+				}
 			}
 		});
+
+		/* Load output directory when output browse button selected */
+		outputBrowseButton.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent e)
+			{
+				File inFile = ma.openDirectory("Open Output Directory");
+
+				if(inFile != null)
+				{
+					currOutputDirectory = inFile;
+					outputDirectory.setText(currOutputDirectory.getAbsolutePath());
+				}
+			}
+		});
+
+		/* Multimedia button to play media view */
 		playButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent e)
@@ -62,6 +103,7 @@ public class Video implements SceneController
 				playMedia();
 			}
 		});
+		/* Multimedia button to pause media view */
 		pauseButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent e)
@@ -69,8 +111,14 @@ public class Video implements SceneController
 				pauseMedia();
 			}
 		});
-
-
+		/* Convert button to perform conversion */
+		convertButton.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent e)
+			{
+				/* Do things */
+			}
+		});
 	}
 
 

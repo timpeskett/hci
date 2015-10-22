@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.FileChooser;
+import javafx.stage.DirectoryChooser;
 import javafx.fxml.FXMLLoader;
 
 import java.util.logging.Logger;
@@ -58,6 +59,13 @@ public class MainApp extends Application
 		return fc.showOpenDialog(mainStage);
 	}
 
+	public File openDirectory(String title)
+	{
+		DirectoryChooser dc = new DirectoryChooser();
+		dc.setTitle(title);
+		return dc.showDialog(mainStage);
+	}
+
 	public File saveFile(String title)
 	{
 		FileChooser fc = new FileChooser();
@@ -83,6 +91,11 @@ public class MainApp extends Application
 		gotoPage("/aes/res/fxml/audio.fxml");
 	}
 
+	
+	public void gotoCompile()
+	{
+		gotoPage("/aes/res/fxml/compile.fxml");
+	}
 
 	private void gotoPage(String page)
 	{

@@ -1,9 +1,8 @@
 package aes;
 
-import aes.boundary.MediaWrapper;
-
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.LinkedList;
 import java.io.File;
 
 import javafx.fxml.FXML;
@@ -12,52 +11,52 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Slider;
+import javafx.scene.control.ListView;
 import javafx.scene.text.Text;
-import javafx.scene.media.MediaMarkerEvent;
 
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
 
-import javafx.util.Duration;
+import javafx.collections.ObservableList;
 
-public class Audio implements SceneController
+public class Compile implements SceneController
 {
 	private MainApp ma;
-	private File currInputFile, currOutputDirectory, currOutputBasename;
-	private MediaWrapper mediaWrapper;
+	private LinkedList<File> inputFiles;
+	private ObservableList<Text> inputFileTexts;
+	private File currOutputDirectory, currOutputBasename;
 
 	/* Navigation controls */
 	@FXML private Button backButton;
 
 	/* Input related controls */
-	@FXML private TextField inputFilename;
+	@FXML private ListView<Text> inputListView;
 	@FXML private Button inputBrowseButton;
+	@FXML private Button inputRemoveButton;
+	@FXML private ChoiceBox inputFramerateChoiceBox;
 
 	/* Output related controls */
 	@FXML private TextField outputDirectory, outputBasename;
 	@FXML private Button outputBrowseButton;
-	@FXML private ChoiceBox filetypeChoiceBox;
+	@FXML private ChoiceBox outputFramerateChoiceBox, filetypeChoiceBox;
 
 	/* Conversion related controls */
 	@FXML private Text convertPercentage;
 	@FXML private ProgressBar progressBar;
-	@FXML private Button convertButton;
+	@FXML private Button compileButton;
 
-	/* Preview related controls */
-	@FXML private Button playButton, pauseButton;
-	@FXML private Text playTime;
-	@FXML private Slider playSlider;
 
 	@Override
 	public void initialize(URL fxmlLocation, ResourceBundle res)
 	{
+		/* Initialise listview */
+		inputFiles = new LinkedList<File>();
+
 		/* Navigate back to intro when back pressed */
 		backButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent e)
 			{
-				pauseMedia();
 				ma.gotoIntro();
 			}
 		});
@@ -68,12 +67,24 @@ public class Audio implements SceneController
 			public void handle(ActionEvent e)
 			{
 				File inFile = ma.openFile("Open Input File...");
-
 				if(inFile != null)
 				{
-					currInputFile = inFile;
-					inputFilename.setText(currInputFile.getAbsolutePath());
-					loadMedia(currInputFile);
+					Text fileText = new Text(inFile.getAbsolutePath());
+					inputListView.getItems().add(fileText);
+					inputFiles.add(inFile);
+				}
+			}
+		});
+
+		/* Remove items from listview */
+		inputRemoveButton.setOnAction(new EventHandler<ActionEvent>(){
+			@Override
+			public void handle(ActionEvent e)
+			{
+				for(Integer index : inputListView.getSelectionModel().getSelectedIndices())
+				{
+					inputListView.getItems().remove(index.intValue());
+					inputFiles.remove(index.intValue());
 				}
 			}
 		});
@@ -84,7 +95,6 @@ public class Audio implements SceneController
 			public void handle(ActionEvent e)
 			{
 				File inFile = ma.openDirectory("Open Output Directory");
-
 				if(inFile != null)
 				{
 					currOutputDirectory = inFile;
@@ -93,24 +103,8 @@ public class Audio implements SceneController
 			}
 		});
 
-		/* Multimedia button to play media view */
-		playButton.setOnAction(new EventHandler<ActionEvent>(){
-			@Override
-			public void handle(ActionEvent e)
-			{
-				playMedia();
-			}
-		});
-		/* Multimedia button to pause media view */
-		pauseButton.setOnAction(new EventHandler<ActionEvent>(){
-			@Override
-			public void handle(ActionEvent e)
-			{
-				pauseMedia();
-			}
-		});
 		/* Convert button to perform conversion */
-		convertButton.setOnAction(new EventHandler<ActionEvent>(){
+		compileButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle(ActionEvent e)
 			{
@@ -120,37 +114,6 @@ public class Audio implements SceneController
 	}
 
 
-	private void loadMedia(File file)
-	{
-		mediaWrapper = new MediaWrapper(file);
-		mediaWrapper.setTimeUpdate(new EventHandler<MediaMarkerEvent>(){
-			@Override
-			public void handle(MediaMarkerEvent mme) 
-			{
-				Duration length = mediaWrapper.getDuration();	
-				Duration pos = mme.getMarker().getValue();
-				double ratio = pos.toSeconds() / (double)length.toSeconds();
-				playSlider.setValue(ratio * (playSlider.getMax() - playSlider.getMin()) + playSlider.getMin());
-			}
-		});
-	}
-
-
-	private void playMedia()
-	{
-		if(mediaWrapper != null)
-		{
-			mediaWrapper.play();
-		}
-	}
-
-	private void pauseMedia()
-	{
-		if(mediaWrapper != null)
-		{
-			mediaWrapper.pause();
-		}
-	}
 	@Override
 	public void setApp(MainApp ma)
 	{

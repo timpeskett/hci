@@ -64,6 +64,11 @@ public class MediaWrapper
 		player.stop();
 	}
 
+	public Duration getDuration()
+	{
+		return player.getMedia().getDuration();
+	}
+
 	private void onReady()
 	{
 		Media mediaFile = player.getMedia();
