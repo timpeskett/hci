@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wizard.controller;
 
 import javafx.application.Platform;
@@ -12,17 +7,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 
-/**
- * FXML Controller class
- *
- * @author Chris
- */
+    /* Name: SettingsController
+     * Description: Controller class for Settings.fxml
+     *              Allows user to modify the state of combo boxes to select
+     *              ffmpeg conversion params.
+     * @author Chris
+     */
 public class SettingsController {
 
     private SimpleIntegerProperty state;
     private CenterPanelController centerPanel;
     private MainController.ProjectType type;
+
+    /* FXML components for injection */
     @FXML
     private Button backBtn;
     @FXML
@@ -72,6 +71,12 @@ public class SettingsController {
     public void init(SimpleIntegerProperty inState, CenterPanelController inCenterPanel) {
         state = inState;
         centerPanel = inCenterPanel;
+
+        formatCombo.setTooltip(new Tooltip("Select a format to convert to"));
+        codecCombo.setTooltip(new Tooltip("Select a codec"));
+        profileCombo.setTooltip(new Tooltip("Select a profile with suitable params"));
+        backBtn.setTooltip(new Tooltip("Return to file settings"));
+        nextBtn.setTooltip(new Tooltip("Continue to finalise options"));
     }
 
     public void backBtnPressed() {

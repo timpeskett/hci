@@ -14,11 +14,7 @@
    <children>
       <VBox alignment="CENTER" layoutX="10.0" layoutY="-2.94921875" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="splashLogo" fitHeight="119.0" fitWidth="365.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../res/splashLogo.png" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="splashLogo" fitHeight="119.0" fitWidth="365.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
             <Label prefHeight="143.0" prefWidth="679.0" text="FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.&#10;&#10;It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation." wrapText="true">
                <font>
                   <Font size="16.0" />

@@ -45,6 +45,10 @@
     -fx-background-repeat: stretch;   
     -fx-background-position: top;
 }
+#splashLogo{
+    -fx-background-image: url("splashLogo.png");
+
+}
 
 
 

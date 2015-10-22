@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wizard.controller;
 
 import java.io.File;
@@ -13,32 +8,31 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
-import java.net.URLDecoder;
 import java.util.List;
 import java.util.Properties;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.prefs.Preferences;
 import javafx.application.Platform;
 import javafx.beans.property.StringProperty;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Unmarshaller;
+import wizard.Wizard;
 import wizard.model.AbstractProject;
 import wizard.model.AudioProject;
 import wizard.model.VideoProject;
 import wizard.model.WizardConfig;
 
+/* Name: MainController
+ * Description: Controller class for Main.fxml
+ *              Main controller is the top-level controller that holds all
+ *              window components together and stores the current project 
+ *              data.
+ * @author Chris
+ */
 public class MainController implements Initializable {
-
 
     /* Different types of projects available to the user */
     public enum ProjectType {
@@ -54,11 +48,13 @@ public class MainController implements Initializable {
     @FXML
     RightPanelController rightPanelController;
 
+    /* FXML components for injection */
     @FXML
     AnchorPane mainAnchor;
 
-    private String currTheme = null;
+    /* Stores current user profile information in memory */
     private WizardConfig config;
+    Properties props = new Properties();
 
     /* The current project being manipulated by the user */
     private AbstractProject currProject;
@@ -70,7 +66,6 @@ public class MainController implements Initializable {
         navPanelController.init(this);
         centerPanelController.init(this);
         rightPanelController.init(this);
-        //mainAnchor.setId("mainWindow");
         setBG(config.getBackground());
 
         /* Save user properties before closing program */
@@ -80,18 +75,23 @@ public class MainController implements Initializable {
             });
         });
 
+        /* Once components are setup, load colour scheme */
         Platform.runLater(() -> {
             setTheme(config.getColourScheme());
         });
     }
 
+    /* Load another stylesheet */
     public void setTheme(String inTheme) {
-        Scene scene = mainAnchor.getScene();
-        scene.getStylesheets().clear();
-        scene.getStylesheets().add(getClass().getResource("../res/" + inTheme + ".css").toExternalForm());
+        Platform.runLater(() -> {
+            Scene scene = mainAnchor.getScene();
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(Wizard.class.getResource("res/" + inTheme + ".css").toExternalForm());
+        });
     }
-    
-    public void setBG(String inBG){
+
+    /* Change the current background of the program*/
+    public void setBG(String inBG) {
         mainAnchor.setId(inBG);
     }
 
@@ -111,7 +111,7 @@ public class MainController implements Initializable {
         currProject = new AudioProject();
         if (!"".equals(config.getDefaultOutputLoc())) {
             setOutputDirectory(new File(config.getDefaultOutputLoc()));
-        } 
+        }
     }
 
     public void createVideoProject() {
@@ -177,7 +177,6 @@ public class MainController implements Initializable {
         } else {
             return ((VideoProject) currProject).getBitrate();
         }
-
     }
 
     public void setBitrate(String inBitrate) {
@@ -261,14 +260,8 @@ public class MainController implements Initializable {
         ((VideoProject) currProject).setAudioForVideo(audioForVideo);
     }
 
-    Properties props = new Properties();
-
     public void saveProperties() {
         try {
-            //     String path = MainController.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-            //  String decodedPath = URLDecoder.decode(path, "UTF-8");
-            //   System.out.println(decodedPath);
-
             String COLOUR_SCHEME = config.getColourScheme();
             String LANGUAGE = config.getLanguage();
             String BACKGROUND = config.getBackground();
@@ -281,10 +274,8 @@ public class MainController implements Initializable {
             props.setProperty("Background", BACKGROUND);
             props.setProperty("Default output location", DEFAULT_OUTPUT_LOC);
             props.setProperty("Display splashscreen?", DISPLAY_SPLASH);
-            //OutputStream out = new FileOutputStream(f);
             OutputStream out = new FileOutputStream("UserConfig.data");
-            //If you wish to make some comments 
-            props.store(out, "User properties");
+            props.store(out, "User properties for FFMpeg Wizard Interface");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -306,11 +297,11 @@ public class MainController implements Initializable {
             config.setDefaultOutputLoc(DEFAULT_OUTPUT_LOC);
             config.setDisplaySplash(DISPLAY_SPLASH);
 
-            System.out.println(COLOUR_SCHEME + " " + LANGUAGE + " " + BACKGROUND + " " + DEFAULT_OUTPUT_LOC + " " + DISPLAY_SPLASH);
+            //System.out.println(COLOUR_SCHEME + " " + LANGUAGE + " " + BACKGROUND + " " + DEFAULT_OUTPUT_LOC + " " + DISPLAY_SPLASH);
         } catch (FileNotFoundException e) {
-            System.out.println("No user data exists, creating default profile.");
+            //System.out.println("No user data exists, creating default profile.");
         } catch (IOException e2) {
-            System.out.println("Error reading userConfig.data");
+            //System.out.println("Error reading userConfig.data");
         }
     }
 

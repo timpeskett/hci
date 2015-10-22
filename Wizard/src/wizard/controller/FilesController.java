@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wizard.controller;
 
 import java.io.File;
@@ -13,25 +8,29 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import wizard.controller.MainController.ProjectType;
 
-/**
- * FXML Controller class
- *
+/* Name: FilesController
+ * Description: Controller class for Files.fxml
+ *              Files is a sub-window of the center panel and controls all
+ *              user input relative to input and output files
  * @author Chris
  */
 public class FilesController {
 
-    private SimpleIntegerProperty state;
+    private SimpleIntegerProperty state; // interger representing current state of program
     private CenterPanelController centerPanel;
-    ProjectType projType;
-    List<File> inputFiles = null;
-    File outputDir = null;
+    private ProjectType projType;
+    private List<File> inputFiles = null;
+    private File outputDir = null;
+    private String newFileName;
 
+    /* FXML components for injection */
     @FXML
     private AnchorPane filesAnchor;
     @FXML
@@ -50,19 +49,30 @@ public class FilesController {
     @FXML
     private Button outputDirectoryBrowse;
 
-    private String newFileName;
-
     void init(SimpleIntegerProperty inState, CenterPanelController inCenterPanel) {
         state = inState;
         centerPanel = inCenterPanel;
+
+        /* Set styles for browse buttons */
         inputFilesBrowse.getStyleClass().clear();
         outputDirectoryBrowse.getStyleClass().clear();
         inputFilesBrowse.setId("browseButtons");
         outputDirectoryBrowse.setId("browseButtons");
+
+        /* Create tooltips for components */
+        inputFilesBrowse.setTooltip(new Tooltip("Select input file(s)"));
+        outputDirectoryBrowse.setTooltip(new Tooltip("Select output file name"));
+        nextBtn.setTooltip(new Tooltip("Continue to project settings"));
+        backBtn.setTooltip(new Tooltip("Go back to project type selection"));
+        inputFilesTextArea.setTooltip(new Tooltip("Click on browse to add files for conversion"));
+        outputDirectoryTextArea.setTooltip(new Tooltip("Click on browse to add output file"));
+        outputFileNameTextArea.setTooltip(new Tooltip("Enter a name for the output file"));
+
+        /* If we have loaded a default output location, use it */
         if (!"".equals(centerPanel.getDefaultOutputLocation())) {
-            System.out.println("asd");
             outputDirectoryTextArea.setText(centerPanel.getDefaultOutputLocation());
         }
+
         nextBtn.setDisable(true);
     }
 
@@ -71,10 +81,22 @@ public class FilesController {
     }
 
     public void nextBtnPressed() {
+        // conditions on pressing next:
+        // 1. new filename length not > than 255
+        // 2. new filename can not exist at output location
         newFileName = outputFileNameTextArea.getText();
         if (!doesFileExist(outputDirectoryTextArea.getText() + "\\" + newFileName.split("\\.")[0])) {
-            centerPanel.setOutputFilename(outputFileNameTextArea.getText());
-            state.set(state.add(1).get());
+            if (newFileName.length() <= 255) { // filename can't be greater than 255 characters
+                centerPanel.setOutputFilename(outputFileNameTextArea.getText());
+                state.set(state.add(1).get());
+            } else {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("New file name is too long.");
+                //alert.setContentText("Please choose a new file name or output directory.");
+
+                alert.showAndWait();
+            }
         } else {
             System.out.println("ERROR: File already exists at " + outputDirectoryTextArea.getText() + "\\" + newFileName);
             Alert alert = new Alert(AlertType.ERROR);
@@ -96,41 +118,49 @@ public class FilesController {
         if (projType == ProjectType.AUDIO_PROJECT) {
             fileChooser.setTitle("Select Audio File(s)");
             fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac"));
+                    new FileChooser.ExtensionFilter("Audio Files", "*.wav", "*.mp3", "*.aac", "*.flac", "*.ogg", "*.wma"));
         } else if (projType == ProjectType.VIDEO_PROJECT) {
             fileChooser.setTitle("Select Video File(s)");
             fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("Video Files", "*.avi", "*.mov", "*.vob", ".flv", ".f4v", ".mkv"));
+                    new FileChooser.ExtensionFilter("Video Files", "*.avi", "*.mpeg", "*.mov", "*.wmv", "*.m4v", "*.vob", "*.ogg", "*.flv", "*.f4v", "*.mkv", "*.mp4", "*.asf"));
         }
         inputFiles = fileChooser.showOpenMultipleDialog(stage);
+        if (inputFiles.size() > 10) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error.");
+            alert.setContentText("Unable to use more than 10 video files.");
+            alert.showAndWait();
+            inputFiles.clear();
+        } else {
 
-        centerPanel.setInputFiles(inputFiles);
+            centerPanel.setInputFiles(inputFiles);
 
-        /* Put all file names in input file text area */
-        if (inputFiles != null) {
-            for (File currFile : inputFiles) {
-                inputFilesTextArea.appendText(currFile.getName());
-                if (!currFile.equals(inputFiles.get(inputFiles.size() - 1))) {
-                    inputFilesTextArea.appendText(", ");
+            /* Put all file names in input file text area */
+            if (inputFiles != null) {
+                newFileName = inputFiles.get(0).getName().split("\\.")[0] + 1;// + "." + inputFiles.get(0).getName().split("\\.")[1];
+                outputFileNameTextArea.setText(newFileName);
+                for (File currFile : inputFiles) {
+                    inputFilesTextArea.appendText(currFile.getName());
+                    if (!currFile.equals(inputFiles.get(inputFiles.size() - 1))) {
+                        inputFilesTextArea.appendText(", ");
+                    }
                 }
             }
-        }
 
-        // for testing, output files selected
-        if (inputFiles != null) {
-            System.out.println("Input files selected by user:");
-            for (int i = 0; i < inputFiles.size(); i++) {
-                System.out.println(inputFiles.get(i).getName());
+            // for testing, output files selected
+            if (inputFiles != null) {
+                System.out.println("Input files selected by user:");
+                for (int i = 0; i < inputFiles.size(); i++) {
+                    System.out.println(inputFiles.get(i).getName());
+                }
             }
-        }
-        // ---------------------------------
-        if (inputFiles != null) {
-            newFileName = inputFiles.get(0).getName().split("\\.")[0] + 1;// + "." + inputFiles.get(0).getName().split("\\.")[1];
-            outputFileNameTextArea.setText(newFileName);
-        }
+            // ---------------------------------
 
-        if (centerPanel.getInputFiles() != null && centerPanel.getOutputFileLoc() != null) {
-            nextBtn.setDisable(false);
+            /* Only enable next button if we have input files as well as an output file location */
+            if (centerPanel.getInputFiles() != null && centerPanel.getOutputFileLoc() != null) {
+                nextBtn.setDisable(false);
+            }
         }
     }
 
@@ -155,7 +185,7 @@ public class FilesController {
         if (outputDir != null) {
             outputDirectoryTextArea.setText(outputDir.getAbsolutePath());
             centerPanel.setOutputDirectory(outputDir);
-            System.out.println("Output file destination: " + outputDir);
+            //System.out.println("Output file destination: " + outputDir);
             if (centerPanel.getInputFiles() != null && centerPanel.getOutputFileLoc() != null) {
                 nextBtn.setDisable(false);
             }

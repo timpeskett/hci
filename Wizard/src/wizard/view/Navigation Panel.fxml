@@ -28,7 +28,7 @@
                                     <Font size="70.0" />
                                  </font>
                               </Label>
-                              <Label text="Type">
+                              <Label fx:id="typeLabel" text="Type">
                                  <HBox.margin>
                                     <Insets top="45.0" />
                                  </HBox.margin>

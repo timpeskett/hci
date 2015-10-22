@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wizard.controller;
 
 import java.io.File;
@@ -13,17 +8,20 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 
-/**
- *
+/* Name: CenterPanelController
+ * Description: Controller class for CenterPanel.fxml.
+ *              The center panel will only display one sub-window at a time 
+ *              and will control the current state of the program.
+ * 
  * @author Chris
  */
 public class CenterPanelController {
 
     private MainController main;
-    SimpleIntegerProperty state = new SimpleIntegerProperty();
+    private SimpleIntegerProperty state = new SimpleIntegerProperty();
 
+    /* FXML components for injection */
     @FXML
     private AnchorPane centerPanel;
 
@@ -57,6 +55,8 @@ public class CenterPanelController {
         settingsController.init(state, this);
         finaliseController.init(state, this);
         centerPanel.getChildren().clear();
+        
+        /* Skip splashscreen if user has selected to avoid it within settings */
         if ("yes".equals(main.getShowSplashscreen())) {
             centerPanel.getChildren().add(splash);
         } else {

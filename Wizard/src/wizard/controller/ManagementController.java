@@ -19,9 +19,10 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import wizard.model.WizardConfig;
 
-/**
- * FXML Controller class
- *
+/* Name: ManagementController
+ * Description: Controller class for Management.fxml
+ *              Management is the settings window that is accessed via clicking
+ *              the manage cog on the right hand navigation menu
  * @author Chris
  */
 public class ManagementController {
@@ -29,6 +30,7 @@ public class ManagementController {
     private RightPanelController rightPanel;
     private WizardConfig config;
 
+    /* FXML components for injection */
     @FXML
     private Button defaultOutputLocBrowse;
     @FXML

@@ -1,4 +1,3 @@
-
 package wizard.model;
 
 public class WizardConfig {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package wizard.controller;
 
 import java.io.File;
@@ -21,29 +16,35 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ProgressIndicator;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javax.swing.SwingWorker;
+import wizard.controller.MainController.ProjectType;
 
-/**
- *
+/* Name: FinaliseController
+ * Description: Controller class for Finalise.fxml
+ *              Finalise is a sub-window of the center panel and displays
+ *              all current user input to the user so they can make their
+ *              decision on if they wish to convert.
  * @author Chris
  */
 public class FinaliseController {
 
     private CenterPanelController centerPanel;
-    private MainController.ProjectType type;
-    private boolean inProgress = false;
-    WorkSimulation work;
+    private ProjectType type;
 
+    private WorkSimulation work;
+    private boolean inProgress = false;
+    private SimpleIntegerProperty state;
+
+    /* FXML components for injection */
     @FXML
     private ProgressBar finaliseProgressBar;
     @FXML
     private ProgressIndicator progressIndicator;
 
-    private SimpleIntegerProperty state;
     @FXML
     private AnchorPane finalisePane;
     @FXML
@@ -99,6 +100,9 @@ public class FinaliseController {
     public void init(SimpleIntegerProperty inState, CenterPanelController inCenterPanel) {
         state = inState;
         centerPanel = inCenterPanel;
+        createBtn.setTooltip(new Tooltip("Start conversion and create new file"));
+        backBtn.setTooltip(new Tooltip("Return to settings"));
+        finaliseProgressBar.setTooltip(new Tooltip("Current progress of conversion"));
     }
 
     public void backBtnPressed() {

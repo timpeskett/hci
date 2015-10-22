@@ -5,15 +5,22 @@
  */
 package wizard.controller;
 
-import java.io.File;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
+/* Name: TypeController
+ * Description: Controller class for Type.fxml
+ *              Allow user to input a video or audio option which defines the 
+ *              current project
+ * @author Chris
+ */
 public class TypeController {
 
     private CenterPanelController centerPanel;
     private SimpleIntegerProperty state;
+
+    /* FXML components for injection */
     @FXML
     private Button Audio;
     @FXML
@@ -33,6 +40,5 @@ public class TypeController {
         centerPanel.createVideoProject();
         state.set(state.add(1).get());
     }
-
 
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -99,7 +100,7 @@
                   </HBox>
                </children>
             </GridPane>
-            <HBox alignment="CENTER" prefHeight="98.0" prefWidth="900.0" spacing="50.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="900.0" spacing="50.0">
                <children>
                   <Button fx:id="backBtn" mnemonicParsing="false" onAction="#backBtnPressed" prefHeight="72.0" prefWidth="176.0" text="Back">
                      <font>
@@ -112,6 +113,9 @@
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>

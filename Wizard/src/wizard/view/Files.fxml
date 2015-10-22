@@ -10,7 +10,7 @@
 
 <AnchorPane id="filesAnchorPane" fx:id="filesAnchor" prefHeight="400.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="wizard.controller.FilesController">
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="900.0">
+      <VBox alignment="TOP_CENTER" prefHeight="400.0" prefWidth="900.0" spacing="10.0">
          <children>
             <Label text="Files">
                <font>
@@ -74,6 +74,9 @@
                      </font>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets top="85.0" />
+               </VBox.margin>
             </HBox>
          </children>
          <opaqueInsets>

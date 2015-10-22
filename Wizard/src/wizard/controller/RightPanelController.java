@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package wizard.controller;
 
 import java.awt.Dimension;
@@ -16,15 +12,19 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import wizard.Wizard;
 
-/**
- *
+/* Name: RightPanelController
+ * Description: Controller class for Right Panel.fxml
+ *              Controller class for the right hand panel that controls the 
+ *              manage and help buttons and icons.
  * @author Chris
  */
 public class RightPanelController {
 
     private MainController main;
 
+    /* FXML components for injection */
     @FXML
     private VBox manageBox;
     @FXML
@@ -43,7 +43,7 @@ public class RightPanelController {
     }
 
     public void manageBoxClicked() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/Management.fxml"));
+        FXMLLoader loader = new FXMLLoader(Wizard.class.getResource("view/Management.fxml"));
         AnchorPane rootLayout = (AnchorPane) loader.load();
 
         // Give the controller access to the main app
