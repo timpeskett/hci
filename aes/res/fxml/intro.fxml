@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Intro">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Intro">
    <children>
 
       <!-- Include the elements common to all scenes -->
@@ -31,7 +31,7 @@
             </HBox>
             <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Tooltip text" />
+                  <Tooltip text="Convert a video from one format to another." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -65,7 +65,7 @@
             </HBox>
             <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Tooltip text" />
+                  <Tooltip text="Convert an audio file from one format to another." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -98,7 +98,7 @@
             </HBox>
             <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Tooltip text" />
+		  <Tooltip text="Concatenate several video/audio files into a single file." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -113,6 +113,10 @@
             </Button>
          </children>
       </HBox>
-      <ChoiceBox fx:id="themeChoiceBox" layoutX="267.0" layoutY="553.0" prefWidth="150.0" styleClass="theme-selector" />
+      <ChoiceBox fx:id="themeChoiceBox" layoutX="267.0" layoutY="553.0" prefWidth="150.0">
+         <styleClass>
+            <String fx:value="theme-selector" />
+            <String fx:value="control" />
+         </styleClass></ChoiceBox>
    </children>
 </AnchorPane>

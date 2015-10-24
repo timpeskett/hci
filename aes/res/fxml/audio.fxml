@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Audio">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Audio">
    <children>
 
       <!-- Include the elements common to all scenes -->
@@ -65,7 +65,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Choose an output directory to store your file in." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -96,7 +96,7 @@
                            </HBox.margin></TextField>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="What would you like your file to be named?" />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -134,7 +134,7 @@
                         </ChoiceBox>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Set the desired audio output format." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -195,7 +195,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Select an input audio file to convert. " />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -257,7 +257,7 @@
                         </Group>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="This audio player allows you to preview your audio file to ensure that you have chosen correctly." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -284,7 +284,7 @@
             <Button fx:id="convertButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Tooltip text" />
+                  <Tooltip text="Convert the input file using the given settings." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">

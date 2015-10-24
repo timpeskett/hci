@@ -313,7 +313,6 @@ public class Converter
 		Process proc;
 		String outLine;
 
-
 		try
 		{
 			proc = new ProcessBuilder("ffmpeg", "-version").start();

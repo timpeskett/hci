@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Video">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Video">
    <children>
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
@@ -69,7 +69,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Select an input video file to convert." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -110,7 +110,7 @@
                            </HBox.margin></Text>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Select the desired output frames per second." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -181,7 +181,7 @@
             </VBox>
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Tooltip text" />
+                  <Tooltip text="This preview box shows the input file that you have selected. Use it to ensure that the you chosen the correct file." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -232,7 +232,7 @@
                            </HBox.margin></Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Choose an output directory to store your file in." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -272,7 +272,7 @@
                            </HBox.margin></Text>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Choose an output frame rate for your video file." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -302,7 +302,7 @@
                            </HBox.margin></TextField>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="What would you like your file to be named?" />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -330,8 +330,8 @@
                            <items>
                               <FXCollections fx:factory="observableArrayList" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
                                  <String fx:value="avi" />
-                                 <String fx:value="mp4" />
-				 <String fx:value="mkv" />
+                                 <String fx:value="mpeg4" />
+				 <String fx:value="matroska" />
                               </FXCollections>
                            </items>
                            <HBox.margin>
@@ -340,7 +340,7 @@
 			 </ChoiceBox>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Set the desired video output format." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -378,7 +378,7 @@
             <Button fx:id="convertButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Tooltip text" />
+                  <Tooltip text="Start the conversion process. It can be cancelled at any time after beginning." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">

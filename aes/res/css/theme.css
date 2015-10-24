@@ -71,9 +71,17 @@
 	-fx-background-color: black;
 }
 
+
 .player-button *
 {
 	-fx-fill: green;
+}
+
+
+/* The button that returns the user to the intro page */
+.back-button
+{
+	-fx-background-color: linear-gradient(to right, black, green);
 }
 
 .hint-button
@@ -137,6 +145,8 @@ Button
 	-fx-border-width: 2;
 }
 
+
+/* The progress of the preview media file. */
 .play-progress-pane
 {
 	-fx-background-color: green;
@@ -144,6 +154,18 @@ Button
 	-fx-border-width: 2;
 }
 
+.play-progress-pane .track
+{
+	-fx-background-color: teal;
+}
+
+.play-progress-pane .bar
+{
+	-fx-background-color: skyblue;
+}
+
+
+/* The percentage of the current conversion */
 .percent-counter
 {
 	-fx-border-color: green;
@@ -158,10 +180,14 @@ Button
 
 .tooltip
 {
-        -fx-background-color: yellow;
+        -fx-background-color: lightblue;
         -fx-border-color: green;
+	-fx-text-fill: black;
 }
 
+
+/* The page banner that sits vertically on the left of all
+ * of the conversion pages */
 .vertical-page-banner
 {
 	-fx-border-color: green;
@@ -169,22 +195,9 @@ Button
 }
 
 
-.back-button
-{
-	-fx-background-color: linear-gradient(to right, black, green);
-}
-
-/*
+/* The progress bar on each page */
 .convert-progress-bar
 {
-	
-}*/
-
-
-
-.bordered
-{
-	-fx-border-color: green;
-	-fx-border-width: 2;
-	/*-fx-border-insets: 1, 1, 1, 1;*/
+	-fx-progress-color: red;
 }
+

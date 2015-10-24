@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Compile">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Compile">
    <children>
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
@@ -56,7 +56,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Select another input file to concatenate." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -80,7 +80,7 @@
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Remove an input file from the list." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -123,7 +123,7 @@
                         </Text>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Choose the input framerate for your conversion." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -175,13 +175,13 @@
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></TextField>
-                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
+                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" styleClass="normal-button" text="Browse...">
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Choose an output directory to store your file in." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -210,7 +210,7 @@
                               <fx:include source="framerates.fxml" />
                            </items>
                            <HBox.margin>
-                              <Insets />
+                              <Insets left="12.0" />
                            </HBox.margin></ChoiceBox>
                         <Text fill="#05d4eb" strokeType="OUTSIDE" strokeWidth="0.0" text="fps">
                            <font>
@@ -221,7 +221,7 @@
                            </HBox.margin></Text>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Choose an output frame rate for your concatenated file." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -245,10 +245,13 @@
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Text>
-                        <TextField fx:id="outputBasename" styleClass="control" />
+                        <TextField fx:id="outputBasename" styleClass="control">
+                           <HBox.margin>
+                              <Insets left="12.0" />
+                           </HBox.margin></TextField>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="What would you like your file to be named?" />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -276,14 +279,17 @@
                            <items>
                               <FXCollections fx:factory="observableArrayList" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
                                  <String fx:value="avi" />
-                                 <String fx:value="mp4" />
-                                 <String fx:value="mkv" />
+                                 <String fx:value="mpeg4" />
+                                 <String fx:value="matroska" />
                               </FXCollections>
                            </items>
+                           <HBox.margin>
+                              <Insets left="12.0" />
+                           </HBox.margin>
                         </ChoiceBox>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Tooltip text" />
+                              <Tooltip text="Set the desired output format." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -308,7 +314,7 @@
             </VBox>
          </children>
       </HBox>
-      <Pane layoutX="103.0" layoutY="476.0" prefHeight="27.0" prefWidth="127.0" styleClass="percent-counter">
+      <Pane layoutX="103.0" layoutY="476.0" prefHeight="27.0" prefWidth="145.0" styleClass="percent-counter">
          <children>
             <Text fx:id="convertPercentage" fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
                <font>
@@ -321,7 +327,7 @@
             <Button fx:id="compileButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Compile" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Tooltip text" />
+                  <Tooltip text="Compile the given input files into a single output file." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
