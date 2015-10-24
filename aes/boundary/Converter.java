@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import java.io.File;
 
 
 
@@ -30,6 +31,8 @@ public class Converter
 	private ConvertListener listener;
 
 	private boolean converting;
+	private boolean error;
+	private boolean cancel;
 
 	/* ffmpeg version string */
 	private String version;
@@ -139,6 +142,9 @@ public class Converter
 		/* Build process and execute thread */
 		builder = new ProcessBuilder(command);
 		ffmpeg = builder.start();
+		converting = true;
+		error = false;
+		cancel = false;
 
 		/* Start thread to inform when exited */
 		new Thread(new Runnable(){
@@ -146,18 +152,68 @@ public class Converter
 			public void run(){
 				try
 				{
-					converting = true;
 					ffmpeg.waitFor();
-					if(listener != null)
+					if(ffmpeg.exitValue() != 0)
 					{
-						listener.onFinish(ffmpeg.exitValue());
+						error = true;
 					}
 					converting = false;
-					ffmpeg = null;
 				}
 				catch(Exception e)
 				{
 					/* Do nothing */
+				}
+			}
+		}).start();
+
+		/* Start thread to inform on progress */
+		new Thread(new Runnable(){
+			@Override
+			public void run(){
+				int inFileLength = 0;
+				int runTime = 0;
+				final int sleepTime = 100;
+				double progress;
+				
+				for(FileParams fp : inputs.values())
+				{
+					File inFile = new File(fp.fileName);
+					inFileLength += inFile.length();
+				}
+
+				do
+				{
+					progress = (runTime / 1000.0) / (2 * inFileLength / (1024.0 * 1024.0));
+					if(progress > 1.0)
+					{
+						progress = 1.0;
+					}
+					if(listener != null)
+					{
+						listener.onProgress(progress);
+					}
+
+					try
+					{
+						Thread.sleep(sleepTime);
+					}
+					catch(Exception e)
+					{
+						System.out.println("Thread cannot sleep. Terminating...");
+						converting = false;
+					}
+					runTime += sleepTime;
+				}while((progress < 1.0 && !error && !cancel) || converting);
+				if(listener != null)
+				{
+					if(cancel)
+					{
+						listener.onCancel();
+					}
+					else
+					{
+						listener.onFinish(ffmpeg.exitValue());
+					}
 				}
 			}
 		}).start();
@@ -179,6 +235,7 @@ public class Converter
 
 	public void cancel()
 	{
+		cancel = true;
 		if(converting)
 		{
 			ffmpeg.destroy();

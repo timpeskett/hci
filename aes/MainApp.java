@@ -5,6 +5,7 @@ import aes.boundary.ConvertListener;
 import aes.boundary.ConvertParamsException;
 import aes.boundary.ConversionInProcessException;
 
+import javafx.application.Platform;
 import javafx.application.Application;
 
 import javafx.scene.Scene;
@@ -129,8 +130,11 @@ public class MainApp extends Application
 		
 	public void cancelConversion()
 	{
-		converter.cancel();
-		converter = null;
+		if(converter != null)
+		{
+			converter.cancel();
+			converter = null;
+		}
 	}
 
 	public File openFile(String title)
@@ -154,11 +158,27 @@ public class MainApp extends Application
 		return fc.showSaveDialog(mainStage);
 	}
 
+	public void tellUser(String message)
+	{
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run(){
+				Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
+				alert.show();
+			}
+		});
+	}
+
 	public void alertUser(String message)
 	{
-		Alert alert = new Alert(Alert.AlertType.WARNING, message);
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run(){
+				Alert alert = new Alert(Alert.AlertType.WARNING, message);
+				alert.show();
+			}
+		});
 
-		alert.show();
 	}
 	
 	public void gotoIntro()

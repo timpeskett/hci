@@ -121,7 +121,6 @@
                         <ChoiceBox fx:id="filetypeChoiceBox" prefHeight="29.0" prefWidth="153.0" styleClass="control">
                            <items>
                               <FXCollections xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:factory="observableArrayList">
-                                 <String fx:value="Default" />
                                  <String fx:value="mp3" />
                                  <String fx:value="wav" />
                               </FXCollections>

@@ -6,7 +6,9 @@ import aes.boundary.ConvertListener;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.io.File;
+import java.io.IOException;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
@@ -116,9 +118,19 @@ public class Audio implements SceneController, ConvertListener
 			@Override
 			public void handle(ActionEvent e)
 			{
-				convert();
+				if(convertButton.getText().equals("Cancel"))
+				{
+					ma.cancelConversion();
+					
+				}
+				else
+				{
+					convert();
+				}
 			}
 		});
+
+		reset();
 	}
 
 
@@ -132,7 +144,12 @@ public class Audio implements SceneController, ConvertListener
 				Duration length = mediaWrapper.getDuration();	
 				Duration pos = mme.getMarker().getValue();
 				double ratio = pos.toSeconds() / (double)length.toSeconds();
-				playSlider.setValue(ratio * (playSlider.getMax() - playSlider.getMin()) + playSlider.getMin());
+				Platform.runLater(new Runnable(){
+					@Override
+					public void run(){
+						playSlider.setValue(ratio * (playSlider.getMax() - playSlider.getMin()) + playSlider.getMin());
+					}
+				});
 			}
 		});
 	}
@@ -188,10 +205,10 @@ public class Audio implements SceneController, ConvertListener
 			{
 				ma.convertAudio(co, this);
 			}
-			catch(Exception e)
+			catch(IOException e)
 			{
-				System.out.println(e.getMessage());
-				e.printStackTrace();
+				ma.alertUser("A recent version of FFmpeg was not found on your system");
+				onCancel();
 			}
 		}
 	}
@@ -200,21 +217,50 @@ public class Audio implements SceneController, ConvertListener
 	@Override
 	public void onFinish(int exitValue)
 	{
-		System.out.println("In on finish");
+		if(exitValue == 0)
+		{
+			ma.tellUser("Conversion complete!");
+		}
+		else if(exitValue == 255)
+		{
+			/* Cancel */
+			System.out.println("Skip diddly bop");
+		}
+		else
+		{
+			ma.alertUser("Conversion could not be complete!");
+		}
+		reset();
 	}
 
 	@Override
 	public void onCancel()
 	{
-		/* Do nothing */
+		reset();
 	}
 
 	@Override
 	public void onProgress(double progress)
 	{
-		/*@FXML private Text convertPercentage;
-		@FXML private ProgressBar progressBar;*/
-		/* Do nothing */
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run(){
+				convertPercentage.setText(String.format("%d%% Complete", (int)(progress*100)));
+				progressBar.setProgress(progress);
+			}
+		});
+	}
+
+	private void reset()
+	{
+		Platform.runLater(new Runnable(){
+			@Override
+			public void run(){
+				convertButton.setText("Convert");
+				convertPercentage.setText("0% Complete");
+				progressBar.setProgress(0.0);
+			}
+		});
 	}
 
 
