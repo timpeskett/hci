@@ -303,27 +303,33 @@
          <children>
             <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true" rotate="-90.0" styleClass="vertical-page-banner">
                <image>
-                  <Image url="@../img/IntroAudioNoBorder.png" />
+                  <Image url="@../img/AudioBanner.png" />
                </image>
                <VBox.margin>
                   <Insets left="-175.0" top="175.0" />
                </VBox.margin>
             </ImageView>
-            <Group>
-               <children>
-                  <Button fx:id="backButton" alignment="CENTER" layoutY="522.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="70.0" styleClass="back-button" text="Back" />
-                  <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="9.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/back.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <VBox.margin>
-                  <Insets top="174.0" />
-               </VBox.margin>
-            </Group>
          </children>
       </VBox>
       <ProgressBar fx:id="progressBar" layoutX="114.0" layoutY="528.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
+      <StackPane layoutX="-172.0" layoutY="281.0" rotate="-90.0" styleClass="banner-button">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/AudioBanner.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Audio" />
+         </children>
+      </StackPane>
+      <Button fx:id="backButton" alignment="CENTER" layoutX="2.0" layoutY="522.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="74.0" styleClass="back-button">
+         <graphic>
+            <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

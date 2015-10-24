@@ -19,6 +19,7 @@ import javafx.scene.control.Slider;
 import javafx.scene.text.Text;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.MediaMarkerEvent;
+import javafx.scene.media.MediaException;
 
 import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
@@ -140,24 +141,31 @@ public class Video implements SceneController, ConvertListener
 
 	private void loadMedia(File file)
 	{
-		mediaWrapper = new MediaWrapper(file);
-		mediaWrapper.setTimeUpdate(new EventHandler<MediaMarkerEvent>(){
-			@Override
-			public void handle(MediaMarkerEvent mme) 
-			{
-				Duration length = mediaWrapper.getDuration();	
-				Duration pos = mme.getMarker().getValue();
-				double ratio = pos.toSeconds() / (double)length.toSeconds();
-				Platform.runLater(new Runnable(){
-					@Override
-					public void run(){
-						playTime.setText(String.format("%02d:%02d", (int)pos.toMinutes(), (int)pos.toSeconds() % 60));
-						playProgress.setProgress(ratio);
-					}
-				});
-			}
-		});
-		mediaWrapper.setMediaView(mediaView);
+		try
+		{
+			mediaWrapper = new MediaWrapper(file);
+			mediaWrapper.setTimeUpdate(new EventHandler<MediaMarkerEvent>(){
+				@Override
+				public void handle(MediaMarkerEvent mme) 
+				{
+					Duration length = mediaWrapper.getDuration();	
+					Duration pos = mme.getMarker().getValue();
+					double ratio = pos.toSeconds() / (double)length.toSeconds();
+					Platform.runLater(new Runnable(){
+						@Override
+						public void run(){
+							playTime.setText(String.format("%02d:%02d", (int)pos.toMinutes(), (int)pos.toSeconds() % 60));
+							playProgress.setProgress(ratio);
+						}
+					});
+				}
+			});
+			mediaWrapper.setMediaView(mediaView);
+		}
+		catch(MediaException me)
+		{
+			ma.alertUser("Unable to preview media.");
+		}
 	}
 
 
@@ -215,6 +223,7 @@ public class Video implements SceneController, ConvertListener
 			try
 			{
 				ma.convertVideo(co, this);
+				backButton.setDisable(true);
 			}
 			catch(IOException e)
 			{
@@ -231,11 +240,6 @@ public class Video implements SceneController, ConvertListener
 		if(exitValue == 0)
 		{
 			ma.tellUser("Conversion complete!");
-		}
-		else if(exitValue == 255)
-		{
-			/* Cancel */
-			System.out.println("Skip diddly bop");
 		}
 		else
 		{
@@ -267,6 +271,7 @@ public class Video implements SceneController, ConvertListener
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
+				backButton.setDisable(false);
 				convertButton.setText("Convert");
 				convertPercentage.setText("0% Complete");
 				progressBar.setProgress(0.0);

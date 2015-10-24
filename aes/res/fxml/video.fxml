@@ -17,6 +17,16 @@
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
       <fx:include source="menu.fxml" />
+      <StackPane layoutX="-172.0" layoutY="281.0" rotate="-90.0" styleClass="banner-button">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/VideoBanner.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Video" />
+         </children>
+      </StackPane>
 
       <HBox layoutX="101.0" layoutY="130.0" prefHeight="152.0" prefWidth="534.0" styleClass="params-container">
          <children>
@@ -82,7 +92,8 @@
                            </font>
                            <HBox.margin>
                               <Insets left="2.0" />
-                           </HBox.margin></Text>
+                           </HBox.margin>
+                        </Text>
                         <ChoiceBox fx:id="inputFramerateChoiceBox" prefHeight="26.0" prefWidth="94.0" styleClass="control">
                            <items>
                               <fx:include source="framerates.fxml" />
@@ -382,31 +393,15 @@
             </Button>
          </children>
       </HBox>
-      <VBox layoutX="3.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="70.0">
-         <children>
-            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true" rotate="-90.0">
-               <image>
-                  <Image url="@../img/IntroVideoNoBorder.png" />
-               </image>
-               <VBox.margin>
-                  <Insets left="-175.0" top="175.0" />
-               </VBox.margin>
-            </ImageView>
-            <Group>
-               <children>
-                  <Button fx:id="backButton" alignment="CENTER" layoutY="522.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="70.0" styleClass="back-button" text="Back" />
-                  <ImageView fitHeight="51.0" fitWidth="70.0" layoutX="9.0" layoutY="524.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/back.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <VBox.margin>
-                  <Insets top="174.0" />
-               </VBox.margin>
-            </Group>
-         </children>
-      </VBox>
       <ProgressBar fx:id="progressBar" layoutX="103.0" layoutY="524.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" styleClass="convert-progress-bar" />
+      <Button fx:id="backButton" alignment="CENTER" layoutX="2.0" layoutY="522.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="74.0" styleClass="back-button">
+         <graphic>
+            <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

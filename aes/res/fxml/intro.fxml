@@ -17,11 +17,16 @@
          <children>
             <HBox fx:id="videoBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
                <children>
-                  <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
-                     <image>
-                        <Image url="@../img/IntroVideoNoBorder.png" />
-                     </image>
-                  </ImageView>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="banner-button">
+                           <image>
+                              <Image url="@../img/VideoBanner.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Video Conversion" />
+                     </children>
+                  </StackPane>
                </children>
             </HBox>
             <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
@@ -46,11 +51,16 @@
          <children>
             <HBox fx:id="audioBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
                <children>
-                  <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="bordered">
-                     <image>
-                        <Image url="@../img/IntroAudioNoBorder.png" />
-                     </image>
-                  </ImageView>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="113.0" fitWidth="482.0" pickOnBounds="true" preserveRatio="true" styleClass="banner-button">
+                           <image>
+                              <Image url="@../img/AudioBanner.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Audio Conversion" />
+                     </children>
+                  </StackPane>
                </children>
             </HBox>
             <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
@@ -74,11 +84,16 @@
          <children>
             <HBox fx:id="compileBannerHbox" prefHeight="100.0" prefWidth="200.0" styleClass="banner-button">
                <children>
-                  <ImageView fitHeight="96.0" fitWidth="482.0" pickOnBounds="true" styleClass="bordered">
-                     <image>
-                        <Image url="@../img/IntroFileCompilationNoBorder.png" />
-                     </image>
-                  </ImageView>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="96.0" fitWidth="482.0" pickOnBounds="true" styleClass="banner-button">
+                           <image>
+                              <Image url="@../img/CompileBanner.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="File Compilation" />
+                     </children>
+                  </StackPane>
                </children>
             </HBox>
             <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">

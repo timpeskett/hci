@@ -18,8 +18,7 @@ function ffmpeg_install
 		--disable-txtpages\
 	       	--enable-gpl\
 	       	--enable-nonfree\
-	       	--enable-libx264\
-		--enable-libopenh264
+	       	--enable-libx264
 	make
 	make install
 	cd "$CURDIR"

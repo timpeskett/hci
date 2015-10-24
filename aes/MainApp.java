@@ -42,9 +42,10 @@ public class MainApp extends Application
 		/* Create a logger to log info/warn/error messages */
 		logger = Logger.getLogger(MainApp.class.getName());
 
+		/* Create an association between theme names and
+		 * themes */
 		themes = new HashMap<String, String>();
 		themes.put("Dark", "/aes/res/css/theme.css");
-		themes.put("None", "");
 
 		themeName = "Dark";
 

@@ -67,8 +67,6 @@ public class Intro implements SceneController
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue)
 			{
 				ma.setTheme(newValue);
-				System.out.println("Old: " + oldValue);
-				System.out.println("New: " + newValue);
 			}
 		});
 	}
