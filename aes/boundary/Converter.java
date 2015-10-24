@@ -29,6 +29,8 @@ public class Converter
 	private ProcessBuilder builder;
 	private ConvertListener listener;
 
+	private boolean converting;
+
 	/* ffmpeg version string */
 	private String version;
 
@@ -118,6 +120,8 @@ public class Converter
 		inputs = new HashMap<String, FileParams>();
 
 		version = getFFmpegVersion();
+
+		converting = false;
 	}
 
 
@@ -127,7 +131,7 @@ public class Converter
 		String c = "";
 
 		/* Check not already converting */
-		if(ffmpeg != null)
+		if(converting)
 		{
 			throw new ConversionInProcessException("One converter cannot perform two simultaneous conversions.");
 		}
@@ -142,11 +146,14 @@ public class Converter
 			public void run(){
 				try
 				{
+					converting = true;
 					ffmpeg.waitFor();
 					if(listener != null)
 					{
 						listener.onFinish(ffmpeg.exitValue());
 					}
+					converting = false;
+					ffmpeg = null;
 				}
 				catch(Exception e)
 				{
@@ -165,18 +172,19 @@ public class Converter
 	}
 
 
-/*
+	public boolean isConverting()
+	{
+		return converting;
+	}
+
 	public void cancel()
 	{
-
+		if(converting)
+		{
+			ffmpeg.destroy();
+		}
 	}
 
-
-	public void onProgressUpdate()
-	{
-
-	}
-*/
 
 	public void setConvertListener(ConvertListener listener)
 	{

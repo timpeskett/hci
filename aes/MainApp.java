@@ -1,5 +1,10 @@
 package aes;
 
+import aes.boundary.Converter;
+import aes.boundary.ConvertListener;
+import aes.boundary.ConvertParamsException;
+import aes.boundary.ConversionInProcessException;
+
 import javafx.application.Application;
 
 import javafx.scene.Scene;
@@ -24,6 +29,7 @@ public class MainApp extends Application
 {
 	private Stage mainStage;
 	private Logger logger;
+	private Converter converter;
 
 	@Override
 	public void start(Stage stage)
@@ -46,15 +52,86 @@ public class MainApp extends Application
 	}
 
 
-	public void convertVideo(/*ConvertOptions co*/)
+	public void convertVideo(ConvertOptions co, ConvertListener cl) throws IOException
 	{
+		try
+		{
+			converter = new Converter();
+
+			converter.setConvertListener(cl);
+
+			File inFile = co.getInFile(0);
+			File outFile = co.getOutFile();
+			String inFilePath = inFile.getAbsolutePath();
+
+			converter.addInputFile(inFilePath);
+			converter.setOutputFile(outFile.getAbsolutePath());
+
+			if(co.hasOutFramerate())
+			{
+				converter.setFrameRate(co.getOutFramerate().intValue());
+			}
+
+			if(co.hasFileType())
+			{
+				converter.setFormat(co.getFileType());
+			}
+
+			converter.convert();
+		}
+		/* We can safely catch these exceptions because
+		 * the data is validated
+		 */
+		catch(ConvertParamsException cpe)
+		{
+		}
+		catch(ConversionInProcessException cipe)
+		{
+		}
 	}
 
 
-	public void convertAudio(/*ConvertOptions co*/)
+	public void convertAudio(ConvertOptions co, ConvertListener cl)throws IOException
 	{
+		try
+		{
+			converter = new Converter();
+
+			converter.setConvertListener(cl);
+
+			File inFile = co.getInFile(0);
+			File outFile = co.getOutFile();
+			String inFilePath = inFile.getAbsolutePath();
+
+			converter.addInputFile(inFilePath);
+			converter.setOutputFile(outFile.getAbsolutePath());
+
+			if(co.hasFileType())
+			{
+				converter.setFormat(co.getFileType());
+			}
+
+			converter.convert();
+		}
+		catch(ConvertParamsException cpe)
+		{
+		}
+		catch(ConversionInProcessException cipe)
+		{
+		}
 	}
 
+
+	public void concatFiles(ConvertOptions co)
+	{
+		/* Not yet implemented */
+	}
+		
+	public void cancelConversion()
+	{
+		converter.cancel();
+		converter = null;
+	}
 
 	public File openFile(String title)
 	{

@@ -24,14 +24,21 @@
                   </ImageView>
                </children>
             </HBox>
-            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/HintButton.png" />
-               </image>
+            <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+               <tooltip>
+                  <Tooltip text="Tooltip text" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/HintButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <HBox.margin>
                   <Insets top="86.0" />
                </HBox.margin>
-            </ImageView>
+            </Button>
          </children>
       </HBox>
 
@@ -46,14 +53,21 @@
                   </ImageView>
                </children>
             </HBox>
-            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/HintButton.png" />
-               </image>
+            <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+               <tooltip>
+                  <Tooltip text="Tooltip text" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/HintButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <HBox.margin>
                   <Insets top="86.0" />
                </HBox.margin>
-            </ImageView>
+            </Button>
          </children>
       </HBox>
       <HBox layoutX="91.0" layoutY="430.0">
@@ -67,14 +81,21 @@
                   </ImageView>
                </children>
             </HBox>
-            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/HintButton.png" />
-               </image>
+            <Button layoutX="595.0" layoutY="120.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+               <tooltip>
+                  <Tooltip text="Tooltip text" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/HintButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <HBox.margin>
                   <Insets top="86.0" />
                </HBox.margin>
-            </ImageView>
+            </Button>
          </children>
       </HBox>
    </children>

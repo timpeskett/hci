@@ -1,6 +1,7 @@
 package aes;
 
 import aes.boundary.MediaWrapper;
+import aes.boundary.ConvertListener;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,7 +22,8 @@ import javafx.event.ActionEvent;
 
 import javafx.util.Duration;
 
-public class Audio implements SceneController
+
+public class Audio implements SceneController, ConvertListener
 {
 	private MainApp ma;
 	private File currInputFile, currOutputDirectory, currOutputBasename;
@@ -114,7 +116,7 @@ public class Audio implements SceneController
 			@Override
 			public void handle(ActionEvent e)
 			{
-				/* Do things */
+				convert();
 			}
 		});
 	}
@@ -151,6 +153,71 @@ public class Audio implements SceneController
 			mediaWrapper.pause();
 		}
 	}
+
+	
+	private void convert()
+	{
+		File outFile = new File(currOutputDirectory, outputBasename.getText());
+		String fileType = (String)filetypeChoiceBox.getValue();
+		
+		if(outFile.exists())
+		{
+			ma.alertUser("Output file already exists.");
+		}
+		else if(outFile.isDirectory())
+		{
+			ma.alertUser("Output file cannot be a directory.");
+		}
+		else if(fileType == null)
+		{
+			ma.alertUser("Must specify filetype.");
+		}
+		else if(!currInputFile.exists())
+		{
+			ma.alertUser("Specified input file does not exist.");
+		}
+		else
+		{
+			ConvertOptions co;
+
+			co = new ConvertOptions(outFile, currInputFile);
+			co.setFileType(fileType);
+
+			convertButton.setText("Cancel");
+			try
+			{
+				ma.convertAudio(co, this);
+			}
+			catch(Exception e)
+			{
+				System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+		}
+	}
+
+
+	@Override
+	public void onFinish(int exitValue)
+	{
+		System.out.println("In on finish");
+	}
+
+	@Override
+	public void onCancel()
+	{
+		/* Do nothing */
+	}
+
+	@Override
+	public void onProgress(double progress)
+	{
+		/*@FXML private Text convertPercentage;
+		@FXML private ProgressBar progressBar;*/
+		/* Do nothing */
+	}
+
+
 	@Override
 	public void setApp(MainApp ma)
 	{

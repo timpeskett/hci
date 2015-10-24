@@ -63,6 +63,11 @@
 	-fx-background-color: black;
 }
 
+.hint-button
+{
+        -fx-background-color: rgba(0,0,0,0);
+}
+
 
 Button
 {
@@ -136,6 +141,15 @@ Button
 {
 	-fx-fill: lightblue;
 }
+
+
+.tooltip
+{
+        -fx-background-color: yellow;
+        -fx-border-color: green;
+}
+
+
 
 .back-button
 {

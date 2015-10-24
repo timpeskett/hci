@@ -9,6 +9,7 @@
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.*?>
 
 <AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" styleClass="bordered" stylesheets="@../css/theme.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Audio">
    <children>
@@ -62,14 +63,21 @@
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
                         </Button>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/HintButton.png" />
-                           </image>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+                           <tooltip>
+                              <Tooltip text="Tooltip text" />
+                           </tooltip>
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/HintButton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                            <HBox.margin>
                               <Insets left="1.0" top="16.0" />
                            </HBox.margin>
-                        </ImageView>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="41.0" prefHeight="31.0" prefWidth="420.0">
@@ -83,14 +91,21 @@
                            </HBox.margin>
                         </Text>
                         <TextField fx:id="outputBasename" styleClass="control" />
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/HintButton.png" />
-                           </image>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+                           <tooltip>
+                              <Tooltip text="Tooltip text" />
+                           </tooltip>
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/HintButton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                            <HBox.margin>
                               <Insets left="1.0" top="16.0" />
                            </HBox.margin>
-                        </ImageView>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox layoutX="10.0" layoutY="72.0" prefHeight="31.0" prefWidth="420.0">
@@ -103,15 +118,30 @@
                               <Insets left="2.0" />
                            </HBox.margin>
                         </Text>
-                        <ChoiceBox fx:id="filetypeChoiceBox" prefHeight="29.0" prefWidth="153.0" styleClass="control" />
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/HintButton.png" />
-                           </image>
+                        <ChoiceBox fx:id="filetypeChoiceBox" prefHeight="29.0" prefWidth="153.0" styleClass="control">
+                           <items>
+                              <FXCollections xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:factory="observableArrayList">
+                                 <String fx:value="Default" />
+                                 <String fx:value="mp3" />
+                                 <String fx:value="wav" />
+                              </FXCollections>
+                           </items>
+                        </ChoiceBox>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+                           <tooltip>
+                              <Tooltip text="Tooltip text" />
+                           </tooltip>
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/HintButton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                            <HBox.margin>
                               <Insets left="1.0" top="16.0" />
                            </HBox.margin>
-                        </ImageView>
+                        </Button>
                      </children>
                   </HBox>
                </children>
@@ -158,14 +188,21 @@
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
                         </Button>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/HintButton.png" />
-                           </image>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+                           <tooltip>
+                              <Tooltip text="Tooltip text" />
+                           </tooltip>
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/HintButton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                            <HBox.margin>
                               <Insets left="1.0" top="16.0" />
                            </HBox.margin>
-                        </ImageView>
+                        </Button>
                      </children>
                   </HBox>
                   <HBox prefHeight="100.0" prefWidth="200.0">
@@ -212,14 +249,21 @@
                               <Insets />
                            </HBox.margin>
                         </Group>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../img/HintButton.png" />
-                           </image>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+                           <tooltip>
+                              <Tooltip text="Tooltip text" />
+                           </tooltip>
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/HintButton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                            <HBox.margin>
                               <Insets top="9.0" />
                            </HBox.margin>
-                        </ImageView>
+                        </Button>
                      </children>
                   </HBox>
                </children>
@@ -232,14 +276,21 @@
       <HBox layoutX="538.0" layoutY="482.0" prefHeight="29.0" prefWidth="95.0">
          <children>
             <Button fx:id="convertButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
-            <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/HintButton.png" />
-               </image>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+               <tooltip>
+                  <Tooltip text="Tooltip text" />
+               </tooltip>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/HintButton.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
                <HBox.margin>
                   <Insets left="1.0" top="14.0" />
                </HBox.margin>
-            </ImageView>
+            </Button>
          </children>
       </HBox>
       <VBox layoutX="3.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="70.0">
