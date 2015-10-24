@@ -55,12 +55,38 @@
 	-fx-border-width: 2;
 }
 
+.banner-button Text
+{
+	-fx-fill: #00CC00;
+	-fx-font-size: 34pt;
+	-fx-font-weight: bold;
+	-fx-effect: dropshadow(gaussian, black, 10, 0.1, 6, 0);
+}
+
 /* The multimedia player buttons. Play and pause */
 .player-button
 {
 	-fx-border-color: green;
 	-fx-border-width: 2;
 	-fx-background-color: black;
+}
+
+
+.player-button *
+{
+	-fx-fill: green;
+}
+
+
+/* The button that returns the user to the intro page */
+.back-button
+{
+	-fx-background-color: linear-gradient(to right, black, green);
+}
+
+.hint-button
+{
+        -fx-background-color: rgba(0,0,0,0);
 }
 
 
@@ -91,19 +117,6 @@ Button
 /* MISCELLANEOUS ELEMENTS */
 
 
-/* The bar container */
-.progress-bar
-{
-	-fx-background-color: lightblue;
-}
-
-/* The actual bar */
-.progress-bar Pane
-{
-	-fx-background-color: linear-gradient(to right, green, lightgreen);
-}
-
-
 .params-heading
 {
 	-fx-border-color: green;
@@ -125,7 +138,34 @@ Button
 	-fx-background-color: darkblue;
 }
 
+.video-player-pane
+{
+	-fx-background-color: white;
+	-fx-border-color: lightgreen;
+	-fx-border-width: 2;
+}
 
+
+/* The progress of the preview media file. */
+.play-progress-pane
+{
+	-fx-background-color: green;
+	-fx-border-color: lightgreen;
+	-fx-border-width: 2;
+}
+
+.play-progress-pane .track
+{
+	-fx-background-color: teal;
+}
+
+.play-progress-pane .bar
+{
+	-fx-background-color: skyblue;
+}
+
+
+/* The percentage of the current conversion */
 .percent-counter
 {
 	-fx-border-color: green;
@@ -137,15 +177,27 @@ Button
 	-fx-fill: lightblue;
 }
 
-.back-button
+
+.tooltip
 {
-	-fx-background-color: linear-gradient(to right, black, green);
+        -fx-background-color: lightblue;
+        -fx-border-color: green;
+	-fx-text-fill: black;
 }
 
 
-.bordered
+/* The page banner that sits vertically on the left of all
+ * of the conversion pages */
+.vertical-page-banner
 {
 	-fx-border-color: green;
 	-fx-border-width: 2;
-	/*-fx-border-insets: 1, 1, 1, 1;*/
 }
+
+
+/* The progress bar on each page */
+.convert-progress-bar
+{
+	-fx-progress-color: red;
+}
+

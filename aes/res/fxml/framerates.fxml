@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+
+<!-- A list of framerates that can be chosen. Used in
+     multiple choiceboxes throughout the interface -->
+
+<FXCollections xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:factory="observableArrayList">
+   <String fx:value="Default" />
+   <String fx:value="12" />
+   <String fx:value="24" />
+   <String fx:value="30" />
+   <String fx:value="48" />
+   <String fx:value="60" />
+</FXCollections>

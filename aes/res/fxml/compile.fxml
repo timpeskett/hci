@@ -12,23 +12,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Video">
+<AnchorPane id="main-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="659.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aes.Compile">
    <children>
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
       <fx:include source="menu.fxml" />
-      <StackPane layoutX="-172.0" layoutY="281.0" rotate="-90.0" styleClass="banner-button">
-         <children>
-            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../img/VideoBanner.png" />
-               </image>
-            </ImageView>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Video" />
-         </children>
-      </StackPane>
-
-      <HBox layoutX="101.0" layoutY="130.0" prefHeight="152.0" prefWidth="534.0" styleClass="params-container">
+      <HBox layoutX="101.0" layoutY="138.0" prefHeight="131.0" prefWidth="521.0" styleClass="params-container">
          <children>
             <Pane prefHeight="200.0" prefWidth="60.0">
                <children>
@@ -43,33 +32,31 @@
                   <String fx:value="input-params-heading" />
                </styleClass>
             </Pane>
-            <VBox prefHeight="140.0" prefWidth="269.0">
+            <HBox prefHeight="29.0" prefWidth="252.0">
                <children>
-                  <HBox prefHeight="29.0" prefWidth="335.0">
+                  <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="Files: ">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="2.0" top="2.0" />
+                     </HBox.margin>
+                  </Text>
+                  <ListView fx:id="inputListView" prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+            <VBox prefHeight="122.0" prefWidth="217.0" spacing="10.0">
+               <children>
+                  <HBox prefHeight="21.0" prefWidth="167.0">
                      <children>
-                        <Text fill="#00d4ff" strokeType="OUTSIDE" strokeWidth="0.0" text="File: ">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
+                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="93.0" styleClass="normal-button" text="Add File...">
                            <HBox.margin>
                               <Insets left="2.0" top="2.0" />
-                           </HBox.margin></Text>
-                        <TextField fx:id="inputFilename" editable="false" prefHeight="26.0" prefWidth="209.0" styleClass="control">
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin></TextField>
-                     </children>
-                  </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="normal-button" text="Browse...">
-                           <HBox.margin>
-                              <Insets left="40.0" top="2.0" />
                            </HBox.margin>
                         </Button>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Select an input video file to convert." />
+                              <Tooltip text="Select another input file to concatenate." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -84,7 +71,31 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="23.0" prefWidth="167.0">
+                     <children>
+                        <Button fx:id="inputRemoveButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="93.0" styleClass="normal-button" text="Remove File...">
+                           <HBox.margin>
+                              <Insets left="2.0" top="2.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
+                           <tooltip>
+                              <Tooltip text="Remove an input file from the list." />
+                           </tooltip>
+                           <graphic>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../img/HintButton.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets left="1.0" top="16.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="7.0" prefWidth="180.0">
                      <children>
                         <Text fill="#00c9f2" strokeType="OUTSIDE" strokeWidth="0.0" text="Framerate:">
                            <font>
@@ -100,17 +111,19 @@
                            </items>
                            <HBox.margin>
                               <Insets left="2.0" />
-                           </HBox.margin></ChoiceBox>
+                           </HBox.margin>
+                        </ChoiceBox>
                         <Text fill="#0ae4f8" strokeType="OUTSIDE" strokeWidth="0.0" text="fps">
                            <font>
                               <Font size="15.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="2.0" />
-                           </HBox.margin></Text>
+                           </HBox.margin>
+                        </Text>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Select the desired output frames per second." />
+                              <Tooltip text="Choose the input framerate for your conversion." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -130,73 +143,9 @@
                   <Insets top="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox prefHeight="127.0" prefWidth="140.0">
-               <children>
-                  <StackPane styleClass="video-player-pane">
-                     <children>
-                        <MediaView fx:id="mediaView" fitHeight="120.0" fitWidth="180.0" preserveRatio="false" />
-                     </children>
-                     <VBox.margin>
-                        <Insets top="5.0" />
-                     </VBox.margin>
-                  </StackPane>
-                  <HBox prefHeight="26.0" prefWidth="140.0">
-                     <children>
-                        <Button fx:id="playButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" styleClass="player-button">
-                           <graphic>
-                              <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.1" scaleY="0.1" scaleZ="0.01" stroke="BLACK" strokeType="INSIDE">
-                                <points>
-                                  <Double fx:value="-50.0" />
-                                  <Double fx:value="40.0" />
-                                  <Double fx:value="50.0" />
-                                  <Double fx:value="40.0" />
-                                  <Double fx:value="0.0" />
-                                  <Double fx:value="-60.0" />
-                                </points>
-                              </Polygon>
-                           </graphic>
-                        </Button>
-                        <Button fx:id="pauseButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="20.0" styleClass="player-button" text="Button">
-                           <graphic>
-                              <Pane translateX="-7.0">
-                                 <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" scaleX="0.5" scaleY="0.5" scaleZ="0.5" stroke="BLACK" strokeType="INSIDE" width="8.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" layoutX="5.0" scaleX="0.5" scaleY="0.5" scaleZ="0.5" stroke="BLACK" strokeType="INSIDE" width="8.0" />
-                                 </children>
-                              </Pane>
-                           </graphic>
-                        </Button>
-                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="20.0" prefWidth="200.0" styleClass="play-progress-pane">
-                           <children>
-                              <ProgressBar fx:id="playProgress" layoutX="5.0" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="10.0" prefWidth="110.0" progress="0.0">
-                                 <padding>
-                                    <Insets right="4.0" />
-                                 </padding></ProgressBar>
-                              <Text fx:id="playTime" layoutX="108.0" layoutY="14.0" scaleX="0.75" scaleY="0.75" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00" />
-                           </children>
-                        </Pane>
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
-               <tooltip>
-                  <Tooltip text="This preview box shows the input file that you have selected. Use it to ensure that the you chosen the correct file." />
-               </tooltip>
-               <graphic>
-                  <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../img/HintButton.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets top="130.0" />
-               </HBox.margin>
-            </Button>
          </children>
       </HBox>
-      <HBox layoutX="101.0" layoutY="300.0" prefHeight="167.0" prefWidth="534.0" styleClass="params-container">
+      <HBox layoutX="101.0" layoutY="290.0" prefHeight="167.0" prefWidth="521.0" styleClass="params-container">
          <children>
             <Pane prefHeight="105.0" prefWidth="58.0">
                <children>
@@ -226,7 +175,7 @@
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></TextField>
-                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="87.0" styleClass="normal-button" text="Browse...">
+                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="30.0" prefWidth="86.0" styleClass="normal-button" text="Browse...">
                            <HBox.margin>
                               <Insets left="2.0" />
                            </HBox.margin></Button>
@@ -272,7 +221,7 @@
                            </HBox.margin></Text>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Choose an output frame rate for your video file." />
+                              <Tooltip text="Choose an output frame rate for your concatenated file." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -331,16 +280,16 @@
                               <FXCollections fx:factory="observableArrayList" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
                                  <String fx:value="avi" />
                                  <String fx:value="mpeg4" />
-				 <String fx:value="matroska" />
+                                 <String fx:value="matroska" />
                               </FXCollections>
                            </items>
                            <HBox.margin>
                               <Insets left="12.0" />
                            </HBox.margin>
-			 </ChoiceBox>
+                        </ChoiceBox>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
-                              <Tooltip text="Set the desired video output format." />
+                              <Tooltip text="Set the desired output format." />
                            </tooltip>
                            <graphic>
                               <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -365,7 +314,7 @@
             </VBox>
          </children>
       </HBox>
-      <Pane layoutX="103.0" layoutY="476.0" prefHeight="27.0" prefWidth="153.0" styleClass="percent-counter">
+      <Pane layoutX="103.0" layoutY="476.0" prefHeight="27.0" prefWidth="145.0" styleClass="percent-counter">
          <children>
             <Text fx:id="convertPercentage" fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
                <font>
@@ -375,10 +324,10 @@
       </Pane>
       <HBox layoutX="527.0" layoutY="476.0" prefHeight="29.0" prefWidth="95.0">
          <children>
-            <Button fx:id="convertButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Convert" />
+            <Button fx:id="compileButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="79.0" styleClass="normal-button" text="Compile" />
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                <tooltip>
-                  <Tooltip text="Start the conversion process. It can be cancelled at any time after beginning." />
+                  <Tooltip text="Compile the given input files into a single output file." />
                </tooltip>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -393,7 +342,17 @@
             </Button>
          </children>
       </HBox>
-      <ProgressBar fx:id="progressBar" layoutX="103.0" layoutY="524.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" styleClass="convert-progress-bar" />
+      <ProgressBar fx:id="progressBar" layoutX="103.0" layoutY="524.0" prefHeight="31.0" prefWidth="521.0" progress="0.0" />
+      <StackPane layoutX="-172.0" layoutY="281.0" rotate="-90.0" styleClass="banner-button">
+         <children>
+            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/CompileBanner.png" />
+               </image>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Compile" />
+         </children>
+      </StackPane>
       <Button fx:id="backButton" alignment="CENTER" layoutX="2.0" layoutY="522.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="74.0" styleClass="back-button">
          <graphic>
             <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
