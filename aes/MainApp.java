@@ -21,6 +21,8 @@ import javafx.fxml.FXMLLoader;
 
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.HashMap;
+import java.util.Set;
 import java.io.IOException;
 import java.io.File;
 import java.net.URL;
@@ -31,12 +33,20 @@ public class MainApp extends Application
 	private Stage mainStage;
 	private Logger logger;
 	private Converter converter;
+	private String themeName;
+	private HashMap<String, String> themes;
 
 	@Override
 	public void start(Stage stage)
 	{
 		/* Create a logger to log info/warn/error messages */
 		logger = Logger.getLogger(MainApp.class.getName());
+
+		themes = new HashMap<String, String>();
+		themes.put("Dark", "/aes/res/css/theme.css");
+		themes.put("None", "");
+
+		themeName = "Dark";
 
 		/* Save reference to main stage */
 		mainStage = stage;
@@ -158,6 +168,27 @@ public class MainApp extends Application
 		return fc.showSaveDialog(mainStage);
 	}
 
+	public String getCurrentTheme()
+	{
+		return themeName;
+	}
+
+	public void setTheme(String themeName)
+	{
+		if(themes.containsKey(themeName) && themeName != this.themeName)
+		{
+			Scene root = mainStage.getScene();
+			root.getStylesheets().clear();
+			root.getStylesheets().add(themes.get(themeName));
+			this.themeName = themeName;
+		}
+	}
+
+	public Set<String> getThemes()
+	{
+		return themes.keySet();
+	}
+
 	public void tellUser(String message)
 	{
 		Platform.runLater(new Runnable(){
@@ -225,9 +256,11 @@ public class MainApp extends Application
 			loader.setLocation(MainApp.class.getResource(fxmlFile));
 			Parent root = loader.load();
 
-			/* Change the current display to the loaded fxml */
+			/* Set the current theme */
 			Scene newScene = new Scene(root);
+			newScene.getStylesheets().add(themes.get(themeName));
 
+			/* Change the current display to the loaded fxml */
 			mainStage.setScene(newScene);
 			mainStage.show();
 

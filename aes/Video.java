@@ -53,7 +53,8 @@ public class Video implements SceneController, ConvertListener
 	/* Preview related controls */
 	@FXML private MediaView mediaView;
 	@FXML private Button playButton, pauseButton;
-	@FXML private Slider playSlider;
+	@FXML private Text playTime;
+	@FXML private ProgressBar playProgress;
 
 
 	@Override
@@ -150,7 +151,8 @@ public class Video implements SceneController, ConvertListener
 				Platform.runLater(new Runnable(){
 					@Override
 					public void run(){
-						playSlider.setValue(ratio * (playSlider.getMax() - playSlider.getMin()) + playSlider.getMin());
+						playTime.setText(String.format("%02d:%02d", (int)pos.toMinutes(), (int)pos.toSeconds() % 60));
+						playProgress.setProgress(ratio);
 					}
 				});
 			}

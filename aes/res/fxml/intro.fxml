@@ -98,5 +98,6 @@
             </Button>
          </children>
       </HBox>
+      <ChoiceBox fx:id="themeChoiceBox" layoutX="267.0" layoutY="553.0" prefWidth="150.0" styleClass="theme-selector" />
    </children>
 </AnchorPane>

@@ -17,7 +17,7 @@
       <!-- Include the elements common to all scenes -->
       <fx:include source="topbar.fxml" />
       <fx:include source="menu.fxml" />
-      <Pane layoutX="113.0" layoutY="486.0" prefHeight="27.0" prefWidth="127.0" styleClass="percent-counter">
+      <Pane layoutX="113.0" layoutY="486.0" prefHeight="27.0" prefWidth="146.0" styleClass="percent-counter">
          <children>
             <Text fx:id="convertPercentage" fill="#07effc" layoutX="16.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0% Complete">
                <font>
@@ -53,12 +53,12 @@
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="outputDirectory" prefHeight="29.0" prefWidth="224.0" styleClass="control">
+                        <TextField fx:id="outputDirectory" editable="false" prefHeight="29.0" prefWidth="216.0" styleClass="control">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
+                        <Button fx:id="outputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="85.0" styleClass="normal-button" text="Browse...">
                            <HBox.margin>
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
@@ -90,7 +90,10 @@
                               <Insets left="2.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="outputBasename" styleClass="control" />
+                        <TextField fx:id="outputBasename" styleClass="control">
+                           <HBox.margin>
+                              <Insets left="13.0" />
+                           </HBox.margin></TextField>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
                               <Tooltip text="Tooltip text" />
@@ -120,11 +123,14 @@
                         </Text>
                         <ChoiceBox fx:id="filetypeChoiceBox" prefHeight="29.0" prefWidth="153.0" styleClass="control">
                            <items>
-                              <FXCollections xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:factory="observableArrayList">
+                              <FXCollections fx:factory="observableArrayList" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
                                  <String fx:value="mp3" />
                                  <String fx:value="wav" />
                               </FXCollections>
                            </items>
+                           <HBox.margin>
+                              <Insets left="13.0" />
+                           </HBox.margin>
                         </ChoiceBox>
                         <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="15.0" prefWidth="15.0" styleClass="hint-button">
                            <tooltip>
@@ -177,12 +183,12 @@
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
                         </Text>
-                        <TextField fx:id="inputFilename" prefHeight="26.0" prefWidth="209.0" styleClass="control">
+                        <TextField fx:id="inputFilename" editable="false" prefHeight="26.0" prefWidth="209.0" styleClass="control">
                            <HBox.margin>
                               <Insets top="2.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="70.0" styleClass="normal-button" text="Browse...">
+                        <Button fx:id="inputBrowseButton" mnemonicParsing="false" prefHeight="29.0" prefWidth="83.0" styleClass="normal-button" text="Browse...">
                            <HBox.margin>
                               <Insets left="2.0" top="2.0" />
                            </HBox.margin>
@@ -204,11 +210,11 @@
                         </Button>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox prefHeight="26.0" prefWidth="440.0">
                      <children>
                         <Button fx:id="playButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" styleClass="player-button">
                            <graphic>
-                              <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.2" scaleY="0.2" scaleZ="0.2" stroke="BLACK" strokeType="INSIDE">
+                              <Polygon fill="DODGERBLUE" rotate="90.0" scaleX="0.1" scaleY="0.1" scaleZ="0.1" stroke="BLACK" strokeType="INSIDE">
                                  <points>
                                     <Double fx:value="-50.0" />
                                     <Double fx:value="40.0" />
@@ -224,26 +230,27 @@
                            <graphic>
                               <Pane translateX="-7.0">
                                  <children>
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
-                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" layoutX="10.0" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" layoutX="1.0" scaleX="0.5" scaleY="0.5" scaleZ="0.5" stroke="BLACK" strokeType="INSIDE" width="8.0" />
+                                    <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#157ee1" height="22.0" layoutX="8.0" scaleX="0.5" scaleY="0.5" scaleZ="0.5" stroke="BLACK" strokeType="INSIDE" width="8.0" />
                                  </children>
                               </Pane>
                            </graphic>
                         </Button>
-                        <Slider fx:id="playSlider" disable="true" prefHeight="25.0" prefWidth="264.0">
-                           <HBox.margin>
-                              <Insets left="5.0" />
-                           </HBox.margin>
-                        </Slider>
-                        <Group>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="287.0" styleClass="play-progress-pane">
                            <children>
-                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e8a1c" height="25.0" stroke="BLACK" strokeType="INSIDE" styleClass="bordered" width="56.0" />
-                              <Text fx:id="playTime" layoutX="8.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
+                              <ProgressBar fx:id="playProgress" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="12.0" prefWidth="228.0" progress="0.0">
+                                 <padding>
+                                    <Insets left="5.0" />
+                                 </padding>
+                              </ProgressBar>
+                              <Text fx:id="playTime" layoutX="234.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00:00">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Text>
                            </children>
+                        </Pane>
+                        <Group>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
@@ -294,7 +301,7 @@
       </HBox>
       <VBox layoutX="3.0" layoutY="107.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="70.0">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true" rotate="-90.0" styleClass="bordered">
+            <ImageView fitHeight="70.0" fitWidth="418.0" pickOnBounds="true" rotate="-90.0" styleClass="vertical-page-banner">
                <image>
                   <Image url="@../img/IntroAudioNoBorder.png" />
                </image>

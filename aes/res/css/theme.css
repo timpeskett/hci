@@ -63,6 +63,11 @@
 	-fx-background-color: black;
 }
 
+.player-button *
+{
+	-fx-fill: green;
+}
+
 .hint-button
 {
         -fx-background-color: rgba(0,0,0,0);
@@ -96,19 +101,6 @@ Button
 /* MISCELLANEOUS ELEMENTS */
 
 
-/* The bar container */
-.progress-bar
-{
-	-fx-background-color: lightblue;
-}
-
-/* The actual bar */
-.progress-bar Pane
-{
-	-fx-background-color: linear-gradient(to right, green, lightgreen);
-}
-
-
 .params-heading
 {
 	-fx-border-color: green;
@@ -130,6 +122,19 @@ Button
 	-fx-background-color: darkblue;
 }
 
+.video-player-pane
+{
+	-fx-background-color: white;
+	-fx-border-color: lightgreen;
+	-fx-border-width: 2;
+}
+
+.play-progress-pane
+{
+	-fx-background-color: green;
+	-fx-border-color: lightgreen;
+	-fx-border-width: 2;
+}
 
 .percent-counter
 {
@@ -149,12 +154,24 @@ Button
         -fx-border-color: green;
 }
 
+.vertical-page-banner
+{
+	-fx-border-color: green;
+	-fx-border-width: 2;
+}
 
 
 .back-button
 {
 	-fx-background-color: linear-gradient(to right, black, green);
 }
+
+/*
+.convert-progress-bar
+{
+	
+}*/
+
 
 
 .bordered

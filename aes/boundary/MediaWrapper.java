@@ -75,7 +75,6 @@ public class MediaWrapper
 
 		/* Load markers into the file for each second */
 		ObservableMap<String, Duration> markers = mediaFile.getMarkers();
-		System.out.println("Length: " + mediaFile.getDuration().toSeconds());
 		for(int i = 0; i < mediaFile.getDuration().toSeconds(); i++)
 		{
 			markers.put(new Integer(i).toString(), new Duration(i * 1000));
