@@ -228,7 +228,7 @@ public class Video implements SceneController, ConvertListener
 			catch(IOException e)
 			{
 				ma.alertUser("A recent version of FFmpeg was not found on your system");
-				onCancel();
+				reset();
 			}
 		}
 	}

@@ -38,6 +38,11 @@ class ConvertOptions
 		return inFiles.get(index);
 	}
 
+	public LinkedList<File> getInFiles()
+	{
+		return inFiles;
+	}
+
 	public boolean hasInFramerate()
 	{
 		return optionals.containsKey("INFRAMERATE");

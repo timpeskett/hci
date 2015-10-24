@@ -15,6 +15,7 @@ import java.util.regex.Matcher;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.IOException;
 import java.io.File;
 
@@ -130,7 +131,31 @@ public class Converter
 
 	public synchronized void convert() throws IOException, ConversionInProcessException
 	{
-		List<String> command = makeCommand();
+		List<String> command = makeConvertCommand();
+
+		runCommand(command, null);
+	}
+
+
+	public synchronized void compile() throws IOException, ConversionInProcessException
+	{
+		List<String> command = makeCompileCommand();
+		String stdin = "";
+		
+		/* We need to pass as list of input files as stdin */
+		for(FileParams fp : inputs.values())
+		{
+			stdin += "file '";
+			stdin += fp.fileName;
+			stdin += "'\n";
+		}
+
+		runCommand(command, stdin);
+	}
+
+
+	public synchronized void runCommand(List<String> command, String stdin) throws IOException, ConversionInProcessException
+	{
 		String c = "";
 
 		/* Check not already converting */
@@ -145,6 +170,19 @@ public class Converter
 		converting = true;
 		error = false;
 		cancel = false;
+
+		/* Write the file data to stdin if applicable */
+		if(stdin != null)
+		{
+			OutputStream os = ffmpeg.getOutputStream();
+
+			System.out.println("Writing data to stdin: ");
+			System.out.print(stdin);
+
+			os.write(stdin.getBytes());
+			os.flush();
+			os.close();
+		}
 
 		/* Start thread to inform when exited */
 		new Thread(new Runnable(){
@@ -272,7 +310,6 @@ public class Converter
 
 	private String getFFmpegVersion() throws IOException
 	{
-		final String versionRegex = "ffmpeg version (\\d+\\.\\d+\\.\\d+).*";
 		Process proc;
 		String outLine;
 
@@ -297,7 +334,7 @@ public class Converter
 	}
 
 
-	private List<String> makeCommand()
+	private List<String> makeConvertCommand()
 	{
 		List<String> command = new LinkedList<String>();
 
@@ -307,6 +344,27 @@ public class Converter
 		{
 			command.addAll(fileParams.synthesize());
 		}
+
+		if(output != null)
+		{
+			command.addAll(output.synthesize());
+		}
+
+		return command;
+	}
+
+
+	private List<String> makeCompileCommand()
+	{
+		List<String> command = new LinkedList<String>();
+
+		command.add("ffmpeg");
+
+		command.add("-f");
+		command.add("concat");
+
+		command.add("-i");
+		command.add("-");
 
 		if(output != null)
 		{

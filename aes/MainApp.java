@@ -134,11 +134,47 @@ public class MainApp extends Application
 	}
 
 
-	public void concatFiles(ConvertOptions co)
+	public void concatFiles(ConvertOptions co, ConvertListener cl) throws IOException
 	{
-		/* Not yet implemented */
+		try
+		{
+			converter = new Converter();
+
+			converter.setConvertListener(cl);
+
+			for(File inFile : co.getInFiles())
+			{
+				String inFilePath = inFile.getAbsolutePath();
+				converter.addInputFile(inFilePath);
+			}
+
+			File outFile = co.getOutFile();
+			converter.setOutputFile(outFile.getAbsolutePath());
+
+			if(co.hasOutFramerate())
+			{
+				converter.setFrameRate(co.getOutFramerate().intValue());
+			}
+
+			if(co.hasFileType())
+			{
+				converter.setFormat(co.getFileType());
+			}
+
+			converter.compile();
+		}
+		/* We can safely catch these exceptions because
+		 * the data is validated
+		 */
+		catch(ConvertParamsException cpe)
+		{
+		}
+		catch(ConversionInProcessException cipe)
+		{
+		}
 	}
-		
+
+
 	public void cancelConversion()
 	{
 		if(converter != null)
