@@ -230,8 +230,15 @@ public class MainApp extends Application
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				Dialog alertDialog = new Dialog(message, mainStage);
-				alertDialog.inform();
+				try
+				{
+					Dialog alertDialog = new Dialog(message, mainStage);
+					alertDialog.inform();
+				}
+				catch(IOException e)
+				{
+					logger.log(Level.WARNING, "Could not create dialog box");
+				}
 			}
 		});
 	}
@@ -241,8 +248,15 @@ public class MainApp extends Application
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				Dialog alertDialog = new Dialog(message, mainStage);
-				alertDialog.alert();
+				try
+				{
+					Dialog alertDialog = new Dialog(message, mainStage);
+					alertDialog.inform();
+				}
+				catch(IOException e)
+				{
+					logger.log(Level.WARNING, "Could not create dialog box");
+				}
 			}
 		});
 
