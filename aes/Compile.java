@@ -189,7 +189,7 @@ public class Compile implements SceneController, ConvertListener
 		}
 		else
 		{
-			ma.alertUser("Compilation could not be completed!");
+			ma.alertUser("Compilation could not be completed. (Are you using an older version of FFmpeg?)!");
 		}
 		reset();
 	}

@@ -257,6 +257,7 @@ public class Video implements SceneController, ConvertListener
 	@Override
 	public void onProgress(double progress)
 	{
+		System.out.println("Setting progress to: " + progress);
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){

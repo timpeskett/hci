@@ -20,8 +20,6 @@ import java.io.IOException;
 import java.io.File;
 
 
-
-
 public class Converter
 {
 	private Map<String, FileParams> inputs;
@@ -196,6 +194,7 @@ public class Converter
 						error = true;
 					}
 					converting = false;
+					System.out.println("Converting!");
 				}
 				catch(Exception e)
 				{
@@ -221,7 +220,7 @@ public class Converter
 
 				do
 				{
-					progress = (runTime / 1000.0) / (2 * inFileLength / (1024.0 * 1024.0));
+					progress = (runTime / 1000.0) / (20 * inFileLength / (1024.0 * 1024.0));
 					if(progress > 1.0)
 					{
 						progress = 1.0;

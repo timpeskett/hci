@@ -9,7 +9,6 @@ import javafx.application.Platform;
 import javafx.application.Application;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.Parent;
 
 import javafx.stage.Stage;
@@ -231,8 +230,8 @@ public class MainApp extends Application
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				Alert alert = new Alert(Alert.AlertType.INFORMATION, message);
-				alert.show();
+				Dialog alertDialog = new Dialog(message, mainStage);
+				alertDialog.inform();
 			}
 		});
 	}
@@ -242,8 +241,8 @@ public class MainApp extends Application
 		Platform.runLater(new Runnable(){
 			@Override
 			public void run(){
-				Alert alert = new Alert(Alert.AlertType.WARNING, message);
-				alert.show();
+				Dialog alertDialog = new Dialog(message, mainStage);
+				alertDialog.alert();
 			}
 		});
 
