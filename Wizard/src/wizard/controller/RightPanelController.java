@@ -1,4 +1,3 @@
-
 package wizard.controller;
 
 import java.awt.Dimension;
@@ -12,6 +11,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import wizard.Wizard;
 
 /* Name: RightPanelController
@@ -61,6 +62,14 @@ public class RightPanelController {
         stage.setScene(scene);
         stage.show();
         System.out.println("");
+    }
+
+    public void helpBoxClicked() {
+        JOptionPane optionPane = new JOptionPane();
+        optionPane.setMessage("Would load documentation and help website if we had one (https://ffmpeg.org/ffmpeg.html)");
+        JDialog dialog = optionPane.createDialog("Help");
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
     }
 
     public void setTheme(String inTheme) {

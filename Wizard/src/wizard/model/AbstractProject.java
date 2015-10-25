@@ -43,7 +43,6 @@ public abstract class AbstractProject {
     }
 
     public void setOutputLocation(File outputLocation) {
-        System.out.println("setting outputDirectory to " + outputLocation.getPath());
         this.outputDirectory = outputLocation;
     }
 

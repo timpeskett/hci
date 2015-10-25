@@ -8,14 +8,11 @@ package wizard;
 import java.awt.Dimension;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
-import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 public class Wizard extends Application {
 
@@ -37,6 +34,8 @@ public class Wizard extends Application {
             primaryStage.getIcons().add(new Image(Wizard.class.getResourceAsStream("res/ffmpeg_icon.jpg")));
 
             primaryStage.show();
+                            
+
         } catch (Exception e) {
             e.printStackTrace();
         }

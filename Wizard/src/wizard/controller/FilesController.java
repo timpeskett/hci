@@ -4,15 +4,16 @@ import java.io.File;
 import java.util.List;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import wizard.controller.MainController.ProjectType;
 
 /* Name: FilesController
@@ -90,21 +91,31 @@ public class FilesController {
                 centerPanel.setOutputFilename(outputFileNameTextArea.getText());
                 state.set(state.add(1).get());
             } else {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("New file name is too long.");
-                //alert.setContentText("Please choose a new file name or output directory.");
+                /*  Alert alert = new Alert(AlertType.ERROR);
+                 alert.setTitle("Error");
+                 alert.setHeaderText("New file name is too long.");
+                 //alert.setContentText("Please choose a new file name or output directory.");
 
-                alert.showAndWait();
+                 alert.showAndWait();*/
+                JOptionPane optionPane = new JOptionPane();
+                optionPane.setMessage("Please choose a new file name or output directory.");
+                JDialog dialog = optionPane.createDialog("Error");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
             }
         } else {
             System.out.println("ERROR: File already exists at " + outputDirectoryTextArea.getText() + "\\" + newFileName);
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error: File already exists named " + newFileName + " at this location.");
-            alert.setContentText("Please choose a new file name or output directory.");
+            /*Alert alert = new Alert(AlertType.ERROR);
+             alert.setTitle("Error");
+             alert.setHeaderText("Error: File already exists named " + newFileName + " at this location.");
+             alert.setContentText("Please choose a new file name or output directory.");
 
-            alert.showAndWait();
+             alert.showAndWait();*/
+            JOptionPane optionPane = new JOptionPane();
+            optionPane.setMessage("Error: File already exists named " + newFileName + " at this location.");
+            JDialog dialog = optionPane.createDialog("Error");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
         }
     }
 
@@ -125,13 +136,19 @@ public class FilesController {
                     new FileChooser.ExtensionFilter("Video Files", "*.avi", "*.mpeg", "*.mov", "*.wmv", "*.m4v", "*.vob", "*.ogg", "*.flv", "*.f4v", "*.mkv", "*.mp4", "*.asf"));
         }
         inputFiles = fileChooser.showOpenMultipleDialog(stage);
-        if (inputFiles.size() > 10) {
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("Error.");
-            alert.setContentText("Unable to use more than 10 video files.");
-            alert.showAndWait();
-            inputFiles.clear();
+        if (inputFiles != null) {
+            if (inputFiles.size() > 10) {
+                /*Alert alert = new Alert(AlertType.ERROR);
+                 alert.setTitle("Error");
+                 alert.setHeaderText("Error.");
+                 alert.setContentText("Unable to use more than 10 video files.");
+                 alert.showAndWait();*/
+                JOptionPane optionPane = new JOptionPane();
+                optionPane.setMessage("Unable to use more than 10 video files.");
+                JDialog dialog = optionPane.createDialog("Error");
+                dialog.setAlwaysOnTop(true);
+                dialog.setVisible(true);
+            }
         } else {
 
             centerPanel.setInputFiles(inputFiles);

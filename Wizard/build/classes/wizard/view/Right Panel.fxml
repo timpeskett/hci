@@ -24,7 +24,7 @@
             </Label>
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="111.0" prefWidth="92.0">
+      <VBox fx:id="helpBox" alignment="CENTER" onMouseClicked="#helpBoxClicked" prefHeight="111.0" prefWidth="92.0">
          <children>
             <ImageView fx:id="helpImage" fitHeight="62.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                <image>

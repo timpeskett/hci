@@ -427,7 +427,7 @@ public class SettingsController {
         setting4Txt.setText("Audio          ");
 
         setting4Combo.setVisible(true);
-        formatCombo.getItems().addAll("AVI", "Ogg", "ASF", "MOV", "M4V", "WMV", "FLV", "F4V", "MPEG", "MKV", "MP4");
+        formatCombo.getItems().addAll("AVI", "ASF", "MOV", "M4V", "WMV", "FLV", "F4V", "MPEG", "MKV", "MP4");
         codecCombo.getItems().addAll("H.264/AVC", "MPEG-4", "MPEG-2", "XviD/DivX");
         profileCombo.getItems().addAll("HD Video 1080p", "HD Video 720p", "BlackBerry 95xx", "BlackBerry 81xx", "Apple iPhone 5/5C/5S/6", "Apple iPhone 4/4S/5", "Samsung Galaxy S4/S5", "Samsung Galaxy S3/S4");
         setting1Combo.getItems().addAll("426x240", "640x360", "854x480", "1280x720", "1920x1080", "2560x1440", "3840x2160");

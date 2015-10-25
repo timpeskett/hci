@@ -1,6 +1,7 @@
 package wizard.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
@@ -10,8 +11,6 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -20,6 +19,8 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.SwingWorker;
 import wizard.controller.MainController.ProjectType;
 
@@ -111,6 +112,94 @@ public class FinaliseController {
 
     public void createBtnPressed() {
 
+        try {
+            if (centerPanel.getProjectType() == ProjectType.VIDEO_PROJECT) {
+                Converter converter = new Converter();
+                System.out.println("----------------------------------------------------------------");
+                System.out.println("input file:" + inputFiles.get(0).getPath());
+                converter.addInputFile(inputFiles.get(0).getPath());
+                System.out.println("output loc/file:" + centerPanel.getOutputFileLoc().getPath() + "\\" + centerPanel.getOutputFilename().get() + "." + formatResult.getText().toLowerCase());
+                converter.setOutputFile(centerPanel.getOutputFileLoc().getPath() + "\\" + centerPanel.getOutputFilename().get() + "." + formatResult.getText().toLowerCase());
+
+                //converter.setPosition(inputFiles.get(0).getPath(), 0, 0, 20);
+                //converter.setPosition(inputFiles.get(0).getPath(), 0, 0, 0);
+                //converter.setDuration(300);
+                int fps = Integer.parseInt(centerPanel.getFrameRate().get().substring(0, 2));
+                System.out.println("fps:" + fps + ", with no modification: " + centerPanel.getFrameRate().get());
+                converter.setFrameRate(fps);
+                System.out.println("framesize:" + centerPanel.getFrameSize().get());
+                int w = Integer.parseInt(centerPanel.getFrameSize().get().split("x")[0]);
+                int h = Integer.parseInt(centerPanel.getFrameSize().get().split("x")[1]);
+                System.out.println("new w/h:" + w + "/" + h);
+                converter.setFrameSize(w, h);
+                System.out.println("codec:" + centerPanel.getCodec().get());
+                String codec = "";
+                switch (centerPanel.getCodec().get()) {
+                    case "H.264/AVC":
+                        codec = "h264";
+                        break;
+                    case "XviD":
+                        codec = "libxvid";
+                        break;
+                    case "MPEG-4":
+                        codec = "mpeg4";
+                        break;
+                    case "MPEG-2":
+                        codec = "mpeg2video";
+                        break;
+                }
+                System.out.println("finale encoder:" + codec);
+                converter.setVideoEncoder(codec);
+                System.out.println("bitrate:" + centerPanel.getBitrate().get());
+                String bitrate = centerPanel.getBitrate().get().split(" ")[0] + "k";
+                System.out.println("final bitrate:" + bitrate);
+                converter.setVideoBitRate(bitrate);
+                String format = formatResult.getText().toLowerCase().replace(".", "");
+                System.out.println("final format:" + format);
+                //converter.setFormat(format);
+                converter.convert();
+            } else {
+                Converter converter = new Converter();
+                converter.addInputFile(inputFiles.get(0).getPath());
+                converter.setOutputFile(centerPanel.getOutputFileLoc().getPath() + "\\" + centerPanel.getOutputFilename().get() + "." + formatResult.getText().toLowerCase());
+                String bitrate = centerPanel.getBitrate().get().split(" ")[0] + "k";
+                converter.setAudioBitRate(bitrate);
+                String codec = "";
+                // codec not required for WMA
+                switch (centerPanel.getCodec().get()) {
+                    case "MP3":
+                        codec = "libmp3lame";
+                        converter.setVideoEncoder(codec);
+                        break;
+                    case "PCM":
+                        codec = "pcm_s16le";
+                        converter.setVideoEncoder(codec);
+                        break;
+                    case "WMA":
+                        codec = "wmav2";
+                        converter.setVideoEncoder(codec);
+                        break;
+                    case "Ogg":
+                        codec = "libvorbis";
+                        converter.setVideoEncoder(codec);
+                }
+                if ("Mono".equals(centerPanel.getChannel().get())) {
+                    converter.setAudioChannels("1");
+                } else {
+                    converter.setAudioChannels("2");
+                }
+                String samplerate = centerPanel.getSamplerate().get().split(" ")[0];
+                converter.setAudioSamplerate(samplerate);
+                converter.convert();
+            }
+        } catch (ConvertParamsException cpe) {
+            System.out.println("Bad conversion params");
+        } catch (IOException ioe) {
+            System.out.println("No ffmpeg");
+        } catch (ConversionInProcessException cip) {
+            System.out.println("Conversion already happening");
+        }
+
         if (!inProgress) {
             work = new WorkSimulation();
             createBtn.setText("Cancel");
@@ -118,9 +207,7 @@ public class FinaliseController {
             inProgress = true;
             backBtn.setDisable(true);
         } else {
-            // System.out.println("Trying to cancel.");
             work.cancel(true);
-            // inProgress = false;
         }
     }
 
@@ -258,11 +345,16 @@ public class FinaliseController {
                             /* When finished and result = successful */
                             finaliseProgressBar.setProgress(get());
                             progressIndicator.setProgress(get());
-                            Alert alert = new Alert(AlertType.INFORMATION);
-                            alert.setTitle("Finished converting");
-                            alert.setHeaderText("FFMpeg Alert");
-                            alert.setContentText("Conversion was successful!");
-                            alert.show();
+                            /*Alert alert = new Alert(AlertType.INFORMATION);
+                             alert.setTitle("Finished converting");
+                             alert.setHeaderText("FFMpeg Alert");
+                             alert.setContentText("Conversion was successful!");
+                             alert.show();*/
+                            JOptionPane optionPane = new JOptionPane();
+                            optionPane.setMessage("Finished converting");
+                            JDialog dialog = optionPane.createDialog("Success");
+                            dialog.setAlwaysOnTop(true);
+                            dialog.setVisible(true);
                         } catch (InterruptedException ex) {
                             Logger.getLogger(FinaliseController.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (ExecutionException ex) {

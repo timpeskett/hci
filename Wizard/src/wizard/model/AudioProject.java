@@ -5,8 +5,6 @@
  */
 package wizard.model;
 
-import java.io.File;
-import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
