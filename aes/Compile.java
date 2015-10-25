@@ -110,7 +110,14 @@ public class Compile implements SceneController, ConvertListener
 		/* Compile button to perform conversion */
 		compileButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override public void handle(ActionEvent e){
-				compile();
+				if(compileButton.getText().equals("Cancel"))
+				{
+					ma.cancelConversion();
+				}
+				else
+				{
+					compile();
+				}
 			}
 		});
 		

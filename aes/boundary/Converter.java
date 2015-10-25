@@ -328,6 +328,9 @@ public class Converter
 			command.addAll(fileParams.synthesize());
 		}
 
+		command.add("-strict");
+		command.add("-2");
+
 		if(output != null)
 		{
 			command.addAll(output.synthesize());
@@ -349,10 +352,14 @@ public class Converter
 		command.add("-i");
 		command.add("-");
 
+		command.add("-strict");
+		command.add("-2");
+
 		if(output != null)
 		{
 			command.addAll(output.synthesize());
 		}
+
 
 		return command;
 	}
