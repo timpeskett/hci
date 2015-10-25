@@ -20,6 +20,11 @@
 	-fx-border-width: 2;
 }
 
+#maximise-button
+{
+	-fx-effect: innershadow(gaussian, grey, 100, 0.0, 0, 0);
+}
+
 
 /* A CSS selector used on most controls (text fields, choice boxes)
  * in the interface. This control is *not* applied to buttons as they

@@ -25,14 +25,7 @@
     </HBox>
     <HBox styleClass="minmaxexit">
        <children>
-         <ImageView fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="maximize(event);">
-	     <fx:script>
-		function maximize(evt){
-			var stage = evt.target.getScene().getWindow();
-			var max = !stage.isMaximized();
-			stage.setMaximized(max);
-		}
-	     </fx:script>
+         <ImageView id="maximise-button" fitHeight="42.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
 	     <image>
 		<Image url="@../img/MaximiseNoBorder.png" />
 	     </image>
