@@ -214,7 +214,7 @@ public class Converter
 
 				do
 				{
-					progress = (runTime / 1000.0) / (20 * inFileLength / (1024.0 * 1024.0));
+					progress = (runTime / 1000.0) / (15 * inFileLength / (1024.0 * 1024.0));
 					if(progress > 1.0)
 					{
 						progress = 1.0;
