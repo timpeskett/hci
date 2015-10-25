@@ -136,21 +136,15 @@ public class FilesController {
                     new FileChooser.ExtensionFilter("Video Files", "*.avi", "*.mpeg", "*.mov", "*.wmv", "*.m4v", "*.vob", "*.ogg", "*.flv", "*.f4v", "*.mkv", "*.mp4", "*.asf"));
         }
         inputFiles = fileChooser.showOpenMultipleDialog(stage);
-        if (inputFiles != null) {
-            if (inputFiles.size() > 10) {
-                /*Alert alert = new Alert(AlertType.ERROR);
-                 alert.setTitle("Error");
-                 alert.setHeaderText("Error.");
-                 alert.setContentText("Unable to use more than 10 video files.");
-                 alert.showAndWait();*/
-                JOptionPane optionPane = new JOptionPane();
-                optionPane.setMessage("Unable to use more than 10 video files.");
-                JDialog dialog = optionPane.createDialog("Error");
-                dialog.setAlwaysOnTop(true);
-                dialog.setVisible(true);
-            }
-        } else {
+        System.out.println(inputFiles.toArray()[0].toString());
 
+        if (inputFiles.size() > 10) {
+            JOptionPane optionPane = new JOptionPane();
+            optionPane.setMessage("Unable to use more than 10 video files.");
+            JDialog dialog = optionPane.createDialog("Error");
+            dialog.setAlwaysOnTop(true);
+            dialog.setVisible(true);
+        } else {
             centerPanel.setInputFiles(inputFiles);
 
             /* Put all file names in input file text area */
