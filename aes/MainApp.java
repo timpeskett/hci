@@ -44,7 +44,8 @@ public class MainApp extends Application
 		/* Create an association between theme names and
 		 * themes */
 		themes = new HashMap<String, String>();
-		themes.put("Dark", "/aes/res/css/theme.css");
+		themes.put("Dark", "/aes/res/css/dark.css");
+		themes.put("Light", "/aes/res/css/light.css");
 
 		themeName = "Dark";
 

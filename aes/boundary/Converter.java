@@ -154,8 +154,6 @@ public class Converter
 
 	public synchronized void runCommand(List<String> command, String stdin) throws IOException, ConversionInProcessException
 	{
-		String c = "";
-
 		/* Check not already converting */
 		if(converting)
 		{
@@ -174,9 +172,6 @@ public class Converter
 		{
 			OutputStream os = ffmpeg.getOutputStream();
 
-			System.out.println("Writing data to stdin: ");
-			System.out.print(stdin);
-
 			os.write(stdin.getBytes());
 			os.flush();
 			os.close();
@@ -194,7 +189,6 @@ public class Converter
 						error = true;
 					}
 					converting = false;
-					System.out.println("Converting!");
 				}
 				catch(Exception e)
 				{
@@ -236,7 +230,6 @@ public class Converter
 					}
 					catch(Exception e)
 					{
-						System.out.println("Thread cannot sleep. Terminating...");
 						converting = false;
 					}
 					runTime += sleepTime;
@@ -254,14 +247,6 @@ public class Converter
 				}
 			}
 		}).start();
-
-
-		for(String part : command)
-		{
-			c += part + " ";
-		}
-
-		System.out.println("Command line: " + c);
 	}
 
 

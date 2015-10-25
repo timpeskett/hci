@@ -1,0 +1,212 @@
+#main-pane
+{
+	-fx-background-color: #D0CF99; 
+}
+
+
+#top-bar
+{
+	-fx-background-color: #898970;
+}
+
+.minmaxexit
+{
+	-fx-background-color: blue;
+	-fx-border-color: black;
+	-fx-border-width: 2;
+}
+
+#maximise-button
+{
+	-fx-effect: innershadow(gaussian, #898970, 100, 0.0, 0, 0);
+}
+
+
+/* A CSS selector used on most controls (text fields, choice boxes)
+ * in the interface. This control is *not* applied to buttons as they
+ * are styled separately */
+.control
+{
+	-fx-background-color: #FFFE8B;
+	-fx-border-color: #898970;
+	-fx-border-width: 1;
+}
+
+
+
+/* BUTTON STYLES */
+
+/* A standard button used to perform an action like the browse and 
+ * convert buttons */
+.normal-button
+{
+	-fx-background-color: #FFFE8B;
+	-fx-background-radius: 3, 2, 1;
+	-fx-border-color: #2F2F2F;
+	-fx-text-fill: #2F2F2F;
+	-fx-text-size: 13px;
+}
+
+/* A banner button used on the introduction page to allow the user to
+ * select their operation. Not technically a button control but it acts
+ * as one */
+.banner-button
+{
+	-fx-effect: dropshadow(gaussian, #898970, 10, 0.1, 10, 10);
+}
+
+.banner-button Text
+{
+	-fx-fill: #796287;
+	-fx-font-size: 34pt;
+	-fx-font-weight: bold;
+	-fx-effect: dropshadow(three-pass-box, black, 10, 0.1, 6, 0);
+}
+
+/* The multimedia player buttons. Play and pause */
+.player-button
+{
+	-fx-background-color: #2F2F2F;
+}
+
+
+.player-button *
+{
+	-fx-fill: #D0CF99;
+}
+
+
+/* The button that returns the user to the intro page */
+.back-button
+{
+	-fx-background-color: linear-gradient(to right, #2F2F2F, #898970);
+}
+
+.hint-button
+{
+        -fx-background-color: rgba(0,0,0,0);
+}
+
+
+/* CONTAINER STYLES */
+
+/* The container where the user enters all of the parameters for their video
+ * conversion. */
+.params-container
+{
+	-fx-border-color: #2F2F2F;
+	-fx-border-width: 1;
+	-fx-border-style: dotted;
+}
+
+.params-container Text
+{
+	-fx-fill: #2F2F2F;
+}
+
+
+/* MISCELLANEOUS ELEMENTS */
+
+
+.params-heading
+{
+	-fx-border-color: #2F2F2F;
+	-fx-border-width: 3;
+}
+
+.params-heading Text
+{
+	-fx-fill: green;
+}
+
+.input-params-heading
+{
+	-fx-background-color: lightblue;
+}
+
+.output-params-heading
+{
+	-fx-background-color: darkblue;
+}
+
+.video-player-pane
+{
+	-fx-background-color: grey;
+	-fx-border-color: lightgreen;
+	-fx-border-width: 2;
+}
+
+
+/* The progress of the preview media file. */
+.play-progress-pane
+{
+	-fx-background-color: #2F2F2F;
+}
+
+.play-progress-pane Text
+{
+	-fx-fill: white;
+}
+
+.play-progress-pane .track
+{
+	-fx-background-color: #FFFEB0;
+}
+
+.play-progress-pane .bar
+{
+	-fx-background-color: skyblue;
+}
+
+
+/* The percentage of the current conversion */
+.percent-counter
+{
+	-fx-border-color: #898970;
+	-fx-border-width: 2;
+}
+
+.percent-counter Text
+{
+	-fx-fill: #2F2F2F;
+}
+
+
+.tooltip
+{
+        -fx-background-color: lightgreen;
+        -fx-border-color: white;
+	-fx-text-fill: black;
+}
+
+
+/* The page banner that sits vertically on the left of all
+ * of the conversion pages */
+.vertical-page-banner
+{
+	-fx-border-color: #898970;
+	-fx-border-width: 2;
+	-fx-border-style: dotted;
+}
+
+
+/* The progress bar on each page */
+.convert-progress-bar .track
+{
+	-fx-background-color: #FFFEB0;
+}
+
+.convert-progress-bar .bar
+{
+}
+
+
+.list-view
+{
+}
+
+/* The list cells in the list view */
+.list-cell
+{
+	-fx-text-fill: black;
+}

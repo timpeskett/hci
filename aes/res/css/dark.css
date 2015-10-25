@@ -113,11 +113,6 @@ Button
 	-fx-border-style: dashed;
 }
 
-.params-container Text
-{
-	-fx-fill: lightblue;
-}
-
 
 /* MISCELLANEOUS ELEMENTS */
 
@@ -201,8 +196,24 @@ Button
 
 
 /* The progress bar on each page */
-.convert-progress-bar
+.convert-progress-bar .track
 {
-	-fx-progress-color: red;
+	-fx-background-color: teal;
 }
 
+.convert-progress-bar .bar
+{
+	-fx-background-color: skyblue;
+}
+
+
+.list-view
+{
+	-fx-background-color: black;
+}
+
+/* The list cells in the list view */
+.list-cell
+{
+	-fx-text-fill: black;
+}
